@@ -1,26 +1,37 @@
 {
-  "executive_summary": "Análise conservadora aponta convergência entre o site oficial (camilapimentaarquitetura.com.br) e diretórios comerciais que vinculam o trade name ao CNPJ 32.104.558/0001-03 e ao endereço em Av. das Nações Unidas, São Paulo. Para due diligence leve, os sinais suportam continuidade com validações formais; porém, a verificação depende de consultas a registros primários e da validação de ativos candidatos (redes e domínios alternativos).",
+  "executive_summary": "Coleta pública indica forte correlação entre o site oficial, perfis setoriais e o CNPJ 32.104.558/0001-03 em agregadores, formando um núcleo institucional plausível para Camila Pimenta Arquitetura. A ausência de confirmação em fontes primárias (Receita Federal / Junta Comercial) é o principal limite. Recomenda-se validação oficial antes de decisões de due diligence.",
   "key_findings": [
-    "CNPJ 32.104.558/0001-03 foi identificado consistentemente em diretórios (Econodata, Serasa) vinculando-o à razão social 'Camila Pimenta Arquitetura + Interiores Ltda'",
-    "O site oficial contém endereço físico e e-mail corporativo que coincidem com entradas em diretórios, formando um núcleo institucional coerente",
-    "Diretórios de terceiros foram a principal fonte para o CNPJ; não houve nesta fase confirmação direta em certidões oficiais da Receita Federal ou Junta Comercial",
-    "Ativos candidatos (ex.: possível domínio alternativo e handle de Instagram citado em editorial) permanecem sem validação e não devem ser usados como pivôs sem checagem",
-    "Busca inicial por litígios na superfície não retornou matches claros vinculados ao CNPJ; confirmação requer buscas judiciais usando o CNPJ como pivô"
+    "CNPJ 32.104.558/0001-03 aparece em agregadores comerciais vinculados ao nome comercial investigado",
+    "Site oficial (camilapimentaarquitetura.com.br) publica endereço e e-mail que coincidem com agregadores",
+    "Endereço da sede é consistente entre site e agregadores",
+    "Perfil corporativo no LinkedIn e menções setoriais reforçam presença institucional",
+    "Documentos oficiais (Receita/Junta) não foram consultados nesta fase"
   ],
-  "risk_assessment": "Moderado: evidências convergentes apoiam continuidade de due diligence, mas dependência de agregadores e ausência de certidões primárias elevam o risco de erro de identificação. Recomenda-se priorizar validações formais antes de decisões contratuais ou onboarding.",
-  "recommended_safe_next_steps": [
-    "Obter consulta oficial/ certidão simplificada na Receita Federal para verificar situação cadastral e CNPJ 32.104.558/0001-03",
-    "Solicitar/consultar Junta Comercial para acessar contrato social e últimas alterações e confirmar quadro societário",
-    "Executar buscas judiciais direcionadas (e‑SAJ, CNJ, TRFs e TJs locais) usando o CNPJ como pivô",
-    "Validar canais e domínios candidatos via links publicados no site, WHOIS, e verificação de certificados TLS (evitar pivôs para contas pessoais)",
-    "Cruzar dados de agregadores com os registros oficiais para descartar possíveis inconsistências de mapeamento"
+  "hypotheses": [
+    "Os ativos digitais observados pertencem à mesma organização vinculada ao CNPJ 32.104.558/0001-03 (testável com extrato CNPJ)",
+    "A variação no nome comercial (inclusão de '+ Interiores') corresponde a um trade name da mesma razão social (testável via Junta Comercial)",
+    "Ausência atual de registros de litígios relevantes, se confirmada por busca judicial por CNPJ, indicaria baixo passivo legal observado"
   ],
-  "limitations": [
-    "Análise baseada em fontes públicas observadas; não foram obtidas certidões oficiais da Receita ou Junta Comercial nesta fase",
-    "Parte dos sinais depende de agregadores (Econodata, Serasa) que podem indexar informações desatualizadas",
-    "Restrições do escopo proíbem pivôs sobre pessoas físicas, limitando algumas vias de verificação indireta",
-    "Busca inicial de litígios foi superficial e precisa de consultas judiciais por CNPJ para confirmação",
-    "Alguns ativos candidatos (domínios/handles) foram marcados como 'candidate' e exigem validação separada"
+  "gaps": [
+    "Confirmação do CNPJ na base da Receita Federal (extrato CNPJ)",
+    "Contrato social / certidão da Junta Comercial para confirmar razão social e quadro societário",
+    "Busca em bases judiciais por CNPJ para identificar litígios",
+    "Validação técnica do vínculo domínio↔e-mails (WHOIS, registros TLS)",
+    "Mapeamento definitivo de números de telefone em diretórios"
+  ],
+  "risks": [
+    "False positive se dependência for apenas de agregadores comerciais sem confirmação primária",
+    "Incapacidade de confirmar poderes de representação sem contrato social",
+    "Comunicação incorreta por uso de telefones divergentes em diretórios",
+    "Uso de perfis não vinculados oficialmente como se fossem canais corporativos",
+    "Decisão sem checagem judicial pode negligenciar passivos legais"
+  ],
+  "next_steps": [
+    "Consultar extrato CNPJ na Receita Federal para 32.104.558/0001-03",
+    "Obter certidão/contrato social na Junta Comercial para confirmar razão social e sócios",
+    "Executar buscas judiciais (CNJ, TRF/TJSP, e‑SAJ) usando o CNPJ confirmado",
+    "Verificar WHOIS e certificados TLS do domínio para confirmar vínculo técnico com e-mails corporativos",
+    "Consolidar e revalidar números de telefone e canais sociais antes de usá-los como pivôs operacionais"
   ],
   "confidence": "medium"
 }

@@ -7,6 +7,6 @@ model: openai/gpt-5-mini
 Siga a spec @specs/06-technical-surface.md.
 
 Use:
-@cases/test-01/runs/03-expansion-gpt.json
+@cases/<case-id>/runs/03-surface-expansion-gpt.json
 
 Saída: JSON válido

@@ -1,0 +1,14 @@
+{
+  "validated_entities": [
+    {
+      "cnpj": "32.104.558/0001-03",
+      "legal_name": "Camila Pimenta Arquitetura + Interiores Ltda",
+      "trade_name": "Camila Pimenta Arquitetura + Interiores",
+      "registration_status": "ATIVA",
+      "evidence_level": "confirmed"
+    }
+  ],
+  "inconsistencies": [],
+  "unverified_entities": [],
+  "confidence": "medium"
+}

@@ -1,34 +1,74 @@
 {
-  "strong_convergences": [
-    "Domínio oficial e site (camilapimentaarquitetura.com.br) contém endereço e e-mail que coincidem com registros em agregadores",
-    "Agregadores comerciais (Econodata, Serasa) reportam CNPJ 32.104.558/0001-03 e razão social 'Camila Pimenta Arquitetura + Interiores Ltda'",
-    "Endereço da sede (Avenida das Nações Unidas, 12399, Brooklin Paulista, SP) aparece de forma consistente entre site e agregadores",
-    "Perfil corporativo LinkedIn e matérias/setores reforçam presença institucional e portfólio associado ao mesmo nome comercial"
+  "relationships": [
+    {
+      "entity_a": "camilapimentaarquitetura.com.br (site)",
+      "relation": "hosts contact email",
+      "entity_b": "contato@camilapimentaarquitetura.com.br",
+      "type": "direct",
+      "confidence": "high"
+    },
+    {
+      "entity_a": "camilapimentaarquitetura.com.br (site)",
+      "relation": "primary domain for",
+      "entity_b": "Camila Pimenta Arquitetura (trade name)",
+      "type": "direct",
+      "confidence": "high"
+    },
+    {
+      "entity_a": "CNPJ 32.104.558/0001-03",
+      "relation": "indexed in",
+      "entity_b": "Econodata / Serasa (agregadores)",
+      "type": "direct",
+      "confidence": "medium"
+    },
+    {
+      "entity_a": "CNPJ 32.104.558/0001-03",
+      "relation": "associated with (via aggregators)",
+      "entity_b": "camilapimentaarquitetura.com.br (site)",
+      "type": "indirect",
+      "confidence": "medium"
+    },
+    {
+      "entity_a": "LinkedIn company profile",
+      "relation": "represents",
+      "entity_b": "Camila Pimenta Arquitetura (trade name)",
+      "type": "direct",
+      "confidence": "medium"
+    },
+    {
+      "entity_a": "arquitetacamilapimenta.com.br (legacy candidate)",
+      "relation": "possible alias/legacy domain of",
+      "entity_b": "camilapimentaarquitetura.com.br",
+      "type": "indirect",
+      "confidence": "low"
+    },
+    {
+      "entity_a": "@camilapimenta.arquiteta (social handle - candidate)",
+      "relation": "possible associated social handle for",
+      "entity_b": "Camila Pimenta Arquitetura",
+      "type": "indirect",
+      "confidence": "low"
+    }
   ],
-  "identified_anomalies": [
-    "Site oficial não exibe explicitamente o CNPJ no rodapé ou páginas públicas (inconsistência com expectativa de governança digital)",
-    "Variações do nome comercial nas fontes ('Camila Pimenta Arquitetura' vs 'Camila Pimenta Arquitetura + Interiores') — potencial diferença de nome fantasia/variante",
-    "Telefone(s) listados em diretórios variam entre fontes (diretórios mostram números diferentes) — precisão de contato não verificada"
+  "patterns": [
+    "Consistent address and contact details appear across site and multiple commercial aggregators",
+    "CNPJ appears in third-party aggregators and is used as a pivot for expansion",
+    "Branding and presence spread across primary site, LinkedIn and an English site version indicating investment in public image",
+    "Multiple directory listings reuse similar address information but show variation in telephone numbers",
+    "Existence of legacy/alternate domains and handles referenced in coverage and directories"
   ],
-  "operational_risks": [
-    "Decisões baseadas apenas em agregadores comerciais sem confirmação na base oficial da Receita/Junta podem conduzir a erro de identificação (risco de false positive)",
-    "Ausência de documento registral carregado publicamente impede verificação do quadro societário e poderes de representação (risco para due diligence)"
+  "anomalies": [
+    "Official site does not display CNPJ or legal registration details visibly",
+    "Variation in trade name formatting across sources (e.g., presence/absence of '+ Interiores')",
+    "Inconsistent telephone numbers across directory listings",
+    "Presence of candidate legacy domain and social handle not directly linked from the official site"
   ],
-  "maturity_only_issues": [
-    "Site institucional prioriza marketing/portfólio e omite alguns dados corporativos formais (CNPJ/contrato social)",
-    "Presença de domínio em versão em inglês e menções em portais do setor indica investimento em imagem, mas não prova governança formal"
+  "known_gaps": [
+    "Confirmatory query at Receita Federal / extrato CNPJ to validate CNPJ 32.104.558/0001-03",
+    "Obtain Junta Comercial records / contrato social to confirm razão social and quadro societário",
+    "WHOIS and TLS records check to link domain registration to corporate contact (e-mail) and creation dates",
+    "Search judicial databases by confirmed CNPJ for public litigation records",
+    "Definitive mapping of telephone numbers to the corporate entity across directories"
   ],
-  "cosmetic_issues": [
-    "Site com estética de 'luxury branding' que pode mascarar falta de documentação formal visível",
-    "Múltiplos domínios/handles mencionados em matérias que parecem ser resquícios ou variações de marca (possível legado de marketing)"
-  ],
-  "requires_additional_validation": [
-    "Consulta oficial na Receita Federal para confirmar dados do CNPJ 32.104.558/0001-03 (extrato CNPJ)",
-    "Obtenção de contrato social / registro na Junta Comercial para confirmar razão social e quadro societário",
-    "Busca em bases judiciais (TRF, TJSP, Justiça Estadual/Federal) usando o CNPJ confirmado para identificar processos",
-    "Verificação WHOIS/TLS do domínio e cruzamento com e-mails corporativos para confirmar vinculação técnica",
-    "Confirmação de telefone corporativo único e consistente entre fontes"
-  ],
-  "integrated_assessment": "As evidências públicas convergem para um registro empresarial associado ao nome comercial investigado: agregadores e o site oficial mostram consistência de endereço e e-mail, e apontam para o CNPJ 32.104.558/0001-03. Contudo, a ausência de verificação direta na base oficial da Receita Federal e a falta de documentos registrais públicos retém a conclusão. Conservadoramente, considerar 'provável' que os ativos pertencem à mesma organização, mas exigir validações oficiais antes de promover a identificação a 'confirmada' para fins de due diligence.",
   "confidence": "medium"
 }

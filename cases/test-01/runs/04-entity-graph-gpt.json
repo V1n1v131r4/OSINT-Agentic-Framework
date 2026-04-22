@@ -1,0 +1,25 @@
+{
+  "entities": [
+    {
+      "name": "Camila Pimenta Arquitetura",
+      "type": "organization"
+    },
+    {
+      "name": "camilapimentaarquitetura.com.br",
+      "type": "domain"
+    },
+    {
+      "name": "contato@camilapimentaarquitetura.com.br",
+      "type": "email"
+    },
+    {
+      "name": "https://br.linkedin.com/company/camila-pimenta-arquitetura-interiores",
+      "type": "profile"
+    },
+    {
+      "name": "arquitetacamilapimenta.com.br",
+      "type": "domain"
+    }
+  ],
+  "confidence": "medium"
+}

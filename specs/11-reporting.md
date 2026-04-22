@@ -1,58 +1,96 @@
+
+---
+
+## `specs/11-reporting.md`
+
+```md
 # 11 — Reporting
 
 ## Objetivo
-Transformar os achados em um relatório curto, executivo, acionável e rastreável.
+
+Transformar os achados já correlacionados em um relatório curto, executivo e rastreável.
+
+Este módulo foca em COMUNICAÇÃO FINAL, não em nova análise.
 
 ---
 
 ## Entradas obrigatórias
 
-- strong_convergences
-- identified_anomalies
-- operational_risks
-- maturity_only_issues
-- cosmetic_issues
-- requires_additional_validation
-- integrated_assessment
-- confidence
-- analysis_goal_normalized
+- case intake
+- output do módulo 10
+- outros outputs anteriores somente se necessários para coerência do resumo
 
-Se qualquer entrada estiver ausente ou inválida, NÃO prossiga.
+Se o output de correlação não estiver disponível, NÃO prossiga.
 
 ---
 
 ## Instruções ao agente
 
-- Escrever para analista ou decisor
-- Não dramatizar
-- Não incluir nada fora dos inputs
-- Não enriquecer com conhecimento externo
-- Não investigar pessoas físicas
-- Priorizar utilidade operacional
-- Ser direto, denso e objetivo
+- Trabalhar apenas com os insumos fornecidos
+- NÃO buscar novas fontes
+- NÃO expandir escopo
+- NÃO reinterpretar o caso além do que já foi consolidado
+- O relatório deve refletir apenas:
+  - relações observadas
+  - padrões identificados
+  - anomalias registradas
+  - lacunas já conhecidas
 
 ---
 
-## Tarefas
+## Regras de execução
 
-1. Produzir um sumário executivo claro e direto
-2. Destacar os principais achados relevantes
-3. Classificar risco de forma conservadora
-4. Sugerir próximos passos seguros e proporcionais
-5. Registrar limitações da análise
+- Gerar APENAS JSON válido
+- Não adicionar campos fora da saída obrigatória
+- Todos os campos de lista devem ser arrays JSON válidos
+- O resumo executivo deve ser curto, claro e coerente com o objetivo analítico original
+- Não transformar hipótese em fato
+- Não omitir limitações
+- Não usar linguagem inflada ou genérica
+
+---
+
+## Estrutura esperada
+
+### 1. Resumo executivo
+
+Síntese curta do caso, destacando:
+
+- o que foi possível observar
+- o nível geral de confiança
+- o principal limite da análise
+
+### 2. Principais achados
+
+Listar os pontos mais relevantes e rastreáveis.
+
+### 3. Hipóteses e interpretações
+
+Listar apenas hipóteses ainda sustentadas pelos dados anteriores.
+
+### 4. Lacunas
+
+Listar o que ainda precisa de validação.
+
+### 5. Riscos e implicações
+
+Listar implicações práticas dos achados, sem exagero.
+
+### 6. Próximos passos
+
+Listar validações e coletas complementares úteis.
 
 ---
 
 ## Saída obrigatória
 
-Retorne **APENAS JSON válido**, sem texto adicional.
-
 ```json
 {
   "executive_summary": "",
   "key_findings": [],
-  "risk_assessment": "",
-  "recommended_safe_next_steps": [],
-  "limitations": [],
-  "confidence": "low|medium|high"
+  "hypotheses": [],
+  "gaps": [],
+  "risks": [],
+  "next_steps": [],
+  "confidence": "low | medium | high"
 }

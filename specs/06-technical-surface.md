@@ -1,38 +1,127 @@
 # 06 — Technical Surface
 
 ## Objetivo
-Ler a superfície técnica pública como fonte de inteligência institucional.
+
+Mapear a superfície técnica pública do alvo, identificando ativos e sinais de infraestrutura digital visíveis externamente.
+
+Este módulo foca em ENUMERAÇÃO técnica com enriquecimento passivo.
+
+---
 
 ## Entradas obrigatórias
-- primary_assets
+
+- primary_assets (domínio principal, subdomínios conhecidos)
 - residual_or_legacy_assets
-- public_channels
+
+## Entradas opcionais
+
 - supporting_signals
 
+Se não houver domínio ou ativo técnico definido, NÃO prossiga.
+
+---
+
 ## Instruções ao agente
-Foque em sinais públicos e visíveis sem varredura intrusiva. A leitura deve priorizar governança digital, heranças de stack, erros públicos e coerência operacional.
+
+- Trabalhar apenas com dados públicos
+- É PERMITIDO enriquecer dados usando:
+  - DNS público
+  - registros WHOIS
+  - resolução de domínio
+  - certificate transparency (crt.sh)
+- NÃO realizar varredura ativa ou intrusiva
+- NÃO testar vulnerabilidades
+
+---
+
+## Regras de execução
+
+- Todos os campos de lista devem ser arrays JSON válidos
+- Cada item deve ser um valor simples (string ou objeto estruturado)
+- NÃO incluir texto explicativo dentro dos campos
+- NÃO incluir inferências sem evidência observável
+- Se não houver evidência clara, NÃO incluir o item
+- Não descrever itens — apenas listar valores
+
+---
 
 ## Tarefas
-1. Identificar indícios de stack, publicação ou plataforma.
-2. Identificar ativos residuais, referências herdadas ou erros públicos.
-3. Avaliar o que isso revela sobre governança digital.
-4. Classificar riscos em termos de maturidade, não de exploração ofensiva.
-5. Sugerir validações complementares seguras.
+
+### 1. Identificar domínios e subdomínios
+
+- domínio principal
+- subdomínios descobertos via:
+  - DNS
+  - certificados
+  - padrões comuns (www, api, mail)
+
+---
+
+### 2. Identificar registros DNS
+
+Buscar:
+
+- A / AAAA
+- MX
+- NS
+- TXT (SPF, DKIM, DMARC)
+
+---
+
+### 3. Identificar IPs e infraestrutura
+
+- IPs associados aos domínios
+- CDN ou proxy (se visível)
+- provedores
+
+---
+
+### 4. Identificar ASN (quando possível)
+
+- ASN
+- organização
+
+---
+
+### 5. Identificar serviços técnicos
+
+- web (http/https)
+- e-mail (MX)
+- CDN
+- proxy
+
+---
+
+### 6. Identificar sinais técnicos
+
+- SPF presente
+- DMARC presente
+- uso de CDN
+- uso de terceiros
+
+---
 
 ## Saída obrigatória
+
 ```json
 {
-  "observed_stack_signals": [],
-  "legacy_or_broken_signals": [],
-  "governance_readout": "",
-  "risk_assessment": {
-    "digital_governance": "low|moderate|high",
-    "technical_exposure_inferred": "low|moderate|high"
+  "domains": [],
+  "subdomains": [],
+  "dns_records": {
+    "a_records": [],
+    "mx_records": [],
+    "ns_records": [],
+    "txt_records": []
   },
-  "safe_followup_checks": []
+  "ip_addresses": [],
+  "asn_info": [
+    {
+      "asn": "",
+      "organization": ""
+    }
+  ],
+  "providers": [],
+  "exposed_services": [],
+  "technical_signals": [],
+  "confidence": "low | medium | high"
 }
-```
-
-## Critérios de qualidade
-- não transformar pista de stack em prova de vulnerabilidade
-- evitar linguagem ofensiva

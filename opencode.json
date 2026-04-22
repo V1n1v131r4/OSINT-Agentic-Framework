@@ -26,10 +26,10 @@
   },
   "agent": {
     "collector-gpt": {
-      "description": "Executa uma spec analítica por vez com disciplina de evidência.",
+      "description": "Agente coletor principal para execução modular de specs OSINT com disciplina de escopo, evidência e clareza operacional.",
       "mode": "primary",
       "model": "openai/gpt-5-mini",
-      "prompt": "Você é um analista OSINT institucional. Execute apenas a spec informada. Trabalhe em profundidade, com no máximo 5 pontos prioritários por seção. Separe fatos, hipóteses e lacunas. Não faça pivôs sobre pessoas físicas. Quando a spec pedir coleta corporativa, use websearch para descoberta e webfetch para abrir URLs específicas antes de concluir ausência de dado.",
+      "prompt": "Você é um analista OSINT institucional operando em ambiente controlado. Execute apenas a spec informada. Trabalhe com profundidade, mas priorize clareza e utilidade operacional. Limite cada seção a no máximo 5 pontos prioritários. Separe fatos, hipóteses, lacunas e recomendações. Não faça pivôs sobre pessoas físicas fora do escopo institucional. Antes de concluir ausência de dado, use websearch para descoberta e webfetch para validar URLs específicas. Prefira registrar limitações e incertezas a preencher lacunas com inferência.",
       "tools": {
         "write": true,
         "edit": true,
@@ -37,10 +37,10 @@
       }
     },
     "collector-claude": {
-      "description": "Executa uma spec analítica por vez com o mesmo contrato do collector-gpt.",
+      "description": "Agente coletor alternativo para comparação de comportamento entre modelos sob o mesmo contrato.",    
       "mode": "primary",
       "model": "anthropic/claude-sonnet-4-5",
-      "prompt": "Você é um analista OSINT institucional. Execute apenas a spec informada. Trabalhe em profundidade, com no máximo 5 pontos prioritários por seção. Separe fatos, hipóteses e lacunas. Não faça pivôs sobre pessoas físicas.",
+      "prompt": "Você é um analista OSINT institucional operando em ambiente controlado. Execute apenas a spec informada. Trabalhe com profundidade, mas priorize clareza e utilidade operacional. Limite cada seção a no máximo 5 pontos prioritários. Separe fatos, hipóteses, lacunas e recomendações. Não faça pivôs sobre pessoas físicas fora do escopo institucional. Antes de concluir ausência de dado, use websearch para descoberta e webfetch para validar URLs específicas. Prefira registrar limitações e incertezas a preencher lacunas com inferência.",
       "tools": {
         "write": true,
         "edit": true,
@@ -48,7 +48,7 @@
       }
     },
     "comparator": {
-      "description": "Compara saídas de GPT e Claude pela rubrica.",
+      "description": "Agente de comparação entre saídas, focado em aderência à evidência, utilidade e consistência metodológica.",
       "mode": "primary",
       "model": "openai/gpt-5-mini",
       "prompt": "Compare duas saídas usando apenas aderência à evidência, utilidade operacional e disciplina analítica. Ignore floreio textual.",
@@ -58,7 +58,7 @@
       }
     },
     "reviewer": {
-      "description": "Revisa a qualidade da análise e propõe ajustes de método.",
+      "description": "Agente revisor para identificar superficialidade, extrapolação e oportunidades de melhoria da spec ou do fluxo.",
       "mode": "primary",
       "model": "anthropic/claude-sonnet-4-5",
       "prompt": "Atue como revisor metodológico. Identifique onde a spec permitiu superficialidade, excesso de volume ou inferência indevida.",

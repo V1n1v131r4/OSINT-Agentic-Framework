@@ -1,36 +1,63 @@
 # 04 — Entity Graph
 
 ## Objetivo
-Organizar entidades e relações em um grafo investigativo mínimo e útil.
+
+Identificar e organizar entidades relevantes relacionadas ao alvo.
+
+Este módulo foca em ENUMERAÇÃO de entidades, não em correlação profunda.
+
+---
 
 ## Entradas obrigatórias
+
 - primary_assets
-- secondary_assets
-- public_channels
 - residual_or_legacy_assets
 
+---
+
 ## Instruções ao agente
-Monte um grafo institucional. Não invente relações. Só represente conexões suportadas ou explicitamente hipotéticas.
+
+- É PERMITIDO enriquecer dados usando fontes públicas
+- NÃO expandir para pessoas físicas fora do escopo
+- NÃO criar relações complexas
+- Apenas identificar entidades observáveis
+
+---
 
 ## Tarefas
-1. Listar entidades principais.
-2. Listar entidades secundárias.
-3. Mapear relações diretas.
-4. Mapear relações indiretas plausíveis, marcadas como hipótese.
-5. Sugerir quais nós merecem validação prioritária.
+
+### 1. Identificar entidades
+
+- empresa
+- domínios
+- e-mails institucionais
+- marcas associadas
+- perfis institucionais
+
+---
+
+### 2. Classificar entidades
+
+Classificar como:
+
+- `organization`
+- `domain`
+- `email`
+- `brand`
+- `profile`
+- `other`
+
+---
 
 ## Saída obrigatória
+
 ```json
 {
-  "main_entities": [],
-  "secondary_entities": [],
-  "direct_relationships": [],
-  "indirect_relationships_hypotheses": [],
-  "priority_nodes_for_validation": [],
-  "graph_summary": ""
+  "entities": [
+    {
+      "name": "",
+      "type": "organization | domain | email | brand | profile | other"
+    }
+  ],
+  "confidence": "low | medium | high"
 }
-```
-
-## Critérios de qualidade
-- diferenciar relação observada e relação inferida
-- manter o grafo pequeno e operacional

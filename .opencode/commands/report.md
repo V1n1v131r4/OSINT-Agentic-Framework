@@ -1,5 +1,5 @@
 ---
-description: Executa o módulo 11 e salva automaticamente o relatório em runs
+description: Executa o módulo 11 e salva o relatório final em runs
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---

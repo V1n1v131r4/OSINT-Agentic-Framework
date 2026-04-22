@@ -2,14 +2,35 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "properties": {
+    "module_name": {
+      "type": "string"
+    },
+    "objective": {
+      "type": "string"
+    },
     "confidence": {
       "type": "string",
-      "enum": [
-        "low",
-        "medium",
-        "high"
-      ]
+      "enum": ["low", "medium", "high"]
+    },
+    "evidence_summary": {
+      "type": "string"
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "known_gaps": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "requires_validation": {
+      "type": "boolean"
+    },
+    "source_count": {
+      "type": "integer",
+      "minimum": 0
     }
   },
+  "required": ["confidence"],
   "additionalProperties": true
 }

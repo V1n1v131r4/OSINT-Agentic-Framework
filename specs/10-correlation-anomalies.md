@@ -1,69 +1,120 @@
-# 10 — Correlation and Anomalies
+# 10 — Correlation & Anomalies
 
 ## Objetivo
-Correlacionar os achados dos módulos anteriores para identificar convergências, inconsistências e sinais relevantes com utilidade analítica.
+
+Consolidar os dados coletados nas etapas anteriores, identificando:
+
+- relações observáveis entre entidades e ativos
+- padrões recorrentes
+- inconsistências ou sinais conflitantes
+- pontos que ainda exigem validação
+
+Este módulo foca em CORRELAÇÃO ESTRUTURADA, não em narrativa investigativa final.
 
 ---
 
 ## Entradas obrigatórias
-- target_summary
-- investigation_vectors
-- primary_assets
-- secondary_assets
-- public_channels
-- residual_or_legacy_assets
-- weak_signals
-- known_gaps
 
-Se qualquer entrada estiver ausente ou inválida, NÃO prossiga.
+- outputs relevantes das etapas anteriores
+- entidades identificadas
+- ativos e sinais técnicos ou institucionais já coletados
 
-## Entradas opcionais
-- corporate_identity
-- official_channels
-- corporate_registry_signals
-- public_litigation_signals
+Se não houver dados suficientes para correlacionar, NÃO prossiga.
 
 ---
 
 ## Instruções ao agente
 
-- Correlacionar apenas dados provenientes das entradas
-- Não inferir além do que está disponível
-- Não enriquecer com conhecimento externo
-- Não investigar pessoas físicas
+- Trabalhar apenas com dados já coletados
+- NÃO buscar novas fontes
+- NÃO expandir escopo
+- NÃO transformar correlação em conclusão definitiva
 - Separar claramente:
-  - convergência real
-  - inconsistência
-  - limitação de evidência
-  - problema cosmético
+  - relação observada
+  - padrão
+  - anomalia
+  - lacuna
+
+---
+
+## Regras de execução
+
+- Gerar APENAS JSON válido
+- Todos os campos de lista devem ser arrays JSON válidos
+- Não adicionar campos fora da saída obrigatória
+- Se não houver evidência suficiente para uma relação, NÃO incluir
+- Cada relação deve refletir apenas conexão observável ou inferência fraca explicitamente classificada
+- Não criar narrativa longa dentro dos campos
+- Não assumir causalidade
+- Não usar linguagem especulativa sem classificar a incerteza
 
 ---
 
 ## Tarefas
 
-1. Identificar convergências fortes entre ativos e sinais
-2. Identificar inconsistências ou anomalias
-3. Classificar anomalias em:
-   - operacionais (potencial impacto real)
-   - maturidade digital (baixo impacto)
-   - cosméticas (irrelevantes)
-4. Identificar o que realmente exige validação adicional
-5. Produzir uma leitura integrada, conservadora e acionável
+### 1. Identificar relações
+
+Mapear conexões entre:
+
+- empresa
+- domínio
+- subdomínios
+- e-mails
+- ativos técnicos
+- perfis institucionais
+- identificadores corporativos
+
+Classificar cada relação como:
+
+- `direct` = vínculo observável de forma clara
+- `indirect` = vínculo plausível, mas não confirmado diretamente
+
+---
+
+### 2. Identificar padrões
+
+Listar recorrências observáveis, como:
+
+- reutilização de identificadores
+- consistência entre fontes
+- concentração de infraestrutura
+- repetição de contato institucional
+- alinhamento entre presença institucional e ativos técnicos
+
+---
+
+### 3. Identificar anomalias
+
+Listar sinais como:
+
+- inconsistências entre fontes
+- ativos ou dados que não se encaixam
+- divergência de contato, naming ou infraestrutura
+- ausência relevante de confirmação
+
+---
+
+### 4. Registrar lacunas
+
+Listar o que ainda impede validação mais forte de relações ou hipóteses.
 
 ---
 
 ## Saída obrigatória
 
-Retorne **APENAS JSON válido**, sem texto adicional.
-
 ```json
 {
-  "strong_convergences": [],
-  "identified_anomalies": [],
-  "operational_risks": [],
-  "maturity_only_issues": [],
-  "cosmetic_issues": [],
-  "requires_additional_validation": [],
-  "integrated_assessment": "",
-  "confidence": "low|medium|high"
+  "relationships": [
+    {
+      "entity_a": "",
+      "relation": "",
+      "entity_b": "",
+      "type": "direct | indirect",
+      "confidence": "low | medium | high"
+    }
+  ],
+  "patterns": [],
+  "anomalies": [],
+  "known_gaps": [],
+  "confidence": "low | medium | high"
 }

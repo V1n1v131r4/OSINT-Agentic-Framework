@@ -1,33 +1,57 @@
+
+---
+
+# 08 — `specs/08-unstructured-extraction.md`
+
+```md
 # 08 — Unstructured Extraction
 
 ## Objetivo
-Extrair entidades, temas, pistas e contexto de conteúdo não estruturado.
+
+Extrair dados relevantes de conteúdo não estruturado.
+
+---
 
 ## Entradas obrigatórias
-- pages_or_documents_text
-- target_summary
+
+- páginas públicas
+- conteúdos coletados anteriormente
+
+---
 
 ## Instruções ao agente
-Converta texto promocional ou descritivo em sinais estruturados. Não reescreva a página; extraia valor analítico.
+
+- Trabalhar apenas com conteúdo disponível
+- NÃO buscar novas fontes (já coletadas)
+- NÃO interpretar além do texto
+
+---
 
 ## Tarefas
-1. Extrair entidades nomeadas.
-2. Identificar temas recorrentes.
-3. Localizar categorias de serviço, produto ou atuação.
-4. Identificar pistas úteis para pivot empresarial.
-5. Resumir o que o texto revela sobre o posicionamento operacional.
+
+### 1. Extrair dados relevantes
+
+- e-mails
+- telefones
+- endereços
+- nomes institucionais
+
+---
+
+### 2. Normalizar dados
+
+- remover duplicados
+- padronizar formato
+
+---
 
 ## Saída obrigatória
+
 ```json
 {
-  "named_entities": [],
-  "recurring_themes": [],
-  "service_or_operation_categories": [],
-  "business_pivot_clues": [],
-  "operational_positioning_summary": ""
+  "emails": [],
+  "phones": [],
+  "addresses": [],
+  "names": [],
+  "confidence": "low | medium | high"
 }
-```
-
-## Critérios de qualidade
-- extrair, não ornamentar
-- limitar a 10 entidades e 10 temas

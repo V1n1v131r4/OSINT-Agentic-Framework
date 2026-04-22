@@ -11,7 +11,7 @@
     "contato@camilapimentaarquitetura.com.br (e-mail de contato listado no site)",
     "https://camilapimentaarquitetura.com.br/sobre-nos (página 'Sobre nós' com alinhamento de marca)",
     "https://en.camilapimentaarquitetura.com.br/ (versão em inglês do site)",
-    "https://br.linkedin.com/company/camila-pimenta-arquitetura-interiores (perfil corporativo LinkedIn)">
+    "https://br.linkedin.com/company/camila-pimenta-arquitetura-interiores (perfil corporativo LinkedIn)"
   ],
   "corporate_registry_signals": [
     "Registros comerciais em agregadores: Econodata mostra CNPJ 32.104.558/0001-03, razão social 'Camila Pimenta Arquitetura + Interiores Ltda', abertura em 26/11/2018, CNAE M-7111-1/00, status ATIVA (fonte: econodata)",
@@ -24,7 +24,7 @@
     "site oficial (https://camilapimentaarquitetura.com.br) - verificação de rodapé/contato/sobre",
     "buscas gerais: 'Camila Pimenta Arquitetura CNPJ', 'Camila Pimenta Arquitetura + Interiores 32.104.558/0001-03'",
     "agregadores e diretórios: econodata.com.br, empresas.serasaexperian.com.br",
-    "fontes de cobertura/setor: arqbrasil, galerias de arquitetura, LinkedIn",
+    "fontes de cobertura/setor: LinkedIn, publicações de arquitetura",
     "iterações de busca reutilizando CNPJ candidato e domínio para revalidação cruzada"
   ],
   "unresolved_gaps": [

@@ -1,38 +1,53 @@
 {
-  "target_summary": "Alvo institucional identificado pelo nome comercial 'Camila Pimenta Arquitetura' com domínio oficial fornecido. Escopo declarado: empresa. Objetivo: avaliar presença digital institucional e coletar sinais públicos para due diligence leve (identificar CNPJ/razão social, validar canais oficiais, buscar processos públicos).",
+  "hypotheses": [
+    {
+      "description": "Existe um CNPJ associado ao nome fantasia 'Camila Pimenta Arquitetura', possivelmente sob razão social distinta",
+      "rationale": "Estúdios/MEIs com nome fantasia diferente da razão social são comuns; CNPJ costuma aparecer em diretórios mesmo quando ausente no site.",
+      "validation_vectors": [
+        "Verificar rodapé, páginas de contato e políticas do site por CNPJ ou razão social",
+        "Consultar agregadores/diretórios de CNPJ usando nome fantasia e domínio",
+        "Pesquisar combinações: nome fantasia OU domínio com os termos 'CNPJ' e 'razão social'"
+      ]
+    },
+    {
+      "description": "Parte da presença pública pode usar perfis pessoais do responsável, não canais institucionais",
+      "rationale": "Em pequenos estúdios, marca e pessoa se sobrepõem; é preciso evidência de vínculo ao domínio/contatos institucionais para validar oficialidade.",
+      "validation_vectors": [
+        "Checar se o site referencia redes sociais e se há consistência de e-mail/telefone",
+        "Procurar menções cruzadas (mesmo e-mail ou telefone) entre site, perfis e diretórios",
+        "Verificar se perfis linkam para o domínio institucional"
+      ]
+    },
+    {
+      "description": "A ausência de CNPJ no site não implica inexistência de registro, apenas falta de exposição",
+      "rationale": "Muitos sites omitem dados legais; confirmação depende de registros e agregadores públicos.",
+      "validation_vectors": [
+        "Buscar em registros/agregadores por nome e domínio",
+        "Cruzar por endereço/telefone/e-mail corporativo se encontrados",
+        "Testar variações do nome com possível localização/serviços"
+      ]
+    },
+    {
+      "description": "Podem existir menções públicas a litígios ou reclamações vinculadas à entidade",
+      "rationale": "Due diligence leve inclui verificação de passivo público; identificação requer CNPJ ou nome legal consistente.",
+      "validation_vectors": [
+        "Consultar portais judiciais/queixas públicas por CNPJ ou razão social",
+        "Reutilizar match candidato (CNPJ/nome) para revalidação cruzada"
+      ]
+    }
+  ],
   "investigation_vectors": [
-    "Análise do site oficial (rodapé, página de contato, políticas) para identificar CNPJ, razão social e contatos corporativos",
-    "Busca geral e combinada (nome comercial + termos de registro / domínio + CNPJ) em motores de busca e agregadores",
-    "Consulta a diretórios e agregadores de CNPJ/empresa (camada de diretórios corporativos)",
-    "Mapeamento de canais oficiais públicos (redes sociais, perfis vinculados ao domínio) e verificação de coerência",
-    "Verificação de litígios públicos e processos envolvendo o nome comercial ou CNPJ candidato"
-  ],
-  "initial_hypotheses": [
-    "Existe um registro empresarial (CNPJ) associado ao nome comercial, mas pode constar sob razão social diferente",
-    "O site pode não expor CNPJ/razão social no rodapé, exigindo uso de diretórios/agregadores para identificação",
-    "Canais públicos encontrados podem ser perfis pessoais/ou de autor, exigindo validação cruzada com o domínio para confirmar oficialidade",
-    "Qualquer CNPJ candidato encontrado exigirá revalidação cruzada (endereço, e-mail, telefone, domínio) antes de ser promovido a confirmado",
-    "Ausência de dados corporativos no site indica governança digital fraca, não necessariamente ausência de registro legal"
-  ],
-  "minimum_required_data": [
-    "CNPJ ou prova de inexistência formal",
-    "Razão social / nome legal completo",
-    "Status cadastral (ativa/inativa) ou evidência registral",
-    "Canais oficiais identificados e vinculados ao domínio",
-    "Contato corporativo verificável (endereço, telefone ou e-mail) para revalidação"
-  ],
-  "weak_signals": [
-    "Presença apenas do domínio e nome comercial no intake (sinal fraco de institucionalidade)",
-    "Campos de identificadores corporativos vazios no intake (CNPJ e razão social ausentes)",
-    "Escopo de due diligence solicitado indica necessidade de validação formal além de pesquisa superficial",
-    "Restrição explícita a dados públicos limita vetores investigativos disponíveis"
+    "Revisão do site oficial (rodapé, contato, políticas) por identificadores legais",
+    "Busca combinada do nome fantasia e do domínio com termos 'CNPJ' e 'razão social'",
+    "Consulta a agregadores/diretórios de empresas para identificar CNPJ candidato",
+    "Levantamento de canais públicos e verificação de vínculo com o domínio",
+    "Verificação de menções/processos públicos usando identificadores confirmados ou candidatos"
   ],
   "known_gaps": [
-    "CNPJ (ausente no intake)",
-    "Razão social / nome legal (ausente no intake)",
-    "Status cadastral / registro empresarial (não fornecido)",
-    "Página de contato ou rodapé com informações corporativas verificáveis",
-    "Endereço, telefone ou e-mail corporativo para revalidação cruzada"
-  ],
-  "confidence": "low"
+    "CNPJ não identificado",
+    "Razão social desconhecida",
+    "Status cadastral não confirmado",
+    "Contatos corporativos verificados (e-mail/telefone/endereço) ausentes",
+    "Oficialidade dos canais públicos não validada"
+  ]
 }

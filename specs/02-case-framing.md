@@ -1,64 +1,86 @@
 # 02 — Case Framing
 
 ## Objetivo
-Transformar o alvo normalizado em vetores investigativos, hipóteses iniciais e plano de coleta.
+
+Transformar o intake em uma estrutura analítica inicial, definindo:
+
+- hipóteses iniciais
+- vetores de investigação
+- lacunas críticas
+
+Este módulo define COMO a investigação será conduzida.
 
 ---
 
 ## Entradas obrigatórias
-- normalized_target
-- analysis_goal_normalized
-- scope_modules
-- restrictions
-- handoff_summary
+
+- target
+- analysis_goal
+- scope_definition
+
+---
 
 ## Entradas opcionais
-- corporate_identifiers
 
-Se qualquer entrada obrigatória estiver ausente ou inválida, NÃO prossiga.
+- known_data
+- constraints
+- priority_questions
+
+Se entradas obrigatórias estiverem ausentes, NÃO prossiga.
 
 ---
 
 ## Instruções ao agente
-Analise somente em nível institucional e público.
 
-- Não faça pivôs sobre pessoas físicas
-- Não invente dados ausentes
-- Não use conhecimento externo não derivado das entradas
-- Separe claramente: fato observável, hipótese e lacuna
-- Quando `scope_modules` incluir contexto corporativo, incluir vetores de due diligence empresarial leve
+- Não realizar coleta extensa
+- Trabalhar apenas com:
+  - dados fornecidos
+  - conhecimento geral
+- Evitar afirmações categóricas
 
 ---
 
 ## Tarefas
 
-1. Resumir o que o alvo aparenta ser com base exclusivamente no seed inicial
-2. Listar vetores de investigação apropriados ao escopo
-3. Formular hipóteses iniciais plausíveis, conservadoras e testáveis
-4. Definir os dados mínimos necessários para continuidade da análise
-5. Identificar sinais fracos e possíveis anomalias iniciais
-6. Identificar lacunas críticas que impedem avanço seguro
-7. Quando aplicável, incluir vetores de investigação corporativa, como:
-   - identificação e validação de CNPJ
-   - confirmação de razão social e nome fantasia
-   - verificação de registro empresarial público
-   - leitura de quadro societário em contexto corporativo
-   - busca de processos públicos envolvendo a empresa
-   - identificação de canais oficiais da empresa
+### 1. Definir hipóteses iniciais
+
+- Formular de 2 a 5 hipóteses plausíveis
+- Cada hipótese deve:
+  - ser testável
+  - estar alinhada ao objetivo
+  - evitar especulação excessiva
 
 ---
 
-## Saída obrigatória
+### 2. Definir vetores de investigação
 
-Retorne **APENAS JSON válido**, sem texto adicional.
+Para cada hipótese, indicar:
+
+- onde buscar evidência
+- que tipo de dado pode confirmar ou refutar
+
+---
+
+### 3. Identificar lacunas críticas
+
+Listar:
+
+- informações essenciais ainda desconhecidas
+- pontos que impedem validação das hipóteses
+
+---
+
+## Saída esperada
 
 ```json
 {
-  "target_summary": "",
+  "hypotheses": [
+    {
+      "description": "",
+      "rationale": "",
+      "validation_vectors": []
+    }
+  ],
   "investigation_vectors": [],
-  "initial_hypotheses": [],
-  "minimum_required_data": [],
-  "weak_signals": [],
-  "known_gaps": [],
-  "confidence": "low|medium|high"
+  "known_gaps": []
 }

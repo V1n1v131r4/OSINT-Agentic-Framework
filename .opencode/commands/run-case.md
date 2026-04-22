@@ -1,39 +1,60 @@
 ---
-description: Executa pipeline completa OSINT (GPT + Claude + comparação)
+description: Executa automaticamente a pipeline completa OSINT em sequência
 agent: collector-gpt
 model: openai/gpt-5-mini
+subtask: true
+return:
+  - /framing
+  - /expansion
+  - /entity-graph
+  - /institutional-validation
+  - /technical-surface
+  - /brand-social-analysis
+  - /unstructured-extraction
+  - /geo-context
+  - /correlation
+  - /report
+  - /postmortem
 ---
 
-Etapas:
+## REGRA CRÍTICA (EXECUÇÃO)
 
-1. Framing GPT
-@.opencode/commands/framing.md
+Você NÃO deve:
 
-2. Framing Claude
-@.opencode/commands/framing-claude.md
+- executar módulos manualmente
+- gerar JSON de módulos seguintes
+- interpretar dados para próximas etapas
+- continuar a pipeline por conta própria
 
-3. Expansion GPT
-@.opencode/commands/expansion.md
+Você DEVE:
 
-4. Expansion Claude
-@.opencode/commands/expansion-claude.md
+- executar APENAS o comando desta etapa
+- retornar o resultado
+- deixar o encadeamento ocorrer via `return`
 
-5. Technical Surface
-@.opencode/commands/technical-surface.md
+---
 
-6. Correlation GPT
-@.opencode/commands/correlation.md
+## COMPORTAMENTO OBRIGATÓRIO
 
-7. Report GPT
-@.opencode/commands/report.md
+Após executar o comando:
 
-8. Compare
-@.opencode/commands/compare.md
+- PARE imediatamente
+- NÃO continue raciocinando sobre o próximo módulo
+- NÃO gere saída adicional
+- NÃO antecipe etapas
 
-9. Postmortem
-@.opencode/commands/postmortem.md
+---
 
-Regras:
-- Executar sequencialmente
-- Não pular etapas
-- Manter consistência de outputs
+## EXECUÇÃO
+
+Execute exclusivamente:
+
+@.opencode/commands/case-intake.md
+
+---
+
+## RESTRIÇÃO FINAL
+
+Se você gerar qualquer conteúdo além do JSON do comando executado:
+
+→ isso é considerado erro de execução

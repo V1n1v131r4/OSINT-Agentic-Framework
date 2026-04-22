@@ -1,5 +1,5 @@
 ---
-description: Executa o módulo 10 e salva automaticamente o output em runs
+description: Executa o módulo 10 e salva a correlação estruturada em runs
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
@@ -7,17 +7,20 @@ model: openai/gpt-5-mini
 Siga estritamente a spec em @specs/10-correlation-anomalies.md.
 
 Use como insumos obrigatórios os arquivos:
-@cases/test-01/runs/02-framing-gpt.json
-@cases/test-01/runs/03-surface-expansion-gpt.json
+@cases/test-01/runs/04-entity-graph-gpt.json
+@cases/test-01/runs/05-institutional-validation-gpt.json
+@cases/test-01/runs/06-technical-surface-gpt.json
+@cases/test-01/runs/07-brand-social-analysis-gpt.json
+@cases/test-01/runs/08-unstructured-extraction-gpt.json
+@cases/test-01/runs/09-geo-context-gpt.json
 
 Objetivo desta execução:
-- correlacionar os achados do framing e da expansão
-- identificar convergências, anomalias e limites de evidência
-- produzir uma leitura integrada para o relatório
+- consolidar relações observáveis entre entidades e ativos
+- destacar padrões, anomalias e lacunas
+- preparar base rastreável para o relatório final
 
 Instruções operacionais obrigatórias:
-- Leia @cases/test-01/runs/02-framing-gpt.json
-- Leia @cases/test-01/runs/03-surface-expansion-gpt.json
+- Leia todos os arquivos listados acima
 - Gere APENAS JSON válido compatível com a spec 10
 - Salve o resultado em @cases/test-01/runs/10-correlation-gpt.json
 - Se a pasta @cases/test-01/runs não existir, crie-a
