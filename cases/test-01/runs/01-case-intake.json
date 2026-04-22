@@ -1,0 +1,33 @@
+{
+  "case_id": "test-01",
+  "normalized_target": {
+    "name": "Camila Pimenta Arquitetura",
+    "url": "https://camilapimentaarquitetura.com.br/",
+    "scope_type": "empresa"
+  },
+  "analysis_goal_normalized": "Avaliar presença digital institucional e coletar sinais públicos para due diligence leve: identificar CNPJ e razão social, validar canais oficiais e buscar processos públicos relevantes.",
+  "scope_modules": [
+    "corporate_identity",
+    "corporate_registry",
+    "official_channels",
+    "public_litigation_corporate"
+  ],
+  "corporate_identifiers": {
+    "cnpj": "",
+    "legal_name": "",
+    "trade_name": "Camila Pimenta Arquitetura"
+  },
+  "restrictions": [
+    "Não investigar pessoas físicas fora de contexto estritamente corporativo",
+    "Somente dados públicos",
+    "Não expandir para família, rotina ou contatos pessoais"
+  ],
+  "missing_information": [
+    "CNPJ (ausente no intake)",
+    "Razão social / nome legal (ausente no intake)",
+    "Status cadastral / registro empresarial (não fornecido)",
+    "Página de contato ou rodapé com informações corporativas verificáveis",
+    "Endereço, telefone ou e-mail corporativo para revalidação cruzada"
+  ],
+  "handoff_summary": "Seed inicial consiste no domínio oficial e nome comercial 'Camila Pimenta Arquitetura'. Próximo módulo (02) deve priorizar busca do CNPJ e razão social nas camadas: site oficial (rodapé/contato), busca geral (nome + CNPJ), diretórios agregadores e revalidação cruzada usando qualquer evidência parcial encontrada. Respeitar restrições listadas."
+}

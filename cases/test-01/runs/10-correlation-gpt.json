@@ -1,0 +1,34 @@
+{
+  "strong_convergences": [
+    "Domínio oficial e site (camilapimentaarquitetura.com.br) contém endereço e e-mail que coincidem com registros em agregadores",
+    "Agregadores comerciais (Econodata, Serasa) reportam CNPJ 32.104.558/0001-03 e razão social 'Camila Pimenta Arquitetura + Interiores Ltda'",
+    "Endereço da sede (Avenida das Nações Unidas, 12399, Brooklin Paulista, SP) aparece de forma consistente entre site e agregadores",
+    "Perfil corporativo LinkedIn e matérias/setores reforçam presença institucional e portfólio associado ao mesmo nome comercial"
+  ],
+  "identified_anomalies": [
+    "Site oficial não exibe explicitamente o CNPJ no rodapé ou páginas públicas (inconsistência com expectativa de governança digital)",
+    "Variações do nome comercial nas fontes ('Camila Pimenta Arquitetura' vs 'Camila Pimenta Arquitetura + Interiores') — potencial diferença de nome fantasia/variante",
+    "Telefone(s) listados em diretórios variam entre fontes (diretórios mostram números diferentes) — precisão de contato não verificada"
+  ],
+  "operational_risks": [
+    "Decisões baseadas apenas em agregadores comerciais sem confirmação na base oficial da Receita/Junta podem conduzir a erro de identificação (risco de false positive)",
+    "Ausência de documento registral carregado publicamente impede verificação do quadro societário e poderes de representação (risco para due diligence)"
+  ],
+  "maturity_only_issues": [
+    "Site institucional prioriza marketing/portfólio e omite alguns dados corporativos formais (CNPJ/contrato social)",
+    "Presença de domínio em versão em inglês e menções em portais do setor indica investimento em imagem, mas não prova governança formal"
+  ],
+  "cosmetic_issues": [
+    "Site com estética de 'luxury branding' que pode mascarar falta de documentação formal visível",
+    "Múltiplos domínios/handles mencionados em matérias que parecem ser resquícios ou variações de marca (possível legado de marketing)"
+  ],
+  "requires_additional_validation": [
+    "Consulta oficial na Receita Federal para confirmar dados do CNPJ 32.104.558/0001-03 (extrato CNPJ)",
+    "Obtenção de contrato social / registro na Junta Comercial para confirmar razão social e quadro societário",
+    "Busca em bases judiciais (TRF, TJSP, Justiça Estadual/Federal) usando o CNPJ confirmado para identificar processos",
+    "Verificação WHOIS/TLS do domínio e cruzamento com e-mails corporativos para confirmar vinculação técnica",
+    "Confirmação de telefone corporativo único e consistente entre fontes"
+  ],
+  "integrated_assessment": "As evidências públicas convergem para um registro empresarial associado ao nome comercial investigado: agregadores e o site oficial mostram consistência de endereço e e-mail, e apontam para o CNPJ 32.104.558/0001-03. Contudo, a ausência de verificação direta na base oficial da Receita Federal e a falta de documentos registrais públicos retém a conclusão. Conservadoramente, considerar 'provável' que os ativos pertencem à mesma organização, mas exigir validações oficiais antes de promover a identificação a 'confirmada' para fins de due diligence.",
+  "confidence": "medium"
+}

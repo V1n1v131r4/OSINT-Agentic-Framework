@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "consensus_facts",
+    "divergent_points",
+    "unsupported_inferences",
+    "best_output_by_dimension",
+    "adjudication_recommendation"
+  ],
+  "properties": {
+    "consensus_facts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "divergent_points": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unsupported_inferences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "best_output_by_dimension": {
+      "type": "object",
+      "required": [
+        "clarity",
+        "evidence_discipline",
+        "operational_usefulness"
+      ],
+      "properties": {
+        "clarity": {
+          "type": "string"
+        },
+        "evidence_discipline": {
+          "type": "string"
+        },
+        "operational_usefulness": {
+          "type": "string"
+        }
+      }
+    },
+    "adjudication_recommendation": {
+      "type": "string"
+    }
+  }
+}
