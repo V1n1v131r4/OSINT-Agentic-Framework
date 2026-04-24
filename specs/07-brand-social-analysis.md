@@ -24,18 +24,19 @@ Identificar presença pública do alvo em plataformas e canais institucionais.
   - redes sociais
   - diretórios públicos
   - sites institucionais
-- NÃO investigar perfis pessoais
+- É PERMITIDO investigar perfis pessoais de sócios e funcionários identificados para correlação institucional
 - NÃO inferir vínculo sem evidência
 
 ---
 
 ## Tarefas
 
-### 1. Identificar canais oficiais
+### 1. Identificar canais oficiais e de sócios
 
 - site institucional
-- redes sociais
-- plataformas profissionais
+- redes sociais corporativas
+- plataformas profissionais (LinkedIn da empresa e dos sócios)
+- perfis sociais de sócios e funcionários (para validar vínculo com a empresa)
 
 ---
 
@@ -52,7 +53,18 @@ Identificar presença pública do alvo em plataformas e canais institucionais.
 ```json
 {
   "official_channels": [],
+  "partner_channels": [
+    {
+      "partner_name": "",
+      "platform": "",
+      "handle": "",
+      "url": "",
+      "correlation_evidence": "menção à empresa na bio | fotos no local | posts relacionados",
+      "evidence_level": "confirmed|candidate|unresolved"
+    }
+  ],
   "candidate_channels": [],
   "signals": [],
   "confidence": "low | medium | high"
 }
+```

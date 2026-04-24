@@ -62,7 +62,10 @@ Mapear conexões entre:
 - e-mails
 - ativos técnicos
 - perfis institucionais
+- perfis de sócios e funcionários
 - identificadores corporativos
+- documentos públicos
+- repositórios de código
 
 Classificar cada relação como:
 
@@ -116,5 +119,30 @@ Listar o que ainda impede validação mais forte de relações ou hipóteses.
   "patterns": [],
   "anomalies": [],
   "known_gaps": [],
+  "correlated_documents": [
+    {
+      "document_url": "string",
+      "entity_id": "string",
+      "correlation_type": "string (e.g., mention, authorship)",
+      "evidence_level": "confirmed|candidate"
+    }
+  ],
+  "correlated_repositories": [
+    {
+      "repository_url": "string",
+      "entity_id": "string",
+      "correlation_type": "string (e.g., owner, contributor)",
+      "evidence_level": "confirmed|candidate"
+    }
+  ],
+  "correlated_employees": [
+    {
+      "employee_id": "string",
+      "entity_id": "string",
+      "correlation_type": "string (e.g., current_employee, past_employee)",
+      "evidence_level": "confirmed|candidate"
+    }
+  ],
   "confidence": "low | medium | high"
 }
+

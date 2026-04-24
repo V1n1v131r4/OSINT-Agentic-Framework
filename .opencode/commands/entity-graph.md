@@ -7,7 +7,8 @@ model: openai/gpt-5-mini
 Siga estritamente a spec em @specs/04-entity-graph.md.
 
 Use como insumo obrigatório o arquivo:
-@cases/test-01/runs/03-surface-expansion-gpt.json
+@cases/{{case_id}}/runs/03-surface-expansion-gpt.json
+@cases/{{case_id}}/runs/04-corporate-collection-gpt.json
 
 Objetivo desta execução:
 - identificar entidades institucionais relevantes
@@ -15,15 +16,19 @@ Objetivo desta execução:
 - preparar saída reutilizável para os módulos seguintes
 
 Instruções operacionais obrigatórias:
-- Leia @cases/test-01/runs/03-surface-expansion-gpt.json
+- Leia @cases/{{case_id}}/runs/03-surface-expansion-gpt.json
+- Leia @cases/{{case_id}}/runs/04-corporate-collection-gpt.json
+- Identifique entidades do tipo 'person' a partir do campo 'partners' e 'employees' no output de corporate-collection.
+- Identifique entidades do tipo 'document' a partir do campo 'public_documents' no output de corporate-collection.
+- Identifique entidades do tipo 'code_repository' a partir do campo 'code_repositories' no output de corporate-collection.
 - Gere APENAS JSON válido compatível com a spec 04
-- Salve o resultado em @cases/test-01/runs/04-entity-graph-gpt.json
-- Se a pasta @cases/test-01/runs não existir, crie-a
+- Salve o resultado em @cases/{{case_id}}/runs/04-entity-graph-gpt.json
+- Se a pasta @cases/{{case_id}}/runs não existir, crie-a
 - Após salvar, responda apenas com um JSON curto de status neste formato:
 
 {
   "status": "ok",
-  "output_file": "cases/test-01/runs/04-entity-graph-gpt.json"
+  "output_file": "cases/{{case_id}}/runs/04-entity-graph-gpt.json"
 }
 
 Regras obrigatórias:
@@ -32,3 +37,4 @@ Regras obrigatórias:
 - Não usar markdown
 - Não adicionar campos extras
 - Se faltar input, retornar erro estruturado em JSON
+

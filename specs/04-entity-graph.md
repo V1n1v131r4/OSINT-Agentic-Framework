@@ -41,6 +41,9 @@ Este módulo foca em ENUMERAÇÃO de entidades, não em correlação profunda.
 Classificar como:
 
 - `organization`
+- `person` (sócios, administradores e funcionários identificados)
+- `document` (documentos públicos encontrados)
+- `code_repository` (repositórios de código encontrados)
 - `domain`
 - `email`
 - `brand`
@@ -56,8 +59,9 @@ Classificar como:
   "entities": [
     {
       "name": "",
-      "type": "organization | domain | email | brand | profile | other"
+      "type": "organization | person | domain | email | brand | profile | document | code_repository | other"
     }
   ],
   "confidence": "low | medium | high"
 }
+

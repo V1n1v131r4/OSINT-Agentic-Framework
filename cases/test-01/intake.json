@@ -1,9 +1,9 @@
 {
   "case_id": "test-01",
-  "target_name": "Camila Pimenta Arquitetura",
-  "target_url": "https://camilapimentaarquitetura.com.br/",
+  "target_name": "Empresa Ponto Com",
+  "target_url": "https://dominio.com/",
   "scope_type": "empresa",
-  "analysis_goal": "Avaliar presença digital, consistência institucional e sinais públicos relevantes para due diligence corporativa leve.",
+  "analysis_goal": "Avaliar presença digital, consistência institucional e sinais públicos relevantes para due diligence corporativa.",
   "scope_modules": [
     "corporate_identity",
     "corporate_registry",
@@ -12,12 +12,11 @@
   ],
   "corporate_identifiers": {
     "cnpj": "",
-    "legal_name": "",
-    "trade_name": "Camila Pimenta Arquitetura"
+    "legal_name": "Empresa LTDA",
+    "trade_name": "Empresa"
   },
   "restrictions": [
     "Não investigar pessoas físicas fora de contexto estritamente corporativo",
-    "Somente dados públicos",
-    "Não expandir para família, rotina ou contatos pessoais"
+    "Somente dados públicos"
   ]
 }
