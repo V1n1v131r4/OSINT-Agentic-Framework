@@ -1,0 +1,22 @@
+{
+  "case_id": "test-01",
+  "target_name": "FIAP",
+  "target_url": "https://fiap.com.br/",
+  "scope_type": "company",
+  "analysis_goal": "Assess digital presence, institutional consistency, and relevant public signals for corporate due diligence.",
+  "scope_modules": [
+    "corporate_identity",
+    "corporate_registry",
+    "official_channels",
+    "public_litigation_corporate"
+  ],
+  "corporate_identifiers": {
+    "cnpj": "",
+    "legal_name": "Faculdade de Administração Paulista FIAP",
+    "trade_name": "FIAP"
+  },
+  "restrictions": [
+    "Do not investigate individuals outside strictly corporate context",
+    "Public data only"
+  ]
+}

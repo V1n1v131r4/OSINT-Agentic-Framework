@@ -1,0 +1,14 @@
+{
+  "case_id": "2026-04-example",
+  "target_name": "",
+  "target_url": "",
+  "scope_type": "business-facing-public-analysis",
+  "analysis_goal": "",
+  "restrictions": [
+    "no personal dossier",
+    "no intrusive scanning",
+    "public sources only"
+  ],
+  "analyst_notes": "",
+  "source_seed": []
+}

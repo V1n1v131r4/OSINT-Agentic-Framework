@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "case_id",
+    "target_name",
+    "target_url",
+    "scope_type",
+    "analysis_goal",
+    "restrictions"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "target_name": {
+      "type": "string"
+    },
+    "target_url": {
+      "type": "string"
+    },
+    "scope_type": {
+      "type": "string"
+    },
+    "analysis_goal": {
+      "type": "string"
+    },
+    "restrictions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "analyst_notes": {
+      "type": "string"
+    },
+    "source_seed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
