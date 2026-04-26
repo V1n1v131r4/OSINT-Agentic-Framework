@@ -8,6 +8,11 @@
 
 ## DISCLAIMER
 
+---
+For English, select the "en" branch.
+
+---
+
 Este repositório não é uma ferramenta de OSINT nem um agente autônomo de investigação. Trata-se de um **framework operacional para uso disciplinado de LLMs em contexto de inteligência**, projetado para resolver um problema comum: o uso de modelos de linguagem sem estrutura, que leva a correlações frágeis, validações implícitas e perda de controle analítico.
 
 Neste modelo, o LLM atua como executor de etapas específicas, enquanto o operador mantém controle total sobre escopo, validação e correlação. A proposta não é automatizar a análise, mas **estruturar o processo, reduzir viés, garantir rastreabilidade e preservar OPSEC** — especialmente em cenários onde agentes generalistas produzem resultados difíceis de auditar.
