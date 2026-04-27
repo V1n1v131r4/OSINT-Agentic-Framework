@@ -6,7 +6,7 @@
 # OSINT Agentic Framework for OpenCode
 
 ---
-For english, change to the "en" branch
+🇬🇧 For english version, please change to the "en" branch
 
 ---
 
