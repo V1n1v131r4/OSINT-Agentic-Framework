@@ -1,22 +1,22 @@
 ---
-description: Analisa o contexto geográfico e sugere o próximo passo da pipeline
+description: Analyzes the geographical context and suggests the next step of the pipeline
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/09-geo-context.md.
+Strictly follow the spec in @specs/09-geo-context.md.
 
-Instruções operacionais:
-1. Localize os arquivos de análise anteriores (`07-individual-social-analysis-gpt.json`, `08-unstructured-extraction-gpt.json` ou `04-entity-graph-gpt.json`) no diretório `runs` do caso atual.
-2. Identifique e correlacione sinais geográficos.
-3. Salve o resultado em `cases/<case-id>/runs/09-geo-context-gpt.json`.
+Operational Instructions:
+1. Locate the previous analysis files (`07-individual-social-analysis-gpt.json`, `08-unstructured-extraction-gpt.json`, or `04-entity-graph-gpt.json`) in the `runs` directory of the current case.
+2. Identify and correlate geographical signals.
+3. Save the result in `cases/<case-id>/runs/09-geo-context-gpt.json`.
 
-Objetivo:
-- Mapear localização física e regional.
-- **Sugerir o próximo comando** (geralmente `/correlation`).
+Objective:
+- Map physical and regional location.
+- **Suggest the next command** (usually `/correlation`).
 
-Regras de Saída:
-- Retorne APENAS o JSON de status:
+Output Rules:
+- Return ONLY the status JSON:
 
 ```json
 {
@@ -25,4 +25,3 @@ Regras de Saída:
   "next_command": "/correlation"
 }
 ```
-

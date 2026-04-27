@@ -1,25 +1,25 @@
 # 07 — Narrative Ecosystem Map
 
-## Objetivo
-Mapear o ecossistema de informação em torno de uma narrativa ou tema, identificando os principais veículos, influenciadores e a dinâmica de propagação entre diferentes bolhas de informação.
+## Objective
+Map the information ecosystem around a narrative or theme, identifying the main outlets, influencers, and the propagation dynamics between different information bubbles.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 - content_analysis_output
 - narrative_collection_output
 
 ---
 
-## Tarefas
-1. **Mapeamento de Veículos e Atores**: Listar os principais nós de influência (mídia tradicional, influenciadores digitais, perfis oficiais).
-2. **Análise de Fluxo de Informação**: Identificar como a narrativa migra de uma plataforma para outra (ex: nasce no YouTube e ganha tração no X).
-3. **Identificação de Bolhas**: Agrupar atores por afinidade ou viés detectado na análise de sentimento.
-4. **Avaliação de Impacto**: Medir o alcance estimado e o engajamento médio por canal.
+## Tasks
+1. **Outlet and Actor Mapping**: List the main influence nodes (traditional media, digital influencers, official profiles).
+2. **Information Flow Analysis**: Identify how the narrative migrates from one platform to another (e.g., starts on YouTube and gains traction on X).
+3. **Bubble Identification**: Group actors by affinity or bias detected in the sentiment analysis.
+4. **Impact Assessment**: Measure the estimated reach and average engagement per channel.
 
 ---
 
-## Saída obrigatória
+## Mandatory Output
 ```json
 {
   "information_nodes": [],

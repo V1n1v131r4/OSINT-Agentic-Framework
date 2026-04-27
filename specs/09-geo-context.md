@@ -1,18 +1,12 @@
-
----
-
-# 09 — `specs/09-geo-context.md`
-
-```md
 # 09 — Geo Context
 
-## Objetivo
+## Objective
 
-Identificar o contexto geográfico do alvo com base em sinais observáveis.
+Identify the target's geographical context based on observable signals.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 
 - addresses
 - domains
@@ -20,34 +14,34 @@ Identificar o contexto geográfico do alvo com base em sinais observáveis.
 
 ---
 
-## Instruções ao agente
+## Instructions to the Agent
 
-- É PERMITIDO usar:
-  - geolocalização básica
-  - dados públicos
-- NÃO inferir localização sem base
-
----
-
-## Tarefas
-
-### 1. Identificar localização
-
-- cidade
-- estado
-- país
+- It IS PERMITTED to use:
+  - basic geolocation
+  - public data
+- DO NOT infer location without a basis
 
 ---
 
-### 2. Correlacionar sinais geográficos
+## Tasks
 
-- endereço institucional
-- TLD do domínio
-- presença regional
+### 1. Identify location
+
+- city
+- state
+- country
 
 ---
 
-## Saída obrigatória
+### 2. Correlate geographical signals
+
+- institutional address
+- domain TLD
+- regional presence
+
+---
+
+## Mandatory Output
 
 ```json
 {
@@ -55,3 +49,4 @@ Identificar o contexto geográfico do alvo com base em sinais observáveis.
   "geo_signals": [],
   "confidence": "low | medium | high"
 }
+```

@@ -1,25 +1,25 @@
 # 07 — Leak Data Audit
 
-## Objetivo
-Realizar uma auditoria detalhada sobre as amostras de dados vazados, focando na identificação de padrões técnicos que revelem a origem do vazamento e a profundidade da exposição.
+## Objective
+Perform a detailed audit of the leaked data samples, focusing on identifying technical patterns that reveal the origin of the leak and the depth of the exposure.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 - leak_impact_analysis_output
 - leak_collection_output
 
 ---
 
-## Tarefas
-1. **Análise de Estrutura de Dados**: Identificar se os dados provêm de um dump de banco de dados (SQL), logs de servidor, ou extração via API.
-2. **Auditoria de PII**: Listar campos específicos expostos (ex: CPF, Hash de Senha, Endereço IP, Token de Sessão).
-3. **Verificação de Autenticidade**: Cruzar amostras com dados públicos conhecidos para confirmar a veracidade.
-4. **Busca por Segredos Técnicos**: Identificar se há chaves de API, segredos de configuração ou credenciais administrativas no vazamento.
+## Tasks
+1. **Data Structure Analysis**: Identify if the data comes from a database dump (SQL), server logs, or API extraction.
+2. **PII Audit**: List specific exposed fields (e.g., Tax ID, Password Hash, IP Address, Session Token).
+3. **Authenticity Verification**: Cross-reference samples with known public data to confirm veracity.
+4. **Search for Technical Secrets**: Identify if there are API keys, configuration secrets, or administrative credentials in the leak.
 
 ---
 
-## Saída obrigatória
+## Mandatory Output
 ```json
 {
   "technical_audit_summary": "",

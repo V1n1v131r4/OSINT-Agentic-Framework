@@ -1,29 +1,29 @@
 ---
-description: Analisa conteúdo e narrativas para desinformação e influência
+description: Analyzes content and narratives for disinformation and influence
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/06-content-analysis.md.
+Strictly follow the spec in @specs/06-content-analysis.md.
 
-Instruções operacionais:
-1. Localize os arquivos de coleta (`04-disinfo-collection-gpt.json` ou `04-narrative-collection-gpt.json`) e o `03-surface-expansion-gpt.json` no diretório `runs` do caso atual.
-2. Analise padrões de conteúdo, sentimento e sinais de coordenação.
-3. Salve o resultado em `cases/<case-id>/runs/06-content-analysis-gpt.json`.
+Operational Instructions:
+1. Locate the collection files (`04-disinfo-collection-gpt.json` or `04-narrative-collection-gpt.json`) and the `03-surface-expansion-gpt.json` in the `runs` directory of the current case.
+2. Analyze content patterns, sentiment, and coordination signals.
+3. Save the result in `cases/<case-id>/runs/06-content-analysis-gpt.json`.
 
-Objetivo:
-- Decompor a narrativa e identificar inautenticidade.
-- **Sugerir o próximo comando** baseado no `operation_type`:
+Objective:
+- Decompose the narrative and identify inauthenticity.
+- **Suggest the next command** based on the `operation_type`:
   - `disinformation_campaign`: `/disinfo-actor-mapping`
   - `narrative_analysis`: `/narrative-ecosystem-map`
 
-Regras de Saída:
-- Retorne APENAS o JSON de status:
+Output Rules:
+- Return ONLY the status JSON:
 
 ```json
 {
   "status": "ok",
   "output_file": "cases/<case-id>/runs/06-content-analysis-gpt.json",
-  "next_command": "/<comando-sugerido>"
+  "next_command": "/<suggested-command>"
 }
 ```

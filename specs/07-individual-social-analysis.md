@@ -1,25 +1,25 @@
 # 07 — Individual Social Analysis
 
-## Objetivo
-Analisar a presença e o comportamento de um indivíduo em redes sociais, focando em conexões, estilo de vida, círculo de influência e exposição de informações sensíveis.
+## Objective
+Analyze the presence and behavior of an individual on social networks, focusing on connections, lifestyle, circle of influence, and exposure of sensitive information.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 - individual_footprint_output
 - identity_validation_output
 
 ---
 
-## Tarefas
-1. **Análise de Perfil**: Avaliar biografias, fotos e postagens para extrair sinais de localização, hábitos e interesses.
-2. **Mapeamento de Conexões**: Identificar familiares, amigos próximos e colegas de trabalho frequentes.
-3. **Análise de Atividade**: Verificar horários de postagem e frequência para inferir rotinas ou fusos horários.
-4. **Identificação de Riscos de OPSEC**: Notar se o indivíduo expõe dados sensíveis (fotos de crachás, passaportes, geolocalização em tempo real).
+## Tasks
+1. **Profile Analysis**: Assess biographies, photos, and posts to extract location signals, habits, and interests.
+2. **Connection Mapping**: Identify family members, close friends, and frequent coworkers.
+3. **Activity Analysis**: Check posting times and frequency to infer routines or time zones.
+4. **OPSEC Risk Identification**: Note if the individual exposes sensitive data (photos of badges, passports, real-time geolocation).
 
 ---
 
-## Saída obrigatória
+## Mandatory Output
 ```json
 {
   "social_behavior_summary": "",

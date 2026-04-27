@@ -1,29 +1,29 @@
 # 06 — Content & Narrative Analysis
 
-## Objetivo
+## Objective
 
-Analisar o conteúdo coletado para identificar padrões de linguagem, sentimentos, variantes de narrativas e sinais de coordenação ou inautenticidade.
+Analyze the collected content to identify language patterns, sentiments, narrative variants, and signals of coordination or inauthenticity.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 
-- collection_output (disinfo ou narrative)
+- collection_output (disinfo or narrative)
 - expansion_output
 
 ---
 
-## Tarefas
+## Tasks
 
-1. **Identificação de Narrativas**: Categorizar as diferentes versões da mensagem principal.
-2. **Análise de Sentimento**: Avaliar a carga emocional e o tom das postagens/artigos.
-3. **Detecção de Padrões**: Identificar repetição de frases, hashtags coordenadas ou uso de mídias idênticas em diferentes canais.
-4. **Avaliação de Coordenação**: Verificar se as postagens ocorrem em intervalos de tempo suspeitos ou se há compartilhamento cruzado massivo.
-5. **Mapeamento de Influência**: Identificar quais atores têm maior poder de pauta dentro do ecossistema.
+1. **Narrative Identification**: Categorize the different versions of the main message.
+2. **Sentiment Analysis**: Assess the emotional load and tone of the posts/articles.
+3. **Pattern Detection**: Identify repetition of phrases, coordinated hashtags, or use of identical media across different channels.
+4. **Coordination Assessment**: Check if posts occur at suspicious time intervals or if there is massive cross-sharing.
+5. **Influence Mapping**: Identify which actors have the greatest agenda-setting power within the ecosystem.
 
 ---
 
-## Saída obrigatória
+## Mandatory Output
 
 ```json
 {

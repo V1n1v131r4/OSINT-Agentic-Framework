@@ -1,49 +1,49 @@
 # 04 — Entity Graph
 
-## Objetivo
+## Objective
 
-Identificar e organizar entidades relevantes relacionadas ao alvo.
+Identify and organize relevant entities related to the target.
 
-Este módulo foca em ENUMERAÇÃO de entidades, não em correlação profunda.
+This module focuses on entity ENUMERATION, not deep correlation.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 
 - primary_assets
 - residual_or_legacy_assets
 
 ---
 
-## Instruções ao agente
+## Instructions to the Agent
 
-- É PERMITIDO enriquecer dados usando fontes públicas
-- NÃO expandir para pessoas físicas fora do escopo
-- NÃO criar relações complexas
-- Apenas identificar entidades observáveis
-
----
-
-## Tarefas
-
-### 1. Identificar entidades
-
-- empresa
-- domínios
-- e-mails institucionais
-- marcas associadas
-- perfis institucionais
+- It IS PERMITTED to enrich data using public sources
+- DO NOT expand to natural persons outside the scope
+- DO NOT create complex relationships
+- Only identify observable entities
 
 ---
 
-### 2. Classificar entidades
+## Tasks
 
-Classificar como:
+### 1. Identify entities
+
+- company
+- domains
+- institutional e-mails
+- associated brands
+- institutional profiles
+
+---
+
+### 2. Classify entities
+
+Classify as:
 
 - `organization`
-- `person` (sócios, administradores e funcionários identificados)
-- `document` (documentos públicos encontrados)
-- `code_repository` (repositórios de código encontrados)
+- `person` (partners, administrators, and identified employees)
+- `document` (public documents found)
+- `code_repository` (code repositories found)
 - `domain`
 - `email`
 - `brand`
@@ -52,7 +52,7 @@ Classificar como:
 
 ---
 
-## Saída obrigatória
+## Mandatory Output
 
 ```json
 {
@@ -64,4 +64,4 @@ Classificar como:
   ],
   "confidence": "low | medium | high"
 }
-
+```

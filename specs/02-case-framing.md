@@ -1,18 +1,18 @@
 # 02 — Case Framing
 
-## Objetivo
+## Objective
 
-Transformar o intake em uma estrutura analítica inicial, definindo:
+Transform the intake into an initial analytical structure, defining:
 
-- hipóteses iniciais
-- vetores de investigação
-- lacunas críticas
+- initial hypotheses
+- investigation vectors
+- critical gaps
 
-Este módulo define COMO a investigação será conduzida.
+This module defines HOW the investigation will be conducted.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 
 - target
 - analysis_goal
@@ -20,57 +20,57 @@ Este módulo define COMO a investigação será conduzida.
 
 ---
 
-## Entradas opcionais
+## Optional Inputs
 
 - known_data
 - constraints
 - priority_questions
 
-Se entradas obrigatórias estiverem ausentes, NÃO prossiga.
+If mandatory inputs are missing, DO NOT proceed.
 
 ---
 
-## Instruções ao agente
+## Instructions to the Agent
 
-- Não realizar coleta extensa
-- Trabalhar apenas com:
-  - dados fornecidos
-  - conhecimento geral
-- Evitar afirmações categóricas
-
----
-
-## Tarefas
-
-### 1. Definir hipóteses iniciais
-
-- Formular de 2 a 5 hipóteses plausíveis
-- Cada hipótese deve:
-  - ser testável
-  - estar alinhada ao objetivo
-  - evitar especulação excessiva
+- Do not perform extensive collection
+- Work only with:
+  - provided data
+  - general knowledge
+- Avoid categorical statements
 
 ---
 
-### 2. Definir vetores de investigação
+## Tasks
 
-Para cada hipótese, indicar:
+### 1. Define initial hypotheses
 
-- onde buscar evidência
-- que tipo de dado pode confirmar ou refutar
-
----
-
-### 3. Identificar lacunas críticas
-
-Listar:
-
-- informações essenciais ainda desconhecidas
-- pontos que impedem validação das hipóteses
+- Formulate 2 to 5 plausible hypotheses
+- Each hypothesis must:
+  - be testable
+  - be aligned with the objective
+  - avoid excessive speculation
 
 ---
 
-## Saída esperada
+### 2. Define investigation vectors
+
+For each hypothesis, indicate:
+
+- where to look for evidence
+- what type of data can confirm or refute it
+
+---
+
+### 3. Identify critical gaps
+
+List:
+
+- essential information still unknown
+- points that prevent validation of the hypotheses
+
+---
+
+## Expected Output
 
 ```json
 {
@@ -84,3 +84,4 @@ Listar:
   "investigation_vectors": [],
   "known_gaps": []
 }
+```

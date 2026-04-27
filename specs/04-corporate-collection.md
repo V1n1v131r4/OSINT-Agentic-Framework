@@ -1,12 +1,12 @@
 # 04 — Corporate Collection
 
-## Objetivo
+## Objective
 
-Coletar e consolidar identificadores corporativos públicos e sinais institucionais verificáveis do alvo, com foco em due diligence corporativa leve e correlação empresarial ampliada.
+Collect and consolidate public corporate identifiers and verifiable institutional signals of the target, focusing on light corporate due diligence and expanded business correlation.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 
 - normalized_target
 - analysis_goal_normalized
@@ -16,276 +16,275 @@ Coletar e consolidar identificadores corporativos públicos e sinais institucion
 - known_gaps
 - restrictions
 
-## Entradas opcionais
+## Optional Inputs
 
 - corporate_identifiers
 
-Se qualquer entrada obrigatória estiver ausente ou inválida, NÃO prossiga.
+If any mandatory input is missing or invalid, DO NOT proceed.
 
 ---
 
-## Instruções ao agente
+## Instructions to the Agent
 
-- Coletar apenas dados corporativos e públicos
-- Antes de concluir ausência de dado, usar websearch e webfetch
-- Priorizar fontes e diretórios corporativos brasileiros presentes no repositório https://github.com/osintbrazuca/osint-brazuca como base de descoberta durante a coleta
-- Priorizar fontes públicas que exibam:
-  - CNPJ
-  - razão social
-  - nome fantasia
-  - status cadastral
-  - diretórios empresariais
-  - sinais de processos públicos da empresa
-- Se encontrar match plausível mas não definitivo, registrar como `candidate`, não descartar
-- Se houver convergência coerente em pelo menos 2 fontes públicas plausíveis e independentes, promover para `confirmed`
-- Separar claramente:
-  - dado confirmado
-  - dado candidato
-  - lacuna remanescente
-
----
-
-## Regra crítica
-
-Esta etapa só pode concluir `unresolved` para CNPJ após:
-
-- consultar o site oficial
-- consultar pelo menos 2 classes de busca diferentes
-- consultar pelo menos 1 diretório corporativo
-- abrir via webfetch pelo menos 1 resultado plausível de diretório, se houver
-- tentar pelo menos 3 pivôs distintos de nome, marca ou domínio
-- tentar identificar nomes empresariais parecidos
-- tentar identificar domínios parecidos
-
-Se houver resultado plausível em diretório corporativo não aberto, a coleta NÃO pode ser encerrada.
+- Collect only corporate and public data
+- Before concluding data absence, use websearch and webfetch
+- Prioritize Brazilian corporate sources and directories present in the repository https://github.com/osintbrazuca/osint-brazuca as a discovery base during collection
+- Prioritize public sources that display:
+  - CNPJ (Tax ID)
+  - Legal name
+  - Trade name
+  - Registration status
+  - Business directories
+  - Signals of public lawsuits involving the company
+- If a plausible but not definitive match is found, register as `candidate`, do not discard
+- If there is coherent convergence in at least 2 plausible and independent public sources, promote to `confirmed`
+- Clearly separate:
+  - confirmed data
+  - candidate data
+  - remaining gap
 
 ---
 
-## Regra de confirmação
+## Critical Rule
 
-Um dado corporativo pode ser promovido para `confirmed` quando houver:
+This stage can only conclude `unresolved` for CNPJ after:
 
-- pelo menos 2 fontes públicas plausíveis e independentes
-- convergência coerente entre essas fontes
+- consulting the official website
+- consulting at least 2 different search classes
+- consulting at least 1 business directory
+- opening via webfetch at least 1 plausible directory result, if any
+- trying at least 3 distinct pivots of name, brand, or domain
+- trying to identify similar business names
+- trying to identify similar domains
 
-A convergência pode usar, quando disponíveis:
+If there is a plausible result in a business directory not opened, the collection CANNOT be closed.
+
+---
+
+## Confirmation Rule
+
+A corporate data point can be promoted to `confirmed` when there is:
+
+- at least 2 plausible and independent public sources
+- coherent convergence between these sources
+
+Convergence can use, when available:
 - CNPJ
-- razão social
-- nome fantasia
-- endereço
-- telefone
-- e-mail
-- domínio
-- CNAE / atividade econômica
-- redes sociais
-- outros sinais institucionais consistentes
+- Legal name
+- Trade name
+- Address
+- Phone
+- E-mail
+- Domain
+- CNAE / economic activity
+- Social networks
+- Other consistent institutional signals
 
-Se houver apenas uma fonte plausível, ou convergência parcial insuficiente, registrar como `candidate`.
+If there is only one plausible source, or insufficient partial convergence, register as `candidate`.
 
 ---
 
-## Estratégia de busca obrigatória
+## Mandatory Search Strategy
 
-A coleta deve seguir um fluxo progressivo baseado em classes de fonte.
+The collection must follow a progressive flow based on source classes.
 
-O agente NÃO pode encerrar a coleta sem executar todas as camadas abaixo:
+The agent CANNOT close the collection without executing all layers below:
 
-### 1. Fonte primária
-- site oficial
-- páginas internas do site:
-  - contato
-  - sobre
-  - rodapé
-  - políticas
+### 1. Primary Source
+- official website
+- internal pages of the site:
+  - contact
+  - about
   - footer
+  - policies
   - FAQ
-  - termos
-  - imprensa
+  - terms
+  - press
 
-Extrair, quando houver:
-- razão social
+Extract, when available:
+- legal name
 - CNPJ
-- endereço
-- telefone
+- address
+- phone
 - e-mail
 - WhatsApp
-- domínios
-- redes sociais
+- domains
+- social networks
 
-### 2. Busca geral
-- nome da entidade + CNPJ
-- domínio + CNPJ
-- nome da entidade + razão social
-- domínio + razão social
-- site:<domínio> CNPJ
-- site:<domínio> "razão social"
+### 2. General Search
+- entity name + CNPJ
+- domain + CNPJ
+- entity name + legal name
+- domain + legal name
+- site:<domain> CNPJ
+- site:<domain> "legal name"
 
-### 3. Busca expandida
-- nome da entidade + registro empresarial
-- nome da entidade + nome legal
-- domínio sem TLD + CNPJ
-- domínio sem TLD + razão social
-- nome da entidade + cidade/estado, se disponível
-- domínio + cidade/estado, se disponível
-- nome da entidade + atividade econômica
+### 3. Expanded Search
+- entity name + business registration
+- entity name + legal name
+- domain without TLD + CNPJ
+- domain without TLD + legal name
+- entity name + city/state, if available
+- domain + city/state, if available
+- entity name + economic activity
 
-### 4. Diretórios e agregadores corporativos (Foco em QSA)
-O agente NÃO pode alegar necessidade de login sem antes exaurir estas fontes que fornecem o Quadro de Sócios e Administradores (QSA) publicamente:
-- `casadosdados.com.br` (Altamente recomendado para QSA detalhado)
-- `transparencia.cc` (Excelente para vínculos societários)
+### 4. Business Directories and Aggregators (Focus on QSA/Partners)
+The agent CANNOT claim login necessity without first exhausting these sources that provide the Board of Partners and Administrators (QSA) publicly:
+- `casadosdados.com.br` (Highly recommended for detailed QSA)
+- `transparencia.cc` (Excellent for corporate links)
 - `cnpj.biz`
 - `econodata.com.br`
 - `empresas.serasaexperian.com.br`
-- Portais de transparência e Diários Oficiais
+- Transparency portals and Official Gazettes
 
-Extrair obrigatoriamente o Quadro de Sócios e Administradores (QSA). Se não encontrado em uma fonte, DEVE tentar as outras.
+Mandatorily extract the Board of Partners and Administrators (QSA). If not found in one source, MUST try the others.
 
-### 5. Empresas parecidas e relacionadas
-Buscar:
-- variações de nome fantasia
-- variações de razão social
-- abreviações
-- grafias alternativas
-- nomes parecidos no mesmo setor ou cidade
-- múltiplos CNPJs potencialmente relacionados
+### 5. Similar and Related Companies
+Search for:
+- trade name variations
+- legal name variations
+- abbreviations
+- alternative spellings
+- similar names in the same sector or city
+- multiple potentially related CNPJs
 
-Para cada candidato, tentar correlacionar por:
-- sócios / administradores
-- endereço
-- telefone
+For each candidate, try to correlate by:
+- partners / administrators
+- address
+- phone
 - e-mail
-- CNAE / atividade
-- domínios
-- redes sociais
+- CNAE / activity
+- domains
+- social networks
 
-### 6. Domínios parecidos
-Buscar:
-- grafias próximas
-- domínios sem acento
-- hífens
-- números
-- TLDs alternativos
-- combinações com marca, cidade ou atividade
+### 6. Similar Domains
+Search for:
+- close spellings
+- domains without accents
+- hyphens
+- numbers
+- alternative TLDs
+- combinations with brand, city, or activity
 
-Correlacionar os domínios encontrados com:
-- empresa principal
-- empresas relacionadas
-- contatos
-- redes sociais
+Correlate the domains found with:
+- main company
+- related companies
+- contacts
+- social networks
 
-### 7. Redes sociais e presença pública
-Buscar:
+### 7. Social Networks and Public Presence
+Search for:
 - LinkedIn
 - Instagram
 - Facebook
 - YouTube
-- outras plataformas relevantes
+- other relevant platforms
 
-Extrair, quando houver:
+Extract, when available:
 - handle
 - URL
-- descrição
-- localização
+- description
+- location
 - e-mail
-- telefone
-- domínio associado
+- phone
+- associated domain
 
-### 8. Contatos e WhatsApp
-Buscar e consolidar:
-- telefones
+### 8. Contacts and WhatsApp
+Search and consolidate:
+- phones
 - e-mails
-- formulários públicos
-- links de WhatsApp
-- botões ou menções explícitas a WhatsApp
+- public forms
+- WhatsApp links
+- buttons or explicit mentions of WhatsApp
 
-Só registrar WhatsApp quando a associação estiver explícita na fonte.
+Only register WhatsApp when the association is explicit in the source.
 
-### 9. Google Dorks (Recuperação de QSA, Documentos Públicos e Repositórios)
-Se o QSA não for encontrado nos diretórios, o uso de Google Dorks é OBRIGATÓRIO para localizar sócios em documentos indexados. Além disso, os Google Dorks devem ser usados para encontrar outros documentos públicos e repositórios de código:
+### 9. Google Dorks (QSA Recovery, Public Documents, and Repositories)
+If the QSA is not found in the directories, the use of Google Dorks is MANDATORY to locate partners in indexed documents. Additionally, Google Dorks should be used to find other public documents and code repositories:
 
-**Para Sócios e Documentos Legais:**
-- `filetype:pdf "nome da empresa" (sócio OR administrador OR "quadro societário")`
-- `filetype:pdf "nome da empresa" ("contrato social" OR "alteração contratual")`
-- `filetype:pdf "nome da empresa" "ata de assembleia"`
-- `site:linkedin.com/in "nome da empresa" (sócio OR owner OR "founder at")`
-- `site:facebook.com "nome da empresa" (proprietário OR dono)`
-- `site:instagram.com "nome da empresa" (proprietário OR dono)`
-- `"nome da empresa" "quadro de sócios" site:jusbrasil.com.br`
+**For Partners and Legal Documents:**
+- `filetype:pdf "company name" (partner OR administrator OR "shareholding structure")`
+- `filetype:pdf "company name" ("articles of incorporation" OR "contract amendment")`
+- `filetype:pdf "company name" "minutes of the meeting"`
+- `site:linkedin.com/in "company name" (partner OR owner OR "founder at")`
+- `site:facebook.com "company name" (owner OR proprietor)`
+- `site:instagram.com "company name" (owner OR proprietor)`
+- `"company name" "board of partners" site:jusbrasil.com.br`
 
-**Para Documentos Públicos Gerais:**
-- `filetype:pdf OR filetype:docx OR filetype:xlsx "nome da empresa" (relatório OR manual OR política OR "demonstrativo financeiro")`
-- `"nome da empresa" intitle:index.of (manual OR docs OR backup)`
-- `"nome da empresa" inurl:admin OR inurl:login`
+**For General Public Documents:**
+- `filetype:pdf OR filetype:docx OR filetype:xlsx "company name" (report OR manual OR policy OR "financial statement")`
+- `"company name" intitle:index.of (manual OR docs OR backup)`
+- `"company name" inurl:admin OR inurl:login`
 
-**Para Repositórios de Código (GitHub/GitLab):**
-- `site:github.com "nome da empresa"`
-- `site:gitlab.com "nome da empresa"`
-- `site:github.com "nome da empresa" (api_key OR password OR secret)` (para identificar vazamentos)
+**For Code Repositories (GitHub/GitLab):**
+- `site:github.com "company name"`
+- `site:gitlab.com "company name"`
+- `site:github.com "company name" (api_key OR password OR secret)` (to identify leaks)
 
-O agente deve extrair nomes de pessoas físicas desses documentos para alimentar o campo `partners` e URLs de documentos/repositórios para os campos `public_documents` e `code_repositories` (a serem adicionados).
+The agent must extract names of natural persons from these documents to feed the `partners` field and URLs of documents/repositories for the `public_documents` and `code_repositories` fields.
 
-### 10. Listagem de Funcionários (LinkedIn e Outros Diretórios)
-- `site:linkedin.com/company/"nome da empresa"/people` (para listar funcionários)
-- `site:linkedin.com/in "nome do funcionário" "nome da empresa"` (para perfis específicos)
-- `"nome da empresa" "lista de funcionários"` (para outros diretórios)
+### 10. Employee Listing (LinkedIn and Other Directories)
+- `site:linkedin.com/company/"company name"/people` (to list employees)
+- `site:linkedin.com/in "employee name" "company name"` (for specific profiles)
+- `"company name" "employee list"` (for other directories)
 
-O agente deve coletar nomes de funcionários, cargos e handles de LinkedIn/outras mídias sociais, correlacionando-os com a empresa.
+The agent must collect employee names, roles, and LinkedIn/other social media handles, correlating them with the company.
 
-### 11. Revalidação
-Qualquer resultado parcial deve ser reutilizado como pivô, inclusive de maneira cruzada.
+### 11. Revalidation
+Any partial result must be reused as a pivot, including cross-referencing.
 
-Executar nova busca usando:
-- nome legal, se encontrado
-- CNPJ candidato, se encontrado
-- endereço, telefone ou e-mail corporativo, se encontrados
-- domínio e nome fantasia em combinação
-- nome fantasia + razão social
-- nome fantasia + CNPJ
-- domínio + CNPJ
+Execute a new search using:
+- legal name, if found
+- candidate CNPJ, if found
+- address, phone, or corporate e-mail, if found
+- domain and trade name in combination
+- trade name + legal name
+- trade name + CNPJ
+- domain + CNPJ
 
-O agente deve:
-- avançar de camada se não encontrar resultado
-- NÃO parar após a camada 1
-- NÃO considerar ausência de dado sem executar a camada 4
-- usar as camadas 5, 6, 7 e 8 para ampliar a cobertura e confirmar candidatos
-- registrar no `search_trace` quais classes de fonte foram usadas
-- registrar também queries e URLs abertas mais relevantes
+The agent must:
+- advance to the next layer if no result is found
+- NOT stop after layer 1
+- NOT consider data absence without executing layer 4
+- use layers 5, 6, 7, and 8 to expand coverage and confirm candidates
+- register in `search_trace` which source classes were used
+- also register queries and most relevant open URLs
 
 ---
 
-## Tarefas
+## Tasks
 
-1. Tentar identificar prioritariamente:
+1. Try to identify as a priority:
    - CNPJ
-   - razão social
-   - nome fantasia
-   - status cadastral
+   - legal name
+   - trade name
+   - registration status
 
-2. Tentar identificar sinais públicos de:
-   - quadro societário em nível corporativo
-   - canais oficiais da empresa
-   - processos públicos envolvendo a empresa
+2. Try to identify public signals of:
+   - board of partners at the corporate level
+   - official company channels
+   - public lawsuits involving the company
 
-3. Tentar identificar:
-   - empresas relacionadas ou parecidas
-   - múltiplos CNPJs plausíveis
-   - domínios parecidos
-   - handles de redes sociais
-   - contatos públicos, incluindo WhatsApp quando explícito
+3. Try to identify:
+   - related or similar companies
+   - multiple plausible CNPJs
+   - similar domains
+   - social media handles
+   - public contacts, including WhatsApp when explicit
 
-4. Se um resultado parcial aparecer, reutilizá-lo como pivô de segunda busca
+4. If a partial result appears, reuse it as a pivot for a second search
 
-5. Consolidar o melhor match disponível, sem inventar
+5. Consolidate the best available match, without inventing
 
-6. Registrar o que permaneceu ausente
+6. Register what remained missing
 
-7. Produzir um resumo curto de coleta para os próximos módulos
+7. Produce a short collection summary for the next modules
 
 ---
 
-## Saída obrigatória
+## Mandatory Output
 
-Retorne APENAS JSON válido, sem texto adicional.
+Return ONLY valid JSON, without additional text.
 
 ```json
 {
@@ -391,4 +390,4 @@ Retorne APENAS JSON válido, sem texto adicional.
   "collection_summary": "",
   "confidence": "low|medium|high"
 }
-
+```

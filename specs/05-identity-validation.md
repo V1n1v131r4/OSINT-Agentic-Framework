@@ -1,31 +1,31 @@
-# 05 — Identity Validation (Indivíduos)
+# 05 — Identity Validation (Individuals)
 
-## Objetivo
+## Objective
 
-Validar a identidade do alvo, cruzando dados de múltiplas fontes para confirmar se os perfis e registros encontrados pertencem à mesma pessoa física.
+Validate the target's identity, cross-referencing data from multiple sources to confirm if the profiles and records found belong to the same natural person.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 
 - individual_collection_output
 - entity_graph_output
 
 ---
 
-## Tarefas
+## Tasks
 
-1. **Cruzamento de Identificadores**: Verificar se e-mails, telefones ou nomes de usuário se repetem em diferentes plataformas.
-2. **Consistência Biográfica**: Validar se o histórico profissional e educacional é coerente entre LinkedIn, currículos e registros públicos.
-3. **Análise de Vínculos**: Confirmar relações com empresas ou outras pessoas citadas no intake.
-4. **Classificação de Confiança**:
-   - `Confirmed`: Identidade validada por múltiplos pontos de convergência.
-   - `Candidate`: Perfil provável, mas com ambiguidades (ex: homônimos).
-   - `Unverified`: Sem dados suficientes para confirmação.
+1. **Identifier Cross-Referencing**: Check if e-mails, phones, or usernames repeat across different platforms.
+2. **Biographical Consistency**: Validate if the professional and educational history is coherent across LinkedIn, resumes, and public records.
+3. **Link Analysis**: Confirm relationships with companies or other people mentioned in the intake.
+4. **Confidence Classification**:
+   - `Confirmed`: Identity validated by multiple points of convergence.
+   - `Candidate`: Probable profile, but with ambiguities (e.g., namesakes).
+   - `Unverified`: Without sufficient data for confirmation.
 
 ---
 
-## Saída esperada
+## Expected Output
 
 ```json
 {

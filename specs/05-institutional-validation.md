@@ -1,54 +1,48 @@
-
----
-
-# 05 — `specs/05-institutional-validation.md`
-
-```md
 # 05 — Institutional Validation
 
-## Objetivo
+## Objective
 
-Validar sinais institucionais do alvo em fontes públicas confiáveis.
+Validate institutional signals of the target in reliable public sources.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 
 - entities
 
 ---
 
-## Instruções ao agente
+## Instructions to the Agent
 
-- É PERMITIDO consultar:
-  - registros públicos
-  - agregadores empresariais
-  - bases institucionais
-- NÃO validar pessoas físicas fora do escopo
-- NÃO assumir validade sem evidência
-
----
-
-## Tarefas
-
-### 1. Validar existência institucional
-
-- CNPJ (se aplicável)
-- razão social
-- endereço
-- atividade
+- It IS PERMITTED to consult:
+  - public records
+  - business aggregators
+  - institutional bases
+- DO NOT validate natural persons outside the scope
+- DO NOT assume validity without evidence
 
 ---
 
-### 2. Identificar consistência
+## Tasks
 
-- nome da empresa
-- domínio
-- contatos institucionais
+### 1. Validate institutional existence
+
+- CNPJ (if applicable)
+- legal name
+- address
+- activity
 
 ---
 
-## Saída obrigatória
+### 2. Identify consistency
+
+- company name
+- domain
+- institutional contacts
+
+---
+
+## Mandatory Output
 
 ```json
 {
@@ -57,3 +51,4 @@ Validar sinais institucionais do alvo em fontes públicas confiáveis.
   "unverified_entities": [],
   "confidence": "low | medium | high"
 }
+```

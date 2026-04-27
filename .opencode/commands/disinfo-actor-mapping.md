@@ -1,22 +1,22 @@
 ---
-description: Mapeia atores e redes de desinformação
+description: Maps actors and disinformation networks
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/07-disinfo-actor-mapping.md.
+Strictly follow the spec in @specs/07-disinfo-actor-mapping.md.
 
-Instruções operacionais:
-1. Localize o arquivo `06-content-analysis-gpt.json` e o `04-disinfo-collection-gpt.json` no diretório `runs` do caso atual.
-2. Mapeie a rede de atores e identifique sinais de inautenticidade.
-3. Salve o resultado em `cases/<case-id>/runs/07-disinfo-actor-mapping-gpt.json`.
+Operational Instructions:
+1. Locate the `06-content-analysis-gpt.json` and `04-disinfo-collection-gpt.json` files in the `runs` directory of the current case.
+2. Map the actor network and identify inauthenticity signals.
+3. Save the result in `cases/<case-id>/runs/07-disinfo-actor-mapping-gpt.json`.
 
-Objetivo:
-- Identificar a estrutura humana e técnica por trás da campanha.
-- **Sugerir o próximo comando**: `/correlation`.
+Objective:
+- Identify the human and technical structure behind the campaign.
+- **Suggest the next command**: `/correlation`.
 
-Regras de Saída:
-- Retorne APENAS o JSON de status:
+Output Rules:
+- Return ONLY the status JSON:
 
 ```json
 {

@@ -1,25 +1,25 @@
 ---
-description: Consolida correlações e sugere o próximo passo da pipeline
+description: Consolidates correlations and suggests the next step of the pipeline
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Instruções operacionais:
-1. Localize os arquivos de output anteriores no diretório `runs` do caso atual.
-2. Selecione a spec de correlação baseada no `operation_type`:
+Operational Instructions:
+1. Locate the previous output files in the `runs` directory of the current case.
+2. Select the correlation spec based on the `operation_type`:
    - `institutions`: `@specs/10-correlation-anomalies.md`
    - `individuals`: `@specs/10-correlation-indiv.md`
-   - `disinformation_campaign` ou `narrative_analysis`: `@specs/10-correlation-narrative.md`
+   - `disinformation_campaign` or `narrative_analysis`: `@specs/10-correlation-narrative.md`
    - `data_leak`: `@specs/10-correlation-leak.md`
-3. Consolide relações, padrões e anomalias conforme a spec selecionada.
-4. Salve o resultado em `cases/<case-id>/runs/10-correlation-gpt.json`.
+3. Consolidate relationships, patterns, and anomalies according to the selected spec.
+4. Save the result in `cases/<case-id>/runs/10-correlation-gpt.json`.
 
-Objetivo:
-- Gerar base rastreável e específica para o relatório.
-- **Sugerir o próximo comando**: `/report`.
+Objective:
+- Generate a traceable and specific base for the report.
+- **Suggest the next command**: `/report`.
 
-Regras de Saída:
-- Retorne APENAS o JSON de status:
+Output Rules:
+- Return ONLY the status JSON:
 
 ```json
 {

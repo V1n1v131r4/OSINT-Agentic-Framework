@@ -1,25 +1,25 @@
 # 13 — Postmortem Learning
 
-## Objetivo
-Converter o caso em memória operacional reutilizável.
+## Objective
+Convert the case into reusable operational memory.
 
-## Entradas obrigatórias
+## Mandatory Inputs
 - final_report
 - adjudication_recommendation
 - analyst_feedback
 - module_outputs
 
-## Instruções ao agente
-Extraia padrões úteis, erros e ajustes de método. Não reescreva o caso; produza aprendizado operacional.
+## Instructions to the Agent
+Extract useful patterns, errors, and method adjustments. Do not rewrite the case; produce operational learning.
 
-## Tarefas
-1. Registrar erros detectados no processo.
-2. Registrar padrões úteis reaproveitáveis.
-3. Registrar comportamentos distintos de cada modelo.
-4. Sugerir ajustes em specs ou schemas.
-5. Produzir objetos de memória claros e curtos.
+## Tasks
+1. Register errors detected in the process.
+2. Register reusable useful patterns.
+3. Register distinct behaviors of each model.
+4. Suggest adjustments to specs or schemas.
+5. Produce clear and short memory objects.
 
-## Saída obrigatória
+## Mandatory Output
 ```json
 {
   "errors_detected": [],
@@ -33,6 +33,6 @@ Extraia padrões úteis, erros e ajustes de método. Não reescreva o caso; prod
 }
 ```
 
-## Critérios de qualidade
-- priorizar padrões realmente reutilizáveis
-- evitar lições vagas
+## Quality Criteria
+- prioritize truly reusable patterns
+- avoid vague lessons

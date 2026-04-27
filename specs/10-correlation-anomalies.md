@@ -1,109 +1,109 @@
 # 10 — Correlation & Anomalies
 
-## Objetivo
+## Objective
 
-Consolidar os dados coletados nas etapas anteriores, identificando:
+Consolidate the data collected in the previous stages, identifying:
 
-- relações observáveis entre entidades e ativos
-- padrões recorrentes
-- inconsistências ou sinais conflitantes
-- pontos que ainda exigem validação
+- observable relationships between entities and assets
+- recurring patterns
+- inconsistencies or conflicting signals
+- points that still require validation
 
-Este módulo foca em CORRELAÇÃO ESTRUTURADA, não em narrativa investigativa final.
-
----
-
-## Entradas obrigatórias
-
-- outputs relevantes das etapas anteriores
-- entidades identificadas
-- ativos e sinais técnicos ou institucionais já coletados
-
-Se não houver dados suficientes para correlacionar, NÃO prossiga.
+This module focuses on STRUCTURED CORRELATION, not a final investigative narrative.
 
 ---
 
-## Instruções ao agente
+## Mandatory Inputs
 
-- Trabalhar apenas com dados já coletados
-- NÃO buscar novas fontes
-- NÃO expandir escopo
-- NÃO transformar correlação em conclusão definitiva
-- Separar claramente:
-  - relação observada
-  - padrão
-  - anomalia
-  - lacuna
+- relevant outputs from previous stages
+- identified entities
+- technical or institutional assets and signals already collected
+
+If there is not enough data to correlate, DO NOT proceed.
 
 ---
 
-## Regras de execução
+## Instructions to the Agent
 
-- Gerar APENAS JSON válido
-- Todos os campos de lista devem ser arrays JSON válidos
-- Não adicionar campos fora da saída obrigatória
-- Se não houver evidência suficiente para uma relação, NÃO incluir
-- Cada relação deve refletir apenas conexão observável ou inferência fraca explicitamente classificada
-- Não criar narrativa longa dentro dos campos
-- Não assumir causalidade
-- Não usar linguagem especulativa sem classificar a incerteza
+- Work only with data already collected
+- DO NOT search for new sources
+- DO NOT expand scope
+- DO NOT turn correlation into a definitive conclusion
+- Clearly separate:
+  - observed relationship
+  - pattern
+  - anomaly
+  - gap
 
 ---
 
-## Tarefas
+## Execution Rules
 
-### 1. Identificar relações
+- Generate ONLY valid JSON
+- All list fields must be valid JSON arrays
+- Do not add fields outside the mandatory output
+- If there is not enough evidence for a relationship, DO NOT include it
+- Each relationship should reflect only an observable connection or an explicitly classified weak inference
+- Do not create a long narrative within the fields
+- Do not assume causality
+- Do not use speculative language without classifying uncertainty
 
-Mapear conexões entre:
+---
 
-- empresa
-- domínio
-- subdomínios
+## Tasks
+
+### 1. Identify relationships
+
+Map connections between:
+
+- company
+- domain
+- subdomains
 - e-mails
-- ativos técnicos
-- perfis institucionais
-- perfis de sócios e funcionários
-- identificadores corporativos
-- documentos públicos
-- repositórios de código
+- technical assets
+- institutional profiles
+- partner and employee profiles
+- corporate identifiers
+- public documents
+- code repositories
 
-Classificar cada relação como:
+Classify each relationship as:
 
-- `direct` = vínculo observável de forma clara
-- `indirect` = vínculo plausível, mas não confirmado diretamente
-
----
-
-### 2. Identificar padrões
-
-Listar recorrências observáveis, como:
-
-- reutilização de identificadores
-- consistência entre fontes
-- concentração de infraestrutura
-- repetição de contato institucional
-- alinhamento entre presença institucional e ativos técnicos
+- `direct` = clearly observable link
+- `indirect` = plausible link, but not directly confirmed
 
 ---
 
-### 3. Identificar anomalias
+### 2. Identify patterns
 
-Listar sinais como:
+List observable recurrences, such as:
 
-- inconsistências entre fontes
-- ativos ou dados que não se encaixam
-- divergência de contato, naming ou infraestrutura
-- ausência relevante de confirmação
-
----
-
-### 4. Registrar lacunas
-
-Listar o que ainda impede validação mais forte de relações ou hipóteses.
+- reuse of identifiers
+- consistency across sources
+- infrastructure concentration
+- repetition of institutional contact
+- alignment between institutional presence and technical assets
 
 ---
 
-## Saída obrigatória
+### 3. Identify anomalies
+
+List signals such as:
+
+- inconsistencies across sources
+- assets or data that do not fit
+- divergence in contact, naming, or infrastructure
+- relevant absence of confirmation
+
+---
+
+### 4. Register gaps
+
+List what still prevents stronger validation of relationships or hypotheses.
+
+---
+
+## Mandatory Output
 
 ```json
 {
@@ -145,4 +145,4 @@ Listar o que ainda impede validação mais forte de relações ou hipóteses.
   ],
   "confidence": "low | medium | high"
 }
-
+```

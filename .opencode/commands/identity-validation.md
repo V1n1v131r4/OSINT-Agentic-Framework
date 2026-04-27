@@ -1,22 +1,22 @@
 ---
-description: Valida a identidade de indivíduos e sugere o próximo passo
+description: Validates the identity of individuals and suggests the next step
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/05-identity-validation.md.
+Strictly follow the spec in @specs/05-identity-validation.md.
 
-Instruções operacionais:
-1. Localize o arquivo `04-individual-collection-gpt.json` e o `04-entity-graph-gpt.json` no diretório `runs` do caso atual.
-2. Valide a consistência da identidade e vínculos.
-3. Salve o resultado em `cases/<case-id>/runs/05-identity-validation-gpt.json`.
+Operational Instructions:
+1. Locate the `04-individual-collection-gpt.json` and `04-entity-graph-gpt.json` files in the `runs` directory of the current case.
+2. Validate the consistency of identity and links.
+3. Save the result in `cases/<case-id>/runs/05-identity-validation-gpt.json`.
 
-Objetivo:
-- Confirmar identidade e reduzir ruído de homônimos.
-- **Sugerir o próximo comando**: `/individual-footprint`.
+Objective:
+- Confirm identity and reduce noise from namesakes.
+- **Suggest the next command**: `/individual-footprint`.
 
-Regras de Saída:
-- Retorne APENAS o JSON de status:
+Output Rules:
+- Return ONLY the status JSON:
 
 ```json
 {

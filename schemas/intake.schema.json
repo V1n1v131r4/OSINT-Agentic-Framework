@@ -11,7 +11,7 @@
   "properties": {
     "case_id": {
       "type": "string",
-      "description": "Identificador único do caso"
+      "description": "Unique identifier for the case"
     },
     "operation_type": {
       "type": "string",
@@ -22,7 +22,7 @@
         "narrative_analysis",
         "data_leak"
       ],
-      "description": "Propósito da operação que define a pipeline"
+      "description": "Operation purpose that defines the pipeline"
     },
     "target_name": {
       "type": "string"

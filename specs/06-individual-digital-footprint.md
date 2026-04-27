@@ -1,25 +1,25 @@
 # 06 — Individual Digital Footprint
 
-## Objetivo
-Mapear a pegada digital técnica de um indivíduo, focando em identificadores expostos, e-mails, domínios pessoais e presença em bases de dados de serviços.
+## Objective
+Map the technical digital footprint of an individual, focusing on exposed identifiers, e-mails, personal domains, and presence in service databases.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 - identity_validation_output
 - individual_collection_output
 
 ---
 
-## Tarefas
-1. **Mapeamento de Identificadores**: Consolidar e-mails (pessoais e profissionais), handles de usuários e possíveis números de telefone.
-2. **Enumeração de Ativos Pessoais**: Identificar domínios registrados no nome do indivíduo ou blogs/sites pessoais.
-3. **Verificação de Exposição em Serviços**: Checar presença em plataformas (ex: Gravatar, Keybase, GitHub) que revelem metadados técnicos.
-4. **Análise de Metadados de Documentos**: Se houver documentos coletados, extrair metadados que revelem softwares usados ou caminhos de diretórios.
+## Tasks
+1. **Identifier Mapping**: Consolidate e-mails (personal and professional), user handles, and possible phone numbers.
+2. **Personal Asset Enumeration**: Identify domains registered in the individual's name or personal blogs/sites.
+3. **Service Exposure Verification**: Check presence on platforms (e.g., Gravatar, Keybase, GitHub) that reveal technical metadata.
+4. **Document Metadata Analysis**: If documents have been collected, extract metadata that reveals software used or directory paths.
 
 ---
 
-## Saída obrigatória
+## Mandatory Output
 ```json
 {
   "technical_identifiers": {

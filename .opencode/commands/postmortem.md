@@ -1,26 +1,26 @@
 ---
-description: Executa a revisão metodológica e salva lições aprendidas
+description: Executes the methodological review and saves lessons learned
 agent: reviewer
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/13-postmortem-learning.md.
+Strictly follow the spec in @specs/13-postmortem-learning.md.
 
-Instruções operacionais:
-1. Localize os arquivos de output da pipeline no diretório `runs` do caso atual.
-2. Revise a qualidade metodológica e identifique lições aprendidas.
-3. Salve o resultado em `cases/<case-id>/memory/13-postmortem.json`.
+Operational Instructions:
+1. Locate the pipeline output files in the `runs` directory of the current case.
+2. Review the methodological quality and identify lessons learned.
+3. Save the result in `cases/<case-id>/memory/13-postmortem.json`.
 
-Objetivo:
-- Melhoria contínua do framework e do operador.
+Objective:
+- Continuous improvement of the framework and the operator.
 
-Regras de Saída:
-- Retorne APENAS o JSON de status:
+Output Rules:
+- Return ONLY the status JSON:
 
 ```json
 {
   "status": "ok",
   "output_file": "cases/<case-id>/memory/13-postmortem.json",
-  "message": "Operação finalizada. Lições aprendidas registradas na memória do caso."
+  "message": "Operation finalized. Lessons learned registered in the case memory."
 }
 ```

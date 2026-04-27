@@ -1,32 +1,32 @@
 # 04 — Narrative Collection
 
-## Objetivo
+## Objective
 
-Coletar dados sobre o ecossistema de uma narrativa, focando em atores principais, volume de menções e canais de influência.
+Collect data about the ecosystem of a narrative, focusing on key actors, volume of mentions, and influence channels.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 
 - target_topic
 - framing_output
 
 ---
 
-## Tarefas
+## Tasks
 
-1. **Identificação de Atores**: Mapear influenciadores, veículos de mídia e perfis institucionais que pautam o tema.
-2. **Coleta de Menções**: Extrair amostras de postagens, artigos e comentários.
-3. **Mapeamento de Canais**: Identificar onde a narrativa é mais forte (redes sociais, fóruns, blogs).
-4. **Análise de Engajamento**: Coletar sinais de volume (likes, shares, views) para medir impacto.
-5. **Google Dorks para Narrativas**:
-   - `"tema específico" (opinião OR análise OR editorial)`
-   - `"tema específico" site:youtube.com`
-   - `"tema específico" site:medium.com OR site:substack.com`
+1. **Actor Identification**: Map influencers, media outlets, and institutional profiles that set the agenda on the topic.
+2. **Mention Collection**: Extract samples of posts, articles, and comments.
+3. **Channel Mapping**: Identify where the narrative is strongest (social networks, forums, blogs).
+4. **Engagement Analysis**: Collect volume signals (likes, shares, views) to measure impact.
+5. **Google Dorks for Narratives**:
+   - `"specific topic" (opinion OR analysis OR editorial)`
+   - `"specific topic" site:youtube.com`
+   - `"specific topic" site:medium.com OR site:substack.com`
 
 ---
 
-## Saída obrigatória
+## Mandatory Output
 
 ```json
 {

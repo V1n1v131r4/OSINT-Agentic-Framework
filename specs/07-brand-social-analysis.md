@@ -1,54 +1,48 @@
-
----
-
-# 07 — `specs/07-brand-social-analysis.md`
-
-```md
 # 07 — Brand & Social Analysis
 
-## Objetivo
+## Objective
 
-Identificar presença pública do alvo em plataformas e canais institucionais.
+Identify the target's public presence on institutional platforms and channels.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 
 - entities
 
 ---
 
-## Instruções ao agente
+## Instructions to the Agent
 
-- É PERMITIDO buscar em:
-  - redes sociais
-  - diretórios públicos
-  - sites institucionais
-- É PERMITIDO investigar perfis pessoais de sócios e funcionários identificados para correlação institucional
-- NÃO inferir vínculo sem evidência
-
----
-
-## Tarefas
-
-### 1. Identificar canais oficiais e de sócios
-
-- site institucional
-- redes sociais corporativas
-- plataformas profissionais (LinkedIn da empresa e dos sócios)
-- perfis sociais de sócios e funcionários (para validar vínculo com a empresa)
+- It IS PERMITTED to search in:
+  - social networks
+  - public directories
+  - institutional sites
+- It IS PERMITTED to investigate personal profiles of identified partners and employees for institutional correlation
+- DO NOT infer a link without evidence
 
 ---
 
-### 2. Identificar padrões
+## Tasks
 
-- consistência de nome
-- uso de domínio institucional
-- presença ativa vs inativa
+### 1. Identify official and partner channels
+
+- institutional site
+- corporate social networks
+- professional platforms (LinkedIn of the company and partners)
+- social profiles of partners and employees (to validate the link with the company)
 
 ---
 
-## Saída obrigatória
+### 2. Identify patterns
+
+- name consistency
+- use of institutional domain
+- active vs. inactive presence
+
+---
+
+## Mandatory Output
 
 ```json
 {
@@ -59,7 +53,7 @@ Identificar presença pública do alvo em plataformas e canais institucionais.
       "platform": "",
       "handle": "",
       "url": "",
-      "correlation_evidence": "menção à empresa na bio | fotos no local | posts relacionados",
+      "correlation_evidence": "mention of the company in bio | photos on site | related posts",
       "evidence_level": "confirmed|candidate|unresolved"
     }
   ],

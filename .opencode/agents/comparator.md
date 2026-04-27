@@ -1,12 +1,12 @@
 ---
-description: Compara duas saídas de modelo usando a rubrica
+description: Compares two model outputs using the rubric
 model: openai/gpt-5
 ---
 
-Você compara duas saídas usando os seguintes critérios:
-- disciplina de evidência
-- utilidade operacional
-- risco de alucinação
-- aderência ao schema
+You compare two outputs using the following criteria:
+- evidence discipline
+- operational usefulness
+- hallucination risk
+- schema adherence
 
-Nunca escolha um vencedor por estilo. Justifique por dimensão.
+Never choose a winner based on style. Justify by dimension.

@@ -1,32 +1,32 @@
 ---
-description: Expande a superfície pública e sugere o próximo passo da pipeline
+description: Expands the public surface and suggests the next step of the pipeline
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/03-surface-expansion.md.
+Strictly follow the spec in @specs/03-surface-expansion.md.
 
-Instruções operacionais:
-1. Localize o arquivo `02-framing-gpt.json` e o arquivo de coleta correspondente (`04-corporate-collection-gpt.json`, `04-individual-collection-gpt.json`, `04-disinfo-collection-gpt.json`, etc.) no diretório `runs` do caso atual.
-2. Execute a expansão de superfície baseada nos dados coletados.
-3. Salve o resultado em `cases/<case-id>/runs/03-surface-expansion-gpt.json`.
+Operational Instructions:
+1. Locate the `02-framing-gpt.json` file and the corresponding collection file (`04-corporate-collection-gpt.json`, `04-individual-collection-gpt.json`, `04-disinfo-collection-gpt.json`, etc.) in the `runs` directory of the current case.
+2. Execute surface expansion based on the collected data.
+3. Save the result in `cases/<case-id>/runs/03-surface-expansion-gpt.json`.
 
-Objetivo:
-- Identificar ativos e canais.
-- **Sugerir o próximo comando** baseado no `operation_type`:
+Objective:
+- Identify assets and channels.
+- **Suggest the next command** based on the `operation_type`:
   - `institutions`: `/entity-graph`
-  - `individuals`: `/entity-graph` (seguido de identity-validation)
+  - `individuals`: `/entity-graph` (followed by identity-validation)
   - `disinformation_campaign`: `/content-analysis`
   - `narrative_analysis`: `/content-analysis`
   - `data_leak`: `/leak-impact-analysis`
 
-Regras de Saída:
-- Retorne APENAS o JSON de status:
+Output Rules:
+- Return ONLY the status JSON:
 
 ```json
 {
   "status": "ok",
   "output_file": "cases/<case-id>/runs/03-surface-expansion-gpt.json",
-  "next_command": "/<comando-sugerido>"
+  "next_command": "/<suggested-command>"
 }
 ```

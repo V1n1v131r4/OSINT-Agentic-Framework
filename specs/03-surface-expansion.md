@@ -1,18 +1,18 @@
 # 03 — Surface Expansion
 
-## Objetivo
-Expandir a superfície pública institucional do alvo a partir do seed inicial, mantendo relevância, coerência e utilidade analítica.
+## Objective
+Expand the target's public institutional surface from the initial seed, maintaining relevance, coherence, and analytical utility.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 - target_summary
 - investigation_vectors
 - known_gaps
 
-Se qualquer entrada estiver ausente ou inválida, NÃO prossiga.
+If any input is missing or invalid, DO NOT proceed.
 
-## Entradas opcionais
+## Optional Inputs
 - corporate_identity
 - official_channels
 - corporate_registry_signals
@@ -21,37 +21,37 @@ Se qualquer entrada estiver ausente ou inválida, NÃO prossiga.
 
 ---
 
-## Instruções ao agente
+## Instructions to the Agent
 
-- Quando houver artefato de corporate collection, usá-lo para priorizar ativos e canais confirmados
-- Expandir apenas ativos institucionais e públicos
-- Não investigar pessoas físicas
-- Não inferir dados não observáveis
-- Não enriquecer com conhecimento externo não suportado
-- Priorizar qualidade e relevância, não volume
-- Diferenciar claramente:
-  - ativo observado
-  - ativo inferido
-  - ativo suspeito
-
----
-
-## Tarefas
-
-1. Identificar ativos institucionais diretamente relacionados ao alvo
-2. Identificar canais públicos oficiais (redes sociais, diretórios, etc.)
-3. Classificar ativos em:
-   - primários (centrais à operação)
-   - secundários (apoio)
-   - residuais/legados (não mantidos ou inconsistentes)
-4. Identificar possíveis inconsistências ou sinais de governança digital fraca
-5. Sugerir pivôs empresariais úteis para aprofundamento
+- When there is a corporate collection artifact, use it to prioritize confirmed assets and channels
+- Expand only institutional and public assets
+- Do not investigate natural persons
+- Do not infer non-observable data
+- Do not enrich with unsupported external knowledge
+- Prioritize quality and relevance, not volume
+- Clearly differentiate:
+  - observed asset
+  - inferred asset
+  - suspected asset
 
 ---
 
-## Saída obrigatória
+## Tasks
 
-Retorne **APENAS JSON válido**, sem texto adicional.
+1. Identify institutional assets directly related to the target
+2. Identify official public channels (social networks, directories, etc.)
+3. Classify assets into:
+   - primary (central to the operation)
+   - secondary (support)
+   - residual/legacy (not maintained or inconsistent)
+4. Identify possible inconsistencies or signs of weak digital governance
+5. Suggest useful business pivots for deepening
+
+---
+
+## Mandatory Output
+
+Return **ONLY valid JSON**, without additional text.
 
 ```json
 {
@@ -62,3 +62,4 @@ Retorne **APENAS JSON válido**, sem texto adicional.
   "business_pivots": [],
   "expansion_notes": ""
 }
+```

@@ -1,23 +1,23 @@
 ---
-description: Transforma o intake em framing analítico e sugere o próximo passo da pipeline
+description: Transforms the intake into analytical framing and suggests the next step of the pipeline
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/02-case-framing.md.
+Strictly follow the spec in @specs/02-case-framing.md.
 
-Instruções operacionais:
-1. Localize o arquivo `01-case-intake.json` no diretório `runs` do caso atual.
-2. Gere o framing analítico baseado no intake.
-3. Salve o resultado em `cases/<case-id>/runs/02-framing-gpt.json`.
+Operational Instructions:
+1. Locate the `01-case-intake.json` file in the `runs` directory of the current case.
+2. Generate the analytical framing based on the intake.
+3. Save the result in `cases/<case-id>/runs/02-framing-gpt.json`.
 
-Objetivo:
-- Definir hipóteses e vetores de investigação.
-- **Sugerir o próximo comando** baseado no `operation_type` do intake.
+Objective:
+- Define hypotheses and investigation vectors.
+- **Suggest the next command** based on the `operation_type` from the intake.
 
-Regras de Saída:
-- O campo `next_command` deve ser `/corporate-collection` para a pipeline de instituições.
-- Retorne APENAS o JSON de status:
+Output Rules:
+- The `next_command` field must be `/corporate-collection` for the institutions pipeline.
+- Return ONLY the status JSON:
 
 ```json
 {

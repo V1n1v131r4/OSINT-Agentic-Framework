@@ -1,32 +1,32 @@
 # 04 — Individual Collection
 
-## Objetivo
+## Objective
 
-Realizar a coleta profunda de dados públicos sobre um indivíduo, focando em identidade, pegada digital e vínculos profissionais/pessoais.
+Perform deep collection of public data about an individual, focusing on identity, digital footprint, and professional/personal links.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 
 - target_name
-- framing_output (hipóteses e vetores)
+- framing_output (hypotheses and vectors)
 
 ---
 
-## Tarefas
+## Tasks
 
-1. **Validação de Identidade**: Buscar por homônimos e confirmar identificadores únicos (se disponíveis publicamente).
-2. **Pegada em Redes Sociais**: Mapear perfis em LinkedIn, Instagram, Twitter, Facebook, etc.
-3. **Histórico Profissional**: Coletar dados de cargos, empresas passadas e conselhos profissionais.
-4. **Registros Públicos**: Buscar menções em Diários Oficiais, processos judiciais públicos e registros de propriedade.
-5. **Google Dorks para Indivíduos**:
-   - `"nome completo" filetype:pdf`
-   - `"nome completo" site:jusbrasil.com.br`
-   - `"nome completo" (email OR telefone OR contato)`
+1. **Identity Validation**: Search for namesakes and confirm unique identifiers (if publicly available).
+2. **Social Media Footprint**: Map profiles on LinkedIn, Instagram, Twitter, Facebook, etc.
+3. **Professional History**: Collect data on roles, past companies, and professional boards.
+4. **Public Records**: Search for mentions in Official Gazettes, public lawsuits, and property records.
+5. **Google Dorks for Individuals**:
+   - `"full name" filetype:pdf`
+   - `"full name" site:jusbrasil.com.br`
+   - `"full name" (email OR phone OR contact)`
 
 ---
 
-## Saída obrigatória
+## Mandatory Output
 
 ```json
 {

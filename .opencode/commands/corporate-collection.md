@@ -1,22 +1,22 @@
 ---
-description: Coleta dados corporativos avançados e sugere o próximo passo da pipeline
+description: Collects advanced corporate data and suggests the next step of the pipeline
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/04-corporate-collection.md.
+Strictly follow the spec in @specs/04-corporate-collection.md.
 
-Instruções operacionais:
-1. Localize os arquivos `01-case-intake.json` e `02-framing-gpt.json` no diretório `runs` do caso atual.
-2. Execute a coleta corporativa profunda conforme o fluxo obrigatório da spec.
-3. Salve o resultado em `cases/<case-id>/runs/04-corporate-collection-gpt.json`.
+Operational Instructions:
+1. Locate the `01-case-intake.json` and `02-framing-gpt.json` files in the `runs` directory of the current case.
+2. Execute deep corporate collection according to the mandatory flow of the spec.
+3. Save the result in `cases/<case-id>/runs/04-corporate-collection-gpt.json`.
 
-Objetivo:
-- Consolidar CNPJ, QSA, contatos e documentos.
-- **Sugerir o próximo comando** (obrigatoriamente `/expansion`).
+Objective:
+- Consolidate CNPJ, QSA, contacts, and documents.
+- **Suggest the next command** (must be `/expansion`).
 
-Regras de Saída:
-- Retorne APENAS o JSON de status:
+Output Rules:
+- Return ONLY the status JSON:
 
 ```json
 {

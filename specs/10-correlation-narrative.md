@@ -1,24 +1,24 @@
-# 10 — Correlation & Anomalies (Narrativas e Desinformação)
+# 10 — Correlation & Anomalies (Narratives and Disinformation)
 
-## Objetivo
-Consolidar a análise de conteúdo e o mapeamento de atores para identificar a estrutura da campanha, padrões de coordenação e o impacto do ecossistema de informação.
-
----
-
-## Entradas obrigatórias
-- outputs de content-analysis e disinfo-actor-mapping ou narrative-ecosystem-map.
+## Objective
+Consolidate the content analysis and actor mapping to identify the campaign structure, coordination patterns, and the impact of the information ecosystem.
 
 ---
 
-## Tarefas
-1. **Correlacionar Atores e Narrativas**: Ligar perfis específicos às variantes de mensagens que eles propagam.
-2. **Identificar Padrões de Coordenação**: Listar evidências de comportamento inautêntico (temporalidade, repetição de mídias, redes de seguidores).
-3. **Analisar Fluxo de Influência**: Mapear como a narrativa se move entre os nós principais do ecossistema.
-4. **Detectar Anomalias de Engajamento**: Identificar picos de atividade não orgânica ou perfis com métricas desproporcionais.
+## Mandatory Inputs
+- outputs from content-analysis and disinfo-actor-mapping or narrative-ecosystem-map.
 
 ---
 
-## Saída obrigatória
+## Tasks
+1. **Correlate Actors and Narratives**: Link specific profiles to the message variants they propagate.
+2. **Identify Coordination Patterns**: List evidence of inauthentic behavior (temporality, media repetition, follower networks).
+3. **Analyze Influence Flow**: Map how the narrative moves between the main nodes of the ecosystem.
+4. **Detect Engagement Anomalies**: Identify non-organic activity spikes or profiles with disproportionate metrics.
+
+---
+
+## Mandatory Output
 ```json
 {
   "coordination_map": [],

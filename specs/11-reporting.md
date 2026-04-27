@@ -1,88 +1,82 @@
-
----
-
-## `specs/11-reporting.md`
-
-```md
 # 11 — Reporting
 
-## Objetivo
+## Objective
 
-Transformar os achados já correlacionados em um relatório curto, executivo e rastreável.
+Transform the already correlated findings into a short, executive, and traceable report.
 
-Este módulo foca em COMUNICAÇÃO FINAL, não em nova análise.
+This module focuses on FINAL COMMUNICATION, not new analysis.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 
 - case intake
-- output do módulo 10
-- outros outputs anteriores somente se necessários para coerência do resumo
+- output from module 10
+- other previous outputs only if necessary for summary coherence
 
-Se o output de correlação não estiver disponível, NÃO prossiga.
-
----
-
-## Instruções ao agente
-
-- Trabalhar apenas com os insumos fornecidos
-- NÃO buscar novas fontes
-- NÃO expandir escopo
-- NÃO reinterpretar o caso além do que já foi consolidado
-- O relatório deve refletir apenas:
-  - relações observadas
-  - padrões identificados
-  - anomalias registradas
-  - lacunas já conhecidas
+If the correlation output is not available, DO NOT proceed.
 
 ---
 
-## Regras de execução
+## Instructions to the Agent
 
-- Gerar APENAS JSON válido
-- Não adicionar campos fora da saída obrigatória
-- Todos os campos de lista devem ser arrays JSON válidos
-- O resumo executivo deve ser curto, claro e coerente com o objetivo analítico original
-- Não transformar hipótese em fato
-- Não omitir limitações
-- Não usar linguagem inflada ou genérica
-
----
-
-## Estrutura esperada
-
-### 1. Resumo executivo
-
-Síntese curta do caso, destacando:
-
-- o que foi possível observar
-- o nível geral de confiança
-- o principal limite da análise
-
-### 2. Principais achados
-
-Listar os pontos mais relevantes e rastreáveis.
-
-### 3. Hipóteses e interpretações
-
-Listar apenas hipóteses ainda sustentadas pelos dados anteriores.
-
-### 4. Lacunas
-
-Listar o que ainda precisa de validação.
-
-### 5. Riscos e implicações
-
-Listar implicações práticas dos achados, sem exagero.
-
-### 6. Próximos passos
-
-Listar validações e coletas complementares úteis.
+- Work only with the provided inputs
+- DO NOT search for new sources
+- DO NOT expand scope
+- DO NOT reinterpret the case beyond what has already been consolidated
+- The report should reflect only:
+  - observed relationships
+  - identified patterns
+  - registered anomalies
+  - already known gaps
 
 ---
 
-## Saída obrigatória
+## Execution Rules
+
+- Generate ONLY valid JSON
+- Do not add fields outside the mandatory output
+- All list fields must be valid JSON arrays
+- The executive summary should be short, clear, and coherent with the original analytical objective
+- Do not turn a hypothesis into a fact
+- Do not omit limitations
+- Do not use inflated or generic language
+
+---
+
+## Expected Structure
+
+### 1. Executive Summary
+
+Short synthesis of the case, highlighting:
+
+- what was possible to observe
+- the overall confidence level
+- the main limitation of the analysis
+
+### 2. Key Findings
+
+List the most relevant and traceable points.
+
+### 3. Hypotheses and Interpretations
+
+List only hypotheses still supported by the previous data.
+
+### 4. Gaps
+
+List what still needs validation.
+
+### 5. Risks and Implications
+
+List practical implications of the findings, without exaggeration.
+
+### 6. Next Steps
+
+List useful complementary validations and collections.
+
+---
+
+## Mandatory Output
 
 ```json
 {
@@ -94,3 +88,4 @@ Listar validações e coletas complementares úteis.
   "next_steps": [],
   "confidence": "low | medium | high"
 }
+```

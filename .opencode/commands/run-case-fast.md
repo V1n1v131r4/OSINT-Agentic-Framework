@@ -1,27 +1,27 @@
 ---
-description: Orquestrador dinâmico que segue as sugestões de cada comando da pipeline
+description: Dynamic orchestrator that follows the suggestions of each pipeline command
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Execute esta rotina de forma estritamente sequencial, seguindo as sugestões dinâmicas de cada comando.
+Execute this routine in a strictly sequential manner, following the dynamic suggestions of each command.
 
-Objetivo:
-- Validar a pipeline completa conforme o `operation_type`.
-- Seguir o campo `next_command` retornado por cada etapa.
+Objective:
+- Validate the complete pipeline according to the `operation_type`.
+- Follow the `next_command` field returned by each stage.
 
-Regras obrigatórias:
-1. Comece executando `/case-intake`.
-2. Após cada comando, leia o JSON de status retornado.
-3. Se o status for "ok", execute o comando indicado no campo `next_command`.
-4. Continue até que o comando sugerido seja `/postmortem` ou não haja mais sugestões.
-5. Se qualquer etapa falhar, interrompa e reporte o erro.
+Mandatory Rules:
+1. Start by executing `/case-intake`.
+2. After each command, read the returned status JSON.
+3. If the status is "ok", execute the command indicated in the `next_command` field.
+4. Continue until the suggested command is `/postmortem` or there are no more suggestions.
+5. If any stage fails, stop and report the error.
 
-Ordem de Execução Inicial:
+Initial Execution Order:
 1. `/case-intake`
-2. Siga a sugestão dinâmica de `next_command`.
+2. Follow the dynamic suggestion of `next_command`.
 
-Ao final, responda com o JSON de conclusão:
+At the end, respond with the completion JSON:
 
 ```json
 {

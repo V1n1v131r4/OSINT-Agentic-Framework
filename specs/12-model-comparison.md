@@ -1,25 +1,25 @@
 # 12 — Model Comparison
 
-## Objetivo
-Comparar saídas de dois modelos no mesmo módulo ou no caso inteiro.
+## Objective
+Compare outputs from two models in the same module or in the entire case.
 
-## Entradas obrigatórias
+## Mandatory Inputs
 - gpt_output
 - claude_output
 - module_name
 - rubric_reference
 
-## Instruções ao agente
-Compare estrutura, disciplina de evidência, utilidade e extrapolação. Ignore estilo como critério principal.
+## Instructions to the Agent
+Compare structure, evidence discipline, usefulness, and extrapolation. Ignore style as a primary criterion.
 
-## Tarefas
-1. Identificar fatos consensuais.
-2. Identificar divergências analíticas.
-3. Marcar inferências sem suporte.
-4. Apontar qual saída foi melhor em clareza, disciplina e utilidade.
-5. Recomendar adjudicação ao analista.
+## Tasks
+1. Identify consensual facts.
+2. Identify analytical divergences.
+3. Flag unsupported inferences.
+4. Point out which output was better in clarity, discipline, and usefulness.
+5. Recommend adjudication to the analyst.
 
-## Saída obrigatória
+## Mandatory Output
 ```json
 {
   "consensus_facts": [],
@@ -34,6 +34,6 @@ Compare estrutura, disciplina de evidência, utilidade e extrapolação. Ignore 
 }
 ```
 
-## Critérios de qualidade
-- não favorecer prolixidade
-- privilegiar aderência à evidência
+## Quality Criteria
+- do not favor verbosity
+- prioritize adherence to evidence

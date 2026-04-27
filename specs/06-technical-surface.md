@@ -1,65 +1,65 @@
 # 06 — Technical Surface
 
-## Objetivo
+## Objective
 
-Mapear a superfície técnica pública do alvo, identificando ativos e sinais de infraestrutura digital visíveis externamente.
+Map the target's public technical surface, identifying externally visible digital infrastructure assets and signals.
 
-Este módulo foca em ENUMERAÇÃO técnica com enriquecimento passivo.
+This module focuses on technical ENUMERATION with passive enrichment.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 
-- primary_assets (domínio principal, subdomínios conhecidos)
+- primary_assets (main domain, known subdomains)
 - residual_or_legacy_assets
 
-## Entradas opcionais
+## Optional Inputs
 
 - supporting_signals
 
-Se não houver domínio ou ativo técnico definido, NÃO prossiga.
+If no domain or technical asset is defined, DO NOT proceed.
 
 ---
 
-## Instruções ao agente
+## Instructions to the Agent
 
-- Trabalhar apenas com dados públicos
-- É PERMITIDO enriquecer dados usando:
-  - DNS público
-  - registros WHOIS
-  - resolução de domínio
+- Work only with public data
+- It IS PERMITTED to enrich data using:
+  - public DNS
+  - WHOIS records
+  - domain resolution
   - certificate transparency (crt.sh)
-- NÃO realizar varredura ativa ou intrusiva
-- NÃO testar vulnerabilidades
+- DO NOT perform active or intrusive scanning
+- DO NOT test for vulnerabilities
 
 ---
 
-## Regras de execução
+## Execution Rules
 
-- Todos os campos de lista devem ser arrays JSON válidos
-- Cada item deve ser um valor simples (string ou objeto estruturado)
-- NÃO incluir texto explicativo dentro dos campos
-- NÃO incluir inferências sem evidência observável
-- Se não houver evidência clara, NÃO incluir o item
-- Não descrever itens — apenas listar valores
+- All list fields must be valid JSON arrays
+- Each item must be a simple value (string or structured object)
+- DO NOT include explanatory text within the fields
+- DO NOT include inferences without observable evidence
+- If there is no clear evidence, DO NOT include the item
+- Do not describe items — only list values
 
 ---
 
-## Tarefas
+## Tasks
 
-### 1. Identificar domínios e subdomínios
+### 1. Identify domains and subdomains
 
-- domínio principal
-- subdomínios descobertos via:
+- main domain
+- subdomains discovered via:
   - DNS
-  - certificados
-  - padrões comuns (www, api, mail)
+  - certificates
+  - common patterns (www, api, mail)
 
 ---
 
-### 2. Identificar registros DNS
+### 2. Identify DNS records
 
-Buscar:
+Search for:
 
 - A / AAAA
 - MX
@@ -68,22 +68,22 @@ Buscar:
 
 ---
 
-### 3. Identificar IPs e infraestrutura
+### 3. Identify IPs and infrastructure
 
-- IPs associados aos domínios
-- CDN ou proxy (se visível)
-- provedores
+- IPs associated with the domains
+- CDN or proxy (if visible)
+- providers
 
 ---
 
-### 4. Identificar ASN (quando possível)
+### 4. Identify ASN (when possible)
 
 - ASN
-- organização
+- organization
 
 ---
 
-### 5. Identificar serviços técnicos
+### 5. Identify technical services
 
 - web (http/https)
 - e-mail (MX)
@@ -92,16 +92,16 @@ Buscar:
 
 ---
 
-### 6. Identificar sinais técnicos
+### 6. Identify technical signals
 
-- SPF presente
-- DMARC presente
-- uso de CDN
-- uso de terceiros
+- SPF present
+- DMARC present
+- use of CDN
+- use of third parties
 
 ---
 
-## Saída obrigatória
+## Mandatory Output
 
 ```json
 {
@@ -125,3 +125,4 @@ Buscar:
   "technical_signals": [],
   "confidence": "low | medium | high"
 }
+```

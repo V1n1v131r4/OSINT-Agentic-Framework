@@ -1,24 +1,24 @@
-# 10 — Correlation & Anomalies (Indivíduos)
+# 10 — Correlation & Anomalies (Individuals)
 
-## Objetivo
-Consolidar os dados coletados sobre o indivíduo, identificando relações entre identidades digitais, ativos pessoais, conexões sociais e possíveis anomalias ou lacunas de informação.
-
----
-
-## Entradas obrigatórias
-- outputs de identity-validation, individual-footprint e individual-social-analysis.
+## Objective
+Consolidate the data collected about the individual, identifying relationships between digital identities, personal assets, social connections, and possible anomalies or information gaps.
 
 ---
 
-## Tarefas
-1. **Mapear Relações de Identidade**: Conectar e-mails, handles, perfis sociais e registros profissionais ao indivíduo.
-2. **Identificar Padrões de Comportamento**: Listar recorrências em horários de atividade, estilo de linguagem ou uso de plataformas.
-3. **Detectar Anomalias**: Identificar perfis conflitantes, homônimos que causam ruído ou dados biográficos inconsistentes.
-4. **Registrar Lacunas**: Listar informações críticas não encontradas (ex: telefone não confirmado, endereço não localizado).
+## Mandatory Inputs
+- outputs from identity-validation, individual-footprint, and individual-social-analysis.
 
 ---
 
-## Saída obrigatória
+## Tasks
+1. **Map Identity Relationships**: Connect e-mails, handles, social profiles, and professional records to the individual.
+2. **Identify Behavior Patterns**: List recurrences in activity times, language style, or platform use.
+3. **Detect Anomalies**: Identify conflicting profiles, namesakes causing noise, or inconsistent biographical data.
+4. **Register Gaps**: List critical information not found (e.g., unconfirmed phone, unlocated address).
+
+---
+
+## Mandatory Output
 ```json
 {
   "identity_map": [],

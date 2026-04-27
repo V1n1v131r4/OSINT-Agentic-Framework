@@ -1,22 +1,22 @@
 ---
-description: Realiza auditoria técnica de dados vazados
+description: Performs technical audit of leaked data
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/07-leak-data-audit.md.
+Strictly follow the spec in @specs/07-leak-data-audit.md.
 
-Instruções operacionais:
-1. Localize o arquivo `06-leak-impact-analysis-gpt.json` e o `04-leak-collection-gpt.json` no diretório `runs` do caso atual.
-2. Realize a auditoria técnica das amostras e estrutura dos dados.
-3. Salve o resultado em `cases/<case-id>/runs/07-leak-data-audit-gpt.json`.
+Operational Instructions:
+1. Locate the `06-leak-impact-analysis-gpt.json` and `04-leak-collection-gpt.json` files in the `runs` directory of the current case.
+2. Perform the technical audit of the samples and data structure.
+3. Save the result in `cases/<case-id>/runs/07-leak-data-audit-gpt.json`.
 
-Objetivo:
-- Identificar a profundidade técnica e origem do vazamento.
-- **Sugerir o próximo comando**: `/unstructured-extraction`.
+Objective:
+- Identify the technical depth and origin of the leak.
+- **Suggest the next command**: `/unstructured-extraction`.
 
-Regras de Saída:
-- Retorne APENAS o JSON de status:
+Output Rules:
+- Return ONLY the status JSON:
 
 ```json
 {

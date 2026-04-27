@@ -1,22 +1,22 @@
 ---
-description: Mapeia o ecossistema de influência e narrativas
+description: Maps the influence and narrative ecosystem
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/07-narrative-ecosystem-map.md.
+Strictly follow the spec in @specs/07-narrative-ecosystem-map.md.
 
-Instruções operacionais:
-1. Localize o arquivo `06-content-analysis-gpt.json` e o `04-narrative-collection-gpt.json` no diretório `runs` do caso atual.
-2. Mapeie os nós de influência e o fluxo de informação.
-3. Salve o resultado em `cases/<case-id>/runs/07-narrative-ecosystem-map-gpt.json`.
+Operational Instructions:
+1. Locate the `06-content-analysis-gpt.json` and `04-narrative-collection-gpt.json` files in the `runs` directory of the current case.
+2. Map the influence nodes and the information flow.
+3. Save the result in `cases/<case-id>/runs/07-narrative-ecosystem-map-gpt.json`.
 
-Objetivo:
-- Visualizar a estrutura de influência e alcance da narrativa.
-- **Sugerir o próximo comando**: `/correlation`.
+Objective:
+- Visualize the influence structure and reach of the narrative.
+- **Suggest the next command**: `/correlation`.
 
-Regras de Saída:
-- Retorne APENAS o JSON de status:
+Output Rules:
+- Return ONLY the status JSON:
 
 ```json
 {

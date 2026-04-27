@@ -1,18 +1,18 @@
 ---
-description: Framing analítico para investigação de indivíduos
+description: Analytical framing for individual investigation
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/02-framing-indiv.md.
+Strictly follow the spec in @specs/02-framing-indiv.md.
 
-Instruções operacionais:
-1. Leia o `01-case-intake.json` do caso atual.
-2. Gere o framing focado em pessoas físicas.
-3. Salve em `cases/<case-id>/runs/02-framing-gpt.json`.
+Operational Instructions:
+1. Read the `01-case-intake.json` of the current case.
+2. Generate the framing focused on natural persons.
+3. Save in `cases/<case-id>/runs/02-framing-gpt.json`.
 
-Regras de Saída:
-- Sugira o próximo comando: `/individual-collection`.
+Output Rules:
+- Suggest the next command: `/individual-collection`.
 
 ```json
 {

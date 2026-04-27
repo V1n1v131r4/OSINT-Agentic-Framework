@@ -1,5 +1,5 @@
 ---
-description: Executa automaticamente a pipeline completa OSINT em sequência
+description: Automatically executes the complete OSINT pipeline in sequence
 agent: collector-gpt
 model: openai/gpt-5-mini
 subtask: true
@@ -17,44 +17,44 @@ return:
   - /postmortem
 ---
 
-## REGRA CRÍTICA (EXECUÇÃO)
+## CRITICAL RULE (EXECUTION)
 
-Você NÃO deve:
+You MUST NOT:
 
-- executar módulos manualmente
-- gerar JSON de módulos seguintes
-- interpretar dados para próximas etapas
-- continuar a pipeline por conta própria
+- execute modules manually
+- generate JSON for subsequent modules
+- interpret data for next stages
+- continue the pipeline on your own
 
-Você DEVE:
+You MUST:
 
-- executar APENAS o comando desta etapa
-- retornar o resultado
-- deixar o encadeamento ocorrer via `return`
-
----
-
-## COMPORTAMENTO OBRIGATÓRIO
-
-Após executar o comando:
-
-- PARE imediatamente
-- NÃO continue raciocinando sobre o próximo módulo
-- NÃO gere saída adicional
-- NÃO antecipe etapas
+- execute ONLY the command for this stage
+- return the result
+- let the chaining occur via `return`
 
 ---
 
-## EXECUÇÃO
+## MANDATORY BEHAVIOR
 
-Execute exclusivamente:
+After executing the command:
+
+- STOP immediately
+- DO NOT continue reasoning about the next module
+- DO NOT generate additional output
+- DO NOT anticipate stages
+
+---
+
+## EXECUTION
+
+Execute exclusively:
 
 @.opencode/commands/case-intake.md
 
 ---
 
-## RESTRIÇÃO FINAL
+## FINAL RESTRICTION
 
-Se você gerar qualquer conteúdo além do JSON do comando executado:
+If you generate any content beyond the JSON of the executed command:
 
-→ isso é considerado erro de execução
+→ this is considered an execution error

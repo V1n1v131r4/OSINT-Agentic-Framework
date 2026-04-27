@@ -1,18 +1,18 @@
 ---
-description: Coleta de dados sobre ecossistemas de narrativas
+description: Data collection on narrative ecosystems
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/04-narrative-collection.md.
+Strictly follow the spec in @specs/04-narrative-collection.md.
 
-Instruções operacionais:
-1. Leia o `01-case-intake.json` e o `02-framing-gpt.json` do caso atual.
-2. Execute a coleta focada em atores e influência.
-3. Salve em `cases/<case-id>/runs/04-narrative-collection-gpt.json`.
+Operational Instructions:
+1. Read the `01-case-intake.json` and `02-framing-gpt.json` of the current case.
+2. Execute the collection focused on actors and influence.
+3. Save in `cases/<case-id>/runs/04-narrative-collection-gpt.json`.
 
-Regras de Saída:
-- Sugira o próximo comando: `/expansion`.
+Output Rules:
+- Suggest the next command: `/expansion`.
 
 ```json
 {

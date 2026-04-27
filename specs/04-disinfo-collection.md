@@ -1,32 +1,32 @@
 # 04 — Disinfo Collection
 
-## Objetivo
+## Objective
 
-Coletar evidências de campanhas de desinformação, focando em fontes originais, padrões de propagação e metadados de conteúdo.
+Collect evidence of disinformation campaigns, focusing on original sources, propagation patterns, and content metadata.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 
 - target_narrative
 - framing_output
 
 ---
 
-## Tarefas
+## Tasks
 
-1. **Mapeamento de Fontes**: Identificar os primeiros perfis ou sites a publicar a narrativa.
-2. **Coleta de Conteúdo**: Extrair textos, imagens e vídeos associados à campanha.
-3. **Análise de Metadados**: Verificar datas de criação de perfis, domínios e arquivos (se disponíveis).
-4. **Identificação de Amplificadores**: Listar perfis com alto volume de compartilhamento ou comportamento suspeito.
-5. **Google Dorks para Desinformação**:
-   - `"narrativa específica" site:twitter.com`
-   - `"narrativa específica" site:t.me` (Telegram)
-   - `intext:"narrativa específica" -site:veiculos_oficiais.com`
+1. **Source Mapping**: Identify the first profiles or sites to publish the narrative.
+2. **Content Collection**: Extract texts, images, and videos associated with the campaign.
+3. **Metadata Analysis**: Check creation dates of profiles, domains, and files (if available).
+4. **Amplifier Identification**: List profiles with a high volume of sharing or suspicious behavior.
+5. **Google Dorks for Disinformation**:
+   - `"specific narrative" site:twitter.com`
+   - `"specific narrative" site:t.me` (Telegram)
+   - `intext:"specific narrative" -site:official_outlets.com`
 
 ---
 
-## Saída obrigatória
+## Mandatory Output
 
 ```json
 {

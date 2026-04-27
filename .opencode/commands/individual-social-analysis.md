@@ -1,22 +1,22 @@
 ---
-description: Analisa a presença e comportamento social de indivíduos
+description: Analyzes the social presence and behavior of individuals
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/07-individual-social-analysis.md.
+Strictly follow the spec in @specs/07-individual-social-analysis.md.
 
-Instruções operacionais:
-1. Localize o arquivo `06-individual-footprint-gpt.json` e o `05-identity-validation-gpt.json` no diretório `runs` do caso atual.
-2. Analise perfis, conexões e comportamento social.
-3. Salve o resultado em `cases/<case-id>/runs/07-individual-social-analysis-gpt.json`.
+Operational Instructions:
+1. Locate the `06-individual-footprint-gpt.json` and `05-identity-validation-gpt.json` files in the `runs` directory of the current case.
+2. Analyze profiles, connections, and social behavior.
+3. Save the result in `cases/<case-id>/runs/07-individual-social-analysis-gpt.json`.
 
-Objetivo:
-- Mapear o ecossistema social e vulnerabilidades do indivíduo.
-- **Sugerir o próximo comando**: `/geo-context`.
+Objective:
+- Map the individual's social ecosystem and vulnerabilities.
+- **Suggest the next command**: `/geo-context`.
 
-Regras de Saída:
-- Retorne APENAS o JSON de status:
+Output Rules:
+- Return ONLY the status JSON:
 
 ```json
 {

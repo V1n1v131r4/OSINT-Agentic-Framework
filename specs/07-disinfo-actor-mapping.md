@@ -1,28 +1,28 @@
 # 07 — Disinfo Actor Mapping
 
-## Objetivo
-Mapear e categorizar os atores envolvidos em uma campanha de desinformação, diferenciando entre fontes originais, amplificadores inautênticos (bots/cyborgs) e usuários orgânicos influenciados.
+## Objective
+Map and categorize the actors involved in a disinformation campaign, differentiating between original sources, inauthentic amplifiers (bots/cyborgs), and influenced organic users.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 - content_analysis_output
 - disinfo_collection_output
 
 ---
 
-## Tarefas
-1. **Categorização de Perfis**: Classificar perfis em:
-   - `Source`: Criadores do conteúdo original.
-   - `Amplifier`: Perfis que apenas replicam sem adicionar conteúdo.
-   - `Influencer`: Perfis reais que dão credibilidade à narrativa.
-2. **Análise de Redes**: Identificar conexões entre perfis (seguidores mútuos, interações frequentes).
-3. **Detecção de Inautenticidade**: Buscar sinais de automação (datas de criação próximas, padrões de nomes, fotos de perfil geradas por IA).
-4. **Mapeamento de Plataformas**: Identificar se os atores operam de forma coordenada em múltiplas redes (X, Telegram, Facebook).
+## Tasks
+1. **Profile Categorization**: Classify profiles into:
+   - `Source`: Creators of the original content.
+   - `Amplifier`: Profiles that only replicate without adding content.
+   - `Influencer`: Real profiles that give credibility to the narrative.
+2. **Network Analysis**: Identify connections between profiles (mutual followers, frequent interactions).
+3. **Inauthenticity Detection**: Look for signs of automation (close creation dates, name patterns, AI-generated profile photos).
+4. **Platform Mapping**: Identify if actors operate in a coordinated manner across multiple networks (X, Telegram, Facebook).
 
 ---
 
-## Saída obrigatória
+## Mandatory Output
 ```json
 {
   "actor_network": [],

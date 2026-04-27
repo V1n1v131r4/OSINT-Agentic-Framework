@@ -1,22 +1,22 @@
 # 01 — Case Intake
 
-## Objetivo
+## Objective
 
-Registrar de forma estruturada o contexto inicial do caso, garantindo clareza sobre o propósito da operação e definindo a pipeline a ser seguida.
-
----
-
-## Entradas obrigatórias
-
-- **case_id**: Identificador único do caso.
-- **operation_type**: Tipo de operação (institutions, individuals, disinformation_campaign, narrative_analysis, data_leak).
-- **target_name**: Alvo principal.
-- **analysis_goal**: Objetivo da investigação.
-- **restrictions**: Limites operacionais.
+Register the initial context of the case in a structured way, ensuring clarity about the purpose of the operation and defining the pipeline to be followed.
 
 ---
 
-## Entradas opcionais
+## Mandatory Inputs
+
+- **case_id**: Unique identifier for the case.
+- **operation_type**: Type of operation (institutions, individuals, disinformation_campaign, narrative_analysis, data_leak).
+- **target_name**: Main target.
+- **analysis_goal**: Investigation objective.
+- **restrictions**: Operational limits.
+
+---
+
+## Optional Inputs
 
 - target_url
 - scope_type
@@ -24,22 +24,22 @@ Registrar de forma estruturada o contexto inicial do caso, garantindo clareza so
 - analyst_notes
 - source_seed
 
-Se entradas obrigatórias estiverem ausentes ou ambíguas, NÃO prossiga.
+If mandatory inputs are missing or ambiguous, DO NOT proceed.
 
 ---
 
-## Instruções ao agente
+## Instructions to the Agent
 
-- Valide se o `operation_type` é um dos tipos suportados.
-- Não iniciar coleta.
-- Não gerar hipóteses.
-- Este módulo é apenas estrutural e de roteamento.
+- Validate if the `operation_type` is one of the supported types.
+- Do not start collection.
+- Do not generate hypotheses.
+- This module is only structural and for routing.
 
 ---
 
-## Saída esperada
+## Expected Output
 
-O agente deve retornar o JSON estruturado e, em sua resposta textual (se houver), indicar o próximo comando sugerido com base no `operation_type`.
+The agent must return the structured JSON and, in its textual response (if any), indicate the suggested next command based on the `operation_type`.
 
 ```json
 {
@@ -52,7 +52,7 @@ O agente deve retornar o JSON estruturado e, em sua resposta textual (se houver)
 }
 ```
 
-### Mapeamento de Próximo Passo:
+### Next Step Mapping:
 - **institutions**: `/framing`
 - **individuals**: `/framing-indiv`
 - **disinformation_campaign**: `/framing-disinfo`

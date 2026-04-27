@@ -1,24 +1,24 @@
-# 10 — Correlation & Anomalies (Vazamentos)
+# 10 — Correlation & Anomalies (Leaks)
 
-## Objetivo
-Consolidar a auditoria técnica e a análise de impacto para identificar a origem provável do vazamento, a extensão real da exposição e os riscos correlacionados.
-
----
-
-## Entradas obrigatórias
-- outputs de leak-impact-analysis e leak-data-audit.
+## Objective
+Consolidate the technical audit and impact analysis to identify the probable origin of the leak, the real extent of the exposure, and the correlated risks.
 
 ---
 
-## Tarefas
-1. **Correlacionar Dados e Origem**: Ligar a estrutura dos dados vazados a sistemas ou vetores de ataque prováveis.
-2. **Identificar Padrões de Exposição**: Listar categorias de dados que se repetem ou que indicam um alvo específico (ex: apenas dados de RH).
-3. **Detectar Anomalias de Veracidade**: Identificar dados falsos (honeypots) ou misturas de vazamentos antigos.
-4. **Mapear Riscos de Atribuição**: Correlacionar o "modus operandi" da publicação com grupos conhecidos.
+## Mandatory Inputs
+- outputs from leak-impact-analysis and leak-data-audit.
 
 ---
 
-## Saída obrigatória
+## Tasks
+1. **Correlate Data and Origin**: Link the structure of the leaked data to systems or probable attack vectors.
+2. **Identify Exposure Patterns**: List data categories that repeat or indicate a specific target (e.g., only HR data).
+3. **Detect Veracity Anomalies**: Identify false data (honeypots) or mixtures of old leaks.
+4. **Map Attribution Risks**: Correlate the "modus operandi" of the publication with known groups.
+
+---
+
+## Mandatory Output
 ```json
 {
   "leak_origin_correlation": [],

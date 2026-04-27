@@ -1,29 +1,29 @@
 # 06 — Leak Impact Analysis
 
-## Objetivo
+## Objective
 
-Analisar a extensão e o impacto real de um vazamento de dados, focando na sensibilidade das informações e nos riscos para a entidade e indivíduos afetados.
+Analyze the extent and real impact of a data leak, focusing on the sensitivity of the information and the risks to the affected entity and individuals.
 
 ---
 
-## Entradas obrigatórias
+## Mandatory Inputs
 
 - leak_collection_output
 - expansion_output
 
 ---
 
-## Tarefas
+## Tasks
 
-1. **Classificação de Dados**: Categorizar os tipos de PII (nomes, e-mails, senhas, documentos, dados financeiros).
-2. **Avaliação de Volume**: Estimar a quantidade de registros únicos expostos.
-3. **Análise de Recência**: Verificar se os dados são atuais ou de vazamentos antigos (rehash).
-4. **Identificação de Riscos**: Listar riscos imediatos (phishing, personificação, fraude financeira).
-5. **Correlação de Atribuição**: Tentar ligar o vazamento a grupos de ameaça ou vetores de ataque conhecidos.
+1. **Data Classification**: Categorize the types of PII (names, e-mails, passwords, documents, financial data).
+2. **Volume Assessment**: Estimate the number of unique records exposed.
+3. **Recency Analysis**: Check if the data is current or from old leaks (rehash).
+4. **Risk Identification**: List immediate risks (phishing, impersonation, financial fraud).
+5. **Attribution Correlation**: Try to link the leak to known threat groups or attack vectors.
 
 ---
 
-## Saída obrigatória
+## Mandatory Output
 
 ```json
 {

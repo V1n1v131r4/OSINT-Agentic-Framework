@@ -1,22 +1,22 @@
 ---
-description: Gera o relatório final e sugere o próximo passo da pipeline
+description: Generates the final report and suggests the next step of the pipeline
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/11-reporting.md.
+Strictly follow the spec in @specs/11-reporting.md.
 
-Instruções operacionais:
-1. Localize os arquivos `01-case-intake.json` e `10-correlation-gpt.json` no diretório `runs` do caso atual.
-2. Gere o relatório executivo baseado nos achados e correlações, adaptando o tom e o foco ao `operation_type`.
-3. Salve o resultado em `cases/<case-id>/runs/11-report-gpt.json`.
+Operational Instructions:
+1. Locate the `01-case-intake.json` and `10-correlation-gpt.json` files in the `runs` directory of the current case.
+2. Generate the executive report based on the findings and correlations, adapting the tone and focus to the `operation_type`.
+3. Save the result in `cases/<case-id>/runs/11-report-gpt.json`.
 
-Objetivo:
-- Produzir síntese executiva rastreável e específica para o propósito da operação.
-- **Sugerir o próximo comando**: `/postmortem`.
+Objective:
+- Produce a traceable executive synthesis specific to the operation purpose.
+- **Suggest the next command**: `/postmortem`.
 
-Regras de Saída:
-- Retorne APENAS o JSON de status:
+Output Rules:
+- Return ONLY the status JSON:
 
 ```json
 {

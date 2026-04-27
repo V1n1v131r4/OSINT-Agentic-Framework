@@ -1,13 +1,13 @@
 ---
-description: Valida JSON gerado
+description: Validates generated JSON
 agent: reviewer
 model: anthropic/claude-sonnet-4-5
 ---
 
-Verifique se o JSON abaixo é válido.
+Check if the JSON below is valid.
 
-Se não for:
-- corrija
-- retorne versão válida
+If it is not:
+- fix it
+- return a valid version
 
-Não adicione comentários fora do JSON.
+Do not add comments outside the JSON.

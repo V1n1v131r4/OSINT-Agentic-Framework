@@ -1,22 +1,22 @@
 ---
-description: Analisa o impacto e sensibilidade de vazamentos de dados
+description: Analyzes the impact and sensitivity of data leaks
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/06-leak-impact-analysis.md.
+Strictly follow the spec in @specs/06-leak-impact-analysis.md.
 
-Instruções operacionais:
-1. Localize o arquivo `04-leak-collection-gpt.json` e o `03-surface-expansion-gpt.json` no diretório `runs` do caso atual.
-2. Avalie a sensibilidade, volume e riscos do vazamento.
-3. Salve o resultado em `cases/<case-id>/runs/06-leak-impact-analysis-gpt.json`.
+Operational Instructions:
+1. Locate the `04-leak-collection-gpt.json` and `03-surface-expansion-gpt.json` files in the `runs` directory of the current case.
+2. Assess the sensitivity, volume, and risks of the leak.
+3. Save the result in `cases/<case-id>/runs/06-leak-impact-analysis-gpt.json`.
 
-Objetivo:
-- Dimensionar o dano e a veracidade do vazamento.
-- **Sugerir o próximo comando**: `/leak-data-audit`.
+Objective:
+- Scale the damage and veracity of the leak.
+- **Suggest the next command**: `/leak-data-audit`.
 
-Regras de Saída:
-- Retorne APENAS o JSON de status:
+Output Rules:
+- Return ONLY the status JSON:
 
 ```json
 {

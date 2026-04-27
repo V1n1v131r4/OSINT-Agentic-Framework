@@ -1,163 +1,180 @@
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
-![Version](https://img.shields.io/badge/Version-1.5.0-informational)
+![Version](https://img.shields.io/badge/Version-1.6.0-informational)
 ![Format](https://img.shields.io/badge/Format-JSON%20%26%20Agent%20Specs-orange)
 ![Framework](https://img.shields.io/badge/Framework-OpenCode-blueviolet)
 
 # OSINT Agentic Framework for OpenCode
 
-## 1. Visão Geral
+## 1. Overview
 
-Este framework operacional foi refatorado para suportar múltiplos propósitos de investigação OSINT. Agora, o operador define o **propósito da operação** no início do processo, e o framework sugere dinamicamente a pipeline mais adequada.
+This operational framework has been refactored to support multiple OSINT investigation purposes. Now, the operator defines the **operation purpose** at the beginning of the process, and the framework dynamically suggests the most suitable pipeline.
 
-### Propósitos Suportados:
-- **Instituições**: Focado em empresas, domínios e ativos corporativos (Pipeline Padrão).
-- **Indivíduos**: Focado em pegada digital de pessoas físicas, exposição e vínculos.
-- **Campanha de Desinformação**: Análise de narrativas, coordenação e amplificação.
-- **Análise de Narrativas**: Mapeamento de ecossistemas de informação e influência.
-- **Vazamento de Dados**: Avaliação de impacto, sensibilidade e origem de vazamentos.
-
----
-
-## 2. Como Funciona a Pipeline Dinâmica
-
-Diferente de sistemas automáticos, este framework utiliza **orientação dinâmica**. Ao final de cada comando, o agente sugere o próximo passo baseado no tipo de operação escolhido.
-
-1. **Case Intake**: O operador define o `operation_type` no `intake.json`.
-2. **Sugestão de Comando**: O output de cada etapa contém o campo `next_command`.
-3. **Execução Manual**: O operador mantém o controle total, executando o comando sugerido após validar o resultado anterior.
+### Supported Purposes:
+- **Institutions**: Focused on companies, domains, and corporate assets (Standard Pipeline).
+- **Individuals**: Focused on the digital footprint of natural persons, exposure, and links.
+- **Disinformation Campaign**: Analysis of narratives, coordination, and amplification.
+- **Narrative Analysis**: Mapping of information ecosystems and influence.
+- **Data Leak**: Assessment of impact, sensitivity, and origin of leaks.
 
 ---
 
-## 3. Estrutura de Pastas
+## 2. ⚠️ Disclaimer and Ethical Use
+
+This framework is an **Open Source Intelligence (OSINT) automation tool**. The use of this material must respect the following guidelines:
+
+- **Legality**: Ensure that your activities comply with local laws (such as LGPD in Brazil or GDPR in Europe).
+- **Ethics**: Do not use this framework for harassment, doxing, stalking, or any illegal activity.
+- **Responsibility**: The author is not responsible for the misuse of the collected information or for actions taken based on the generated reports.
+- **Transparency**: This framework focuses on **public and open data**. Do not use it to attempt to access private or protected systems.
+
+---
+
+## 3. How the Dynamic Pipeline Works
+
+Unlike automatic systems, this framework uses **dynamic guidance**. At the end of each command, the agent suggests the next step based on the chosen operation type.
+
+1. **Case Intake**: The operator defines the `operation_type` in `intake.json`.
+2. **Command Suggestion**: The output of each stage contains the `next_command` field.
+3. **Manual Execution**: The operator maintains full control, executing the suggested command after validating the previous result.
+
+---
+
+## 4. Folder Structure
 
 ```
-specs/ → Definições lógicas (específicas por tipo de operação).
-.opencode/commands/ → Comandos executáveis.
-cases/ → Dados dos casos.
+specs/ → Logical definitions (specific by operation type).
+.opencode/commands/ → Executable commands.
+cases/ → Case data.
   ├── <case-id>/
-  │   ├── intake.json → Definição do propósito e alvo.
-  │   ├── runs/ → Outputs de cada etapa.
-  │   └── memory/ → Lições aprendidas (postmortem).
+  │   ├── intake.json → Purpose and target definition.
+  │   ├── runs/ → Outputs of each stage.
+  │   └── memory/ → Lessons learned (postmortem).
 ```
 
 ---
 
-## 4. Passo a Passo: Iniciando uma Operação
+## 5. Step by Step: Starting an Operation
 
-### 4.1. Preparar o Intake
-Crie a pasta do caso e edite o `intake.json`. Abaixo estão exemplos para cada tipo de operação:
+### 5.1. Prepare the Intake
+Create the case folder and edit the `intake.json`. Below are examples for each operation type:
 
-#### Instituições
+#### Institutions
 ```json
 {
   "case_id": "CORP-001",
   "operation_type": "institutions",
-  "target_name": "Empresa Alvo S.A.",
-  "target_url": "https://alvo.com.br",
-  "scope_type": "empresa",
-  "analysis_goal": "Mapear QSA e ativos técnicos.",
-  "restrictions": ["Apenas fontes públicas"]
+  "target_name": "Target Company S.A.",
+  "target_url": "https://target.com",
+  "scope_type": "company",
+  "analysis_goal": "Map QSA and technical assets.",
+  "restrictions": ["Public sources only"]
 }
 ```
 
-#### Indivíduos
+#### Individuals
 ```json
 {
   "case_id": "IND-001",
   "operation_type": "individuals",
-  "target_name": "Nome do Alvo",
-  "analysis_goal": "Mapear pegada digital e exposição social.",
-  "restrictions": ["Respeitar LGPD"]
+  "target_name": "Target Name",
+  "analysis_goal": "Map digital footprint and social exposure.",
+  "restrictions": ["Respect privacy laws"]
 }
 ```
 
-#### Desinformação
+#### Disinformation
 ```json
 {
   "case_id": "DIS-001",
   "operation_type": "disinformation_campaign",
-  "target_name": "Narrativa X sobre Assunto Y",
-  "analysis_goal": "Identificar origem e amplificadores.",
-  "restrictions": ["Focar em redes abertas"]
+  "target_name": "Narrative X about Subject Y",
+  "analysis_goal": "Identify origin and amplifiers.",
+  "restrictions": ["Focus on open networks"]
 }
 ```
 
-#### Narrativas
+#### Narratives
 ```json
 {
   "case_id": "NAR-001",
   "operation_type": "narrative_analysis",
-  "target_name": "Tema de Interesse",
-  "analysis_goal": "Mapear ecossistema de influência.",
-  "restrictions": ["Análise qualitativa"]
+  "target_name": "Theme of Interest",
+  "analysis_goal": "Map influence ecosystem.",
+  "restrictions": ["Qualitative analysis"]
 }
 ```
 
-#### Vazamentos
+#### Leaks
 ```json
 {
   "case_id": "LEAK-001",
   "operation_type": "data_leak",
-  "target_name": "Entidade Afetada",
-  "analysis_goal": "Validar extensão e sensibilidade do vazamento.",
-  "restrictions": ["Não baixar bases completas"]
+  "target_name": "Affected Entity",
+  "analysis_goal": "Validate extent and sensitivity of the leak.",
+  "restrictions": ["Do not download full databases"]
 }
 ```
 
-### 4.2. Executar o Intake
+### 5.2. Execute the Intake
 ```bash
 /case-intake
 ```
-O agente validará o tipo de operação e sugerirá o próximo comando (ex: `/framing` para instituições ou `/framing-indiv` para indivíduos).
+The agent will validate the operation type and suggest the next command (e.g., `/framing` for institutions or `/framing-indiv` for individuals).
 
-### 4.3. Seguir a Pipeline
-Execute os comandos sugeridos sequencialmente. O framework guiará você através do campo `next_command`.
+### 5.3. Follow the Pipeline
+Execute the suggested commands sequentially. The framework will guide you through the `next_command` field.
 
-#### Exemplo: Pipeline de Instituições
-1. `/case-intake` -> Sugere `/framing`
-2. `/framing` -> Sugere `/corporate-collection`
-3. `/corporate-collection` -> Sugere `/expansion`
-4. `/expansion` -> Sugere `/entity-graph`
-5. `/entity-graph` -> Sugere `/institutional-validation`
-6. `/institutional-validation` -> Sugere `/technical-surface`
-7. `/technical-surface` -> Sugere `/brand-social-analysis`
-8. `/brand-social-analysis` -> Sugere `/unstructured-extraction`
-9. `/unstructured-extraction` -> Sugere `/geo-context`
-10. `/geo-context` -> Sugere `/correlation`
-11. `/correlation` -> Sugere `/report`
-12. `/report` -> Sugere `/postmortem`
+#### Example: Institutions Pipeline
+1. `/case-intake` -> Suggests `/framing`
+2. `/framing` -> Suggests `/corporate-collection`
+3. `/corporate-collection` -> Suggests `/expansion`
+4. `/expansion` -> Suggests `/entity-graph`
+5. `/entity-graph` -> Suggests `/institutional-validation`
+6. `/institutional-validation` -> Suggests `/technical-surface`
+7. `/technical-surface` -> Suggests `/brand-social-analysis`
+8. `/brand-social-analysis` -> Suggests `/unstructured-extraction`
+9. `/unstructured-extraction` -> Suggests `/geo-context`
+10. `/geo-context` -> Suggests `/correlation`
+11. `/correlation` -> Suggests `/report`
+12. `/report` -> Suggests `/postmortem`
 
-#### Exemplo: Pipeline de Indivíduos
-1. `/case-intake` -> Sugere `/framing-indiv`
-2. `/framing-indiv` -> Sugere `/individual-collection`
-3. `/individual-collection` -> Sugere `/expansion`
-4. `/expansion` -> Sugere `/entity-graph`
-5. `/entity-graph` -> Sugere `/identity-validation`
-6. `/identity-validation` -> Sugere `/individual-footprint`
-7. `/individual-footprint` -> Sugere `/individual-social-analysis`
-8. `/individual-social-analysis` -> Sugere `/unstructured-extraction`
-9. `/unstructured-extraction` -> Sugere `/geo-context`
-10. `/geo-context` -> Sugere `/correlation`
-11. `/correlation` -> Sugere `/report`
+#### Example: Individuals Pipeline
+1. `/case-intake` -> Suggests `/framing-indiv`
+2. `/framing-indiv` -> Suggests `/individual-collection`
+3. `/individual-collection` -> Suggests `/expansion`
+4. `/expansion` -> Suggests `/entity-graph`
+5. `/entity-graph` -> Suggests `/identity-validation`
+6. `/identity-validation` -> Suggests `/individual-footprint`
+7. `/individual-footprint` -> Suggests `/individual-social-analysis`
+8. `/individual-social-analysis` -> Suggests `/unstructured-extraction`
+9. `/unstructured-extraction` -> Suggests `/geo-context`
+10. `/geo-context` -> Suggests `/correlation`
+11. `/correlation` -> Suggests `/report`
 
-#### Outras Pipelines (Fluxos Especializados)
+#### Other Pipelines (Specialized Flows)
 
-- **Desinformação**: 
+- **Disinformation**: 
   `/case-intake` -> `/framing-disinfo` -> `/disinfo-collection` -> `/expansion` -> `/content-analysis` -> `/disinfo-actor-mapping` -> `/correlation` -> `/report`
 
-- **Narrativas**: 
+- **Narratives**: 
   `/case-intake` -> `/framing-narrative` -> `/narrative-collection` -> `/expansion` -> `/content-analysis` -> `/narrative-ecosystem-map` -> `/correlation` -> `/report`
 
-- **Vazamentos**: 
+- **Leaks**: 
   `/case-intake` -> `/framing-leak` -> `/leak-collection` -> `/expansion` -> `/leak-impact-analysis` -> `/leak-data-audit` -> `/unstructured-extraction` -> `/correlation` -> `/report`
 
 ---
 
-## 5. Pré-requisitos
-- **OpenCode** instalado.
-- **EXA** habilitado (`OPENCODE_ENABLE_EXA=1`).
+## 6. Prerequisites
+- **OpenCode** installed.
+- **EXA** enabled (`OPENCODE_ENABLE_EXA=1`).
 
 ---
 
-## 6. Customização
-Para adicionar novas pipelines ou ajustar as existentes, edite os arquivos em `specs/` e os comandos correspondentes em `.opencode/commands/`. O framework é modular e desenhado para evoluir com a necessidade do operador.
+## 7. Customization
+To add new pipelines or adjust existing ones, edit the files in `specs/` and the corresponding commands in `.opencode/commands/`. The framework is modular and designed to evolve with the operator's needs.
+
+---
+
+## 8. Credits and License
+Developed for use with the **OpenCode** platform.
+License: **GPL v3**.

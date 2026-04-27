@@ -1,51 +1,45 @@
-
----
-
-# 08 — `specs/08-unstructured-extraction.md`
-
-```md
 # 08 — Unstructured Extraction
 
-## Objetivo
+## Objective
 
-Extrair dados relevantes de conteúdo não estruturado.
-
----
-
-## Entradas obrigatórias
-
-- páginas públicas
-- conteúdos coletados anteriormente
+Extract relevant data from unstructured content.
 
 ---
 
-## Instruções ao agente
+## Mandatory Inputs
 
-- Trabalhar apenas com conteúdo disponível
-- NÃO buscar novas fontes (já coletadas)
-- NÃO interpretar além do texto
+- public pages
+- previously collected content
 
 ---
 
-## Tarefas
+## Instructions to the Agent
 
-### 1. Extrair dados relevantes
+- Work only with available content
+- DO NOT search for new sources (already collected)
+- DO NOT interpret beyond the text
+
+---
+
+## Tasks
+
+### 1. Extract relevant data
 
 - e-mails
-- telefones
-- endereços
-- nomes institucionais
+- phones
+- addresses
+- institutional names
 
 ---
 
-### 2. Normalizar dados
+### 2. Normalize data
 
-- remover duplicados
-- padronizar formato
+- remove duplicates
+- standardize format
 
 ---
 
-## Saída obrigatória
+## Mandatory Output
 
 ```json
 {
@@ -55,3 +49,4 @@ Extrair dados relevantes de conteúdo não estruturado.
   "names": [],
   "confidence": "low | medium | high"
 }
+```

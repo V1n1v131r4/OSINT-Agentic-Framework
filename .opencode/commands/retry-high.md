@@ -1,11 +1,11 @@
 ---
-description: Reprocessa etapa com reasoning alto
+description: Reprocesses stage with high reasoning
 agent: collector-gpt
 model: openai/gpt-5
 ---
 
-Reexecute a mesma análise com maior profundidade.
+Re-execute the same analysis with greater depth.
 
-Objetivo:
-- reduzir erro
-- melhorar consistência
+Objective:
+- reduce error
+- improve consistency
