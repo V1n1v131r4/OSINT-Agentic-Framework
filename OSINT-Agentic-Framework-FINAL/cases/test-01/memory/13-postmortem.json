@@ -1,0 +1,42 @@
+{
+  "errors_detected": [
+    "Surface expansion returned no new assets beyond the seed domain and did not run the recommended passive pivots (WHOIS/Wayback/social search) despite listing them as investigatory pivots.",
+    "Formatting inconsistencies in outputs: some array string items contain embedded newlines or trailing whitespace (seen in 'initial_hypotheses' and 'business_pivots'), indicating missing output sanitization.",
+    "Outputs lack an explicit 'performed_pivots' declaration: modules do not state which passive checks were executed or intentionally skipped with reasons.",
+    "Overreliance on the intake without attempting safe, non-intrusive passive enrichment reduced analytical progress and left critical gaps unaddressed.",
+    "No alternative model outputs (claude) were provided for comparison, preventing model-comparison adjudication for this case."
+  ],
+  "reusable_patterns": [
+    "Clear separation between observed facts, hypotheses and gaps across modules (discipline of evidence).",
+    "Stable checklist of recommended passive pivots (WHOIS, Wayback, DNS history, directed social and directory searches) used consistently across modules.",
+    "Propagation of an explicit 'confidence' field through modules allowed rapid triage of evidence strength.",
+    "Executive reporting translated correlation outputs into actionable, non-intrusive next steps appropriate for analysts."
+  ],
+  "model_behavior_notes": {
+    "gpt": [
+      "Strength: adheres to conservative constraints and separates facts, hypotheses and gaps; consistently uses a confidence field and conservative language.",
+      "Weakness: surface-expansion stopped at listing pivots instead of executing safe passive lookups when reasonable; several outputs contained formatting artifacts (embedded newlines) suggesting lack of output sanitization; did not produce explicit performed_pivots metadata."
+    ],
+    "claude": []
+  },
+  "spec_adjustments": [
+    "Require a 'performed_pivots' object in surface-expansion and correlation outputs that lists which passive checks were executed (WHOIS, Wayback, DNS history, social search) with short result summaries or explicit 'none' if not run.",
+    "Mandate automated schema linting to reject or normalize array strings with embedded newlines or leading/trailing whitespace before saving run outputs.",
+    "Tighten surface-expansion spec to require at least one safe passive pivot attempt (WHOIS or Wayback) when only a seed domain is present, unless explicitly blocked by restrictions; if blocked, require a stated reason in the output.",
+    "Add a 'data_completeness_score' numeric field (0-100) in framing and expansion to quantify coverage of 'minimum_required_data' and to gate progression to correlation/reporting stages."
+  ],
+  "memory_objects": [
+    {
+      "name": "passive_pivots_checklist",
+      "content": ["WHOIS", "DNS historical", "Wayback", "site key pages extraction (About/Contact/Services)", "directed social search", "public business registry search"]
+    },
+    {
+      "name": "expansion_output_schema_lint_rules",
+      "content": ["no embedded newlines in array strings", "trim whitespace", "max 10 items for entity lists", "require performed_pivots object"]
+    },
+    {
+      "name": "module_handshake_template",
+      "content": ["performed_pivots: {pivot_name: short_result_or_none}", "skipped_pivots: {pivot_name: reason}", "data_completeness_score: integer 0-100"]
+    }
+  ]
+}
