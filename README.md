@@ -1,5 +1,5 @@
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
-![Version](https://img.shields.io/badge/Version-1.6.0-informational)
+![Version](https://img.shields.io/badge/Version-0.2-informational)
 ![Format](https://img.shields.io/badge/Format-JSON%20%26%20Agent%20Specs-orange)
 ![Framework](https://img.shields.io/badge/Framework-OpenCode-blueviolet)
 
