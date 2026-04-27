@@ -5,6 +5,11 @@
 
 # OSINT Agentic Framework for OpenCode
 
+---
+For english, change to the "en" branch
+
+---
+
 ## 1. Visão Geral
 
 Este framework operacional foi refatorado para suportar múltiplos propósitos de investigação OSINT. Agora, o operador define o **propósito da operação** no início do processo, e o framework sugere dinamicamente a pipeline mais adequada.
