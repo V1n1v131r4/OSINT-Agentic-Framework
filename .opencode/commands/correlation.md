@@ -1,42 +1,30 @@
 ---
-description: Executa o módulo 10 e salva a correlação estruturada em runs
+description: Consolida correlações e sugere o próximo passo da pipeline
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Siga estritamente a spec em @specs/10-correlation-anomalies.md.
+Instruções operacionais:
+1. Localize os arquivos de output anteriores no diretório `runs` do caso atual.
+2. Selecione a spec de correlação baseada no `operation_type`:
+   - `institutions`: `@specs/10-correlation-anomalies.md`
+   - `individuals`: `@specs/10-correlation-indiv.md`
+   - `disinformation_campaign` ou `narrative_analysis`: `@specs/10-correlation-narrative.md`
+   - `data_leak`: `@specs/10-correlation-leak.md`
+3. Consolide relações, padrões e anomalias conforme a spec selecionada.
+4. Salve o resultado em `cases/<case-id>/runs/10-correlation-gpt.json`.
 
-Use como insumos obrigatórios os arquivos:
-@cases/{{case_id}}/runs/04-entity-graph-gpt.json
-@cases/{{case_id}}/runs/05-institutional-validation-gpt.json
-@cases/{{case_id}}/runs/06-technical-surface-gpt.json
-@cases/{{case_id}}/runs/07-brand-social-analysis-gpt.json
-@cases/{{case_id}}/runs/08-unstructured-extraction-gpt.json
-@cases/{{case_id}}/runs/09-geo-context-gpt.json
+Objetivo:
+- Gerar base rastreável e específica para o relatório.
+- **Sugerir o próximo comando**: `/report`.
 
-Objetivo desta execução:
-- consolidar relações observáveis entre entidades e ativos
-- destacar padrões, anomalias e lacunas
-- preparar base rastreável para o relatório final
+Regras de Saída:
+- Retorne APENAS o JSON de status:
 
-Instruções operacionais obrigatórias:
-- Leia todos os arquivos listados acima
-- Preste atenção especial aos campos 'partners' e 'google_dorks_results' do output de corporate-collection.
-- Correlacione as mídias sociais dos sócios (do output de brand-social-analysis) com a empresa e os sócios identificados.
-- Gere APENAS JSON válido compatível com a spec 10
-- Salve o resultado em @cases/{{case_id}}/runs/10-correlation-gpt.json
-- Se a pasta @cases/{{case_id}}/runs não existir, crie-a
-- Após salvar, responda apenas com um JSON curto de status neste formato:
-
+```json
 {
   "status": "ok",
-  "output_file": "cases/{{case_id}}/runs/10-correlation-gpt.json"
+  "output_file": "cases/<case-id>/runs/10-correlation-gpt.json",
+  "next_command": "/report"
 }
-
-Regras obrigatórias:
-- Não gerar texto fora do JSON
-- Todos os campos de lista devem ser arrays JSON válidos
-- Não usar markdown
-- Não adicionar campos extras
-- Se faltar input, retornar erro estruturado em JSON
-
+```

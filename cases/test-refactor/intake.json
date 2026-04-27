@@ -1,1 +1,9 @@
-{ "case_id": "CORP-001", "operation_type": "institutions", "target_name": "Trustly Inc", "target_url": "https://trusltly.com", "scope_type": "empresa", "analysis_goal": "Mapear QSA e ativos técnicos.", "restrictions": ["Apenas fontes públicas"] }
+{
+  "case_id": "test-refactor",
+  "operation_type": "institutions",
+  "target_name": "Empresa Exemplo",
+  "target_url": "https://exemplo.com.br",
+  "scope_type": "empresa",
+  "analysis_goal": "validar nova estrutura de pipeline",
+  "restrictions": ["public sources only"]
+}

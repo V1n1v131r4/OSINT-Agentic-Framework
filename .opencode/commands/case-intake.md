@@ -1,32 +1,38 @@
 ---
-description: Executa o módulo 01 e salva automaticamente o output em runs
+description: Normaliza o intake e sugere a pipeline correta baseada no propósito da operação
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
 Siga estritamente a spec em @specs/01-case-intake.md.
 
-Use como entrada o arquivo:
-@cases/test-01/intake.json
+Instruções operacionais:
+1. Localize o arquivo `intake.json` no diretório do caso (ex: `cases/<case-id>/intake.json`).
+2. Se o operador não especificou o caminho, procure por arquivos `intake.json` recentes.
+3. Valide o `operation_type`.
 
-Objetivo desta execução:
-- normalizar o intake bruto
-- preparar o payload para o módulo 02
+Objetivo:
+- Normalizar o intake bruto.
+- Atribuir/Validar o `case_id`.
+- **Sugerir o próximo comando** baseado no `operation_type`.
 
-Instruções operacionais obrigatórias:
-- Leia @cases/test-01/intake.json
-- Gere APENAS JSON válido compatível com a spec 01
-- Salve o resultado em @cases/test-01/runs/01-case-intake.json
-- Se a pasta @cases/test-01/runs não existir, crie-a
-- Após salvar, responda apenas com um JSON curto de status neste formato:
+Regras de Saída:
+- Salve o resultado em `cases/<case-id>/runs/01-case-intake.json`.
+- O campo `next_step_suggestion` deve seguir o mapeamento:
+  - `institutions` -> `/framing`
+  - `individuals` -> `/framing-indiv`
+  - `disinformation_campaign` -> `/framing-disinfo`
+  - `narrative_analysis` -> `/framing-narrative`
+  - `data_leak` -> `/framing-leak`
 
+Retorne APENAS o JSON de status:
+
+```json
 {
   "status": "ok",
-  "output_file": "cases/test-01/runs/01-case-intake.json"
+  "case_id": "<case-id>",
+  "operation_type": "<type>",
+  "output_file": "cases/<case-id>/runs/01-case-intake.json",
+  "next_command": "<sugestão>"
 }
-
-Regras obrigatórias:
-- Não gerar texto fora do JSON
-- Todos os campos de lista devem ser arrays JSON válidos
-- Não usar markdown
-- Se faltar input, retornar erro estruturado em JSON
+```

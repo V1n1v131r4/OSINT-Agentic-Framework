@@ -1,36 +1,27 @@
 ---
-description: Executa o módulo 11 e salva o relatório final em runs
+description: Gera o relatório final e sugere o próximo passo da pipeline
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
 Siga estritamente a spec em @specs/11-reporting.md.
 
-Use como insumos obrigatórios os arquivos:
-@cases/test-01/runs/01-case-intake.json
-@cases/test-01/runs/10-correlation-gpt.json
+Instruções operacionais:
+1. Localize os arquivos `01-case-intake.json` e `10-correlation-gpt.json` no diretório `runs` do caso atual.
+2. Gere o relatório executivo baseado nos achados e correlações, adaptando o tom e o foco ao `operation_type`.
+3. Salve o resultado em `cases/<case-id>/runs/11-report-gpt.json`.
 
-Objetivo desta execução:
-- transformar a correlação em um relatório curto, executivo e rastreável
-- manter coerência com o objetivo analítico original
-- preparar saída final para revisão
+Objetivo:
+- Produzir síntese executiva rastreável e específica para o propósito da operação.
+- **Sugerir o próximo comando**: `/postmortem`.
 
-Instruções operacionais obrigatórias:
-- Leia @cases/test-01/runs/01-case-intake.json
-- Leia @cases/test-01/runs/10-correlation-gpt.json
-- Gere APENAS JSON válido compatível com a spec 11
-- Salve o resultado em @cases/test-01/runs/11-report-gpt.json
-- Se a pasta @cases/test-01/runs não existir, crie-a
-- Após salvar, responda apenas com um JSON curto de status neste formato:
+Regras de Saída:
+- Retorne APENAS o JSON de status:
 
+```json
 {
   "status": "ok",
-  "output_file": "cases/test-01/runs/11-report-gpt.json"
+  "output_file": "cases/<case-id>/runs/11-report-gpt.json",
+  "next_command": "/postmortem"
 }
-
-Regras obrigatórias:
-- Não gerar texto fora do JSON
-- Todos os campos de lista devem ser arrays JSON válidos
-- Não usar markdown
-- Não adicionar campos extras
-- Se faltar input, retornar erro estruturado em JSON
+```

@@ -1,59 +1,32 @@
 ---
-description: Pipeline rápida (somente GPT) com fluxo mínimo operacional
+description: Orquestrador dinâmico que segue as sugestões de cada comando da pipeline
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
-Execute esta rotina de forma estritamente sequencial.
+Execute esta rotina de forma estritamente sequencial, seguindo as sugestões dinâmicas de cada comando.
 
 Objetivo:
-- validar rapidamente a pipeline mínima
-- reduzir custo e tempo
-- manter coerência entre outputs
+- Validar a pipeline completa conforme o `operation_type`.
+- Seguir o campo `next_command` retornado por cada etapa.
 
 Regras obrigatórias:
-- Execute UMA etapa por vez
-- Após cada etapa, aguarde o JSON de status
-- Verifique se o campo `"status"` é `"ok"`
-- Verifique se o campo `"output_file"` foi retornado
-- Só avance para a próxima etapa se a etapa anterior tiver concluído com sucesso
-- Se qualquer etapa retornar erro, interrompa e responda apenas com o JSON de erro
-- Não responder com texto explicativo fora do JSON final
+1. Comece executando `/case-intake`.
+2. Após cada comando, leia o JSON de status retornado.
+3. Se o status for "ok", execute o comando indicado no campo `next_command`.
+4. Continue até que o comando sugerido seja `/postmortem` ou não haja mais sugestões.
+5. Se qualquer etapa falhar, interrompa e reporte o erro.
 
-Ordem de execução:
+Ordem de Execução Inicial:
+1. `/case-intake`
+2. Siga a sugestão dinâmica de `next_command`.
 
-### Etapa 1
-Execute:
-@.opencode/commands/case-intake.md
+Ao final, responda com o JSON de conclusão:
 
-### Etapa 2
-Execute:
-@.opencode/commands/framing.md
-
-### Etapa 3
-Execute:
-@.opencode/commands/expansion.md
-
-### Etapa 4
-Execute:
-@.opencode/commands/entity-graph.md
-
-### Etapa 5
-Execute:
-@.opencode/commands/technical-surface.md
-
-### Etapa 6
-Execute:
-@.opencode/commands/correlation.md
-
-### Etapa 7
-Execute:
-@.opencode/commands/report.md
-
-Ao final, se todas as etapas concluírem com sucesso, responda apenas com este JSON:
-
+```json
 {
   "status": "ok",
-  "message": "fast_pipeline_complete",
-  "final_output": "cases/test-01/runs/11-report-gpt.json"
+  "message": "dynamic_pipeline_complete",
+  "final_report": "cases/<case-id>/runs/11-report-gpt.json"
 }
+```
