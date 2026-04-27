@@ -1,1 +1,0 @@
-{ "case_id": "CORP-001", "operation_type": "institutions", "target_name": "Trustly Inc", "target_url": "https://trusltly.com", "scope_type": "empresa", "analysis_goal": "Mapear QSA e ativos técnicos.", "restrictions": ["Apenas fontes públicas"] }

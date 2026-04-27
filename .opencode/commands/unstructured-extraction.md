@@ -1,36 +1,32 @@
 ---
-description: Executa o módulo 08 e salva extrações estruturadas de conteúdo textual em runs
+description: Extrai dados não estruturados e sugere o próximo passo da pipeline
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
 Siga estritamente a spec em @specs/08-unstructured-extraction.md.
 
-Use como insumos obrigatórios os arquivos:
-@cases/test-01/runs/03-surface-expansion-gpt.json
-@cases/test-01/runs/07-brand-social-analysis-gpt.json
+Instruções operacionais:
+1. Localize os arquivos de análise anteriores (`03-surface-expansion-gpt.json` e o módulo de análise social correspondente: `07-brand-social-analysis-gpt.json`, `07-individual-social-analysis-gpt.json`, `07-disinfo-actor-mapping-gpt.json`, `07-narrative-ecosystem-map-gpt.json` ou `07-leak-data-audit-gpt.json`) no diretório `runs` do caso atual.
+2. Extraia informações de fontes não estruturadas conforme a spec.
+3. Salve o resultado em `cases/<case-id>/runs/08-unstructured-extraction-gpt.json`.
 
-Objetivo desta execução:
-- extrair dados relevantes de conteúdo não estruturado já coletado
-- normalizar e deduplicar e-mails, telefones, endereços e nomes
-- preparar dados estruturados para contexto geográfico e correlação
+Objetivo:
+- Capturar sinais qualitativos.
+- **Sugerir o próximo comando** baseado no `operation_type`:
+  - `institutions`: `/geo-context`
+  - `individuals`: `/geo-context`
+  - `data_leak`: `/correlation` (pula geo-context se não houver sinais físicos)
+  - Outros: `/correlation`
 
-Instruções operacionais obrigatórias:
-- Leia @cases/test-01/runs/03-surface-expansion-gpt.json
-- Leia @cases/test-01/runs/07-brand-social-analysis-gpt.json
-- Gere APENAS JSON válido compatível com a spec 08
-- Salve o resultado em @cases/test-01/runs/08-unstructured-extraction-gpt.json
-- Se a pasta @cases/test-01/runs não existir, crie-a
-- Após salvar, responda apenas com um JSON curto de status neste formato:
+Regras de Saída:
+- Retorne APENAS o JSON de status:
 
+```json
 {
   "status": "ok",
-  "output_file": "cases/test-01/runs/08-unstructured-extraction-gpt.json"
+  "output_file": "cases/<case-id>/runs/08-unstructured-extraction-gpt.json",
+  "next_command": "/<comando-sugerido>"
 }
+```
 
-Regras obrigatórias:
-- Não gerar texto fora do JSON
-- Todos os campos de lista devem ser arrays JSON válidos
-- Não usar markdown
-- Não adicionar campos extras
-- Se faltar input, retornar erro estruturado em JSON

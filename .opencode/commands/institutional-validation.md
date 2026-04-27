@@ -1,34 +1,27 @@
 ---
-description: Executa o módulo 05 e salva a validação institucional em runs
+description: Valida sinais institucionais e sugere o próximo passo da pipeline
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
 Siga estritamente a spec em @specs/05-institutional-validation.md.
 
-Use como insumo obrigatório o arquivo:
-@cases/test-01/runs/04-entity-graph-gpt.json
+Instruções operacionais:
+1. Localize o arquivo `04-entity-graph-gpt.json` no diretório `runs` do caso atual.
+2. Valide as entidades institucionais em fontes públicas.
+3. Salve o resultado em `cases/<case-id>/runs/05-institutional-validation-gpt.json`.
 
-Objetivo desta execução:
-- validar sinais institucionais em fontes públicas
-- separar entidades confirmadas, inconsistentes e não verificadas
-- preparar base institucional para correlação posterior
+Objetivo:
+- Confirmar existência e consistência institucional.
+- **Sugerir o próximo comando** (geralmente `/technical-surface`).
 
-Instruções operacionais obrigatórias:
-- Leia @cases/test-01/runs/04-entity-graph-gpt.json
-- Gere APENAS JSON válido compatível com a spec 05
-- Salve o resultado em @cases/test-01/runs/05-institutional-validation-gpt.json
-- Se a pasta @cases/test-01/runs não existir, crie-a
-- Após salvar, responda apenas com um JSON curto de status neste formato:
+Regras de Saída:
+- Retorne APENAS o JSON de status:
 
+```json
 {
   "status": "ok",
-  "output_file": "cases/test-01/runs/05-institutional-validation-gpt.json"
+  "output_file": "cases/<case-id>/runs/05-institutional-validation-gpt.json",
+  "next_command": "/technical-surface"
 }
-
-Regras obrigatórias:
-- Não gerar texto fora do JSON
-- Todos os campos de lista devem ser arrays JSON válidos
-- Não usar markdown
-- Não adicionar campos extras
-- Se faltar input, retornar erro estruturado em JSON
+```

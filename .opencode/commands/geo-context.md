@@ -1,36 +1,28 @@
 ---
-description: Executa o módulo 09 e salva o contexto geográfico em runs
+description: Analisa o contexto geográfico e sugere o próximo passo da pipeline
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
 Siga estritamente a spec em @specs/09-geo-context.md.
 
-Use como insumos obrigatórios os arquivos:
-@cases/test-01/runs/08-unstructured-extraction-gpt.json
-@cases/test-01/runs/04-entity-graph-gpt.json
+Instruções operacionais:
+1. Localize os arquivos de análise anteriores (`07-individual-social-analysis-gpt.json`, `08-unstructured-extraction-gpt.json` ou `04-entity-graph-gpt.json`) no diretório `runs` do caso atual.
+2. Identifique e correlacione sinais geográficos.
+3. Salve o resultado em `cases/<case-id>/runs/09-geo-context-gpt.json`.
 
-Objetivo desta execução:
-- consolidar sinais geográficos observáveis do alvo
-- estruturar localizações e sinais regionais sem inferência indevida
-- preparar contexto geográfico para correlação final
+Objetivo:
+- Mapear localização física e regional.
+- **Sugerir o próximo comando** (geralmente `/correlation`).
 
-Instruções operacionais obrigatórias:
-- Leia @cases/test-01/runs/08-unstructured-extraction-gpt.json
-- Leia @cases/test-01/runs/04-entity-graph-gpt.json
-- Gere APENAS JSON válido compatível com a spec 09
-- Salve o resultado em @cases/test-01/runs/09-geo-context-gpt.json
-- Se a pasta @cases/test-01/runs não existir, crie-a
-- Após salvar, responda apenas com um JSON curto de status neste formato:
+Regras de Saída:
+- Retorne APENAS o JSON de status:
 
+```json
 {
   "status": "ok",
-  "output_file": "cases/test-01/runs/09-geo-context-gpt.json"
+  "output_file": "cases/<case-id>/runs/09-geo-context-gpt.json",
+  "next_command": "/correlation"
 }
+```
 
-Regras obrigatórias:
-- Não gerar texto fora do JSON
-- Todos os campos de lista devem ser arrays JSON válidos
-- Não usar markdown
-- Não adicionar campos extras
-- Se faltar input, retornar erro estruturado em JSON

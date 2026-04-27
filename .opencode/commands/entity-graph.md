@@ -1,40 +1,30 @@
 ---
-description: Executa o módulo 04 e salva o grafo básico de entidades em runs
+description: Estrutura o grafo de entidades e sugere o próximo passo da pipeline
 agent: collector-gpt
 model: openai/gpt-5-mini
 ---
 
 Siga estritamente a spec em @specs/04-entity-graph.md.
 
-Use como insumo obrigatório o arquivo:
-@cases/{{case_id}}/runs/03-surface-expansion-gpt.json
-@cases/{{case_id}}/runs/04-corporate-collection-gpt.json
+Instruções operacionais:
+1. Localize o arquivo `03-surface-expansion-gpt.json` e o arquivo de coleta correspondente (`04-corporate-collection-gpt.json` ou `04-individual-collection-gpt.json`) no diretório `runs` do caso atual.
+2. Identifique e normalize entidades (pessoas, documentos, repositórios, empresas).
+3. Salve o resultado em `cases/<case-id>/runs/04-entity-graph-gpt.json`.
 
-Objetivo desta execução:
-- identificar entidades institucionais relevantes
-- estruturar entidades observáveis para validação e correlação
-- preparar saída reutilizável para os módulos seguintes
+Objetivo:
+- Estruturar o grafo de relações.
+- **Sugerir o próximo comando** baseado no `operation_type`:
+  - `institutions`: `/institutional-validation`
+  - `individuals`: `/identity-validation`
+  - Outros: `/technical-surface` ou `/brand-social-analysis` (conforme relevância)
 
-Instruções operacionais obrigatórias:
-- Leia @cases/{{case_id}}/runs/03-surface-expansion-gpt.json
-- Leia @cases/{{case_id}}/runs/04-corporate-collection-gpt.json
-- Identifique entidades do tipo 'person' a partir do campo 'partners' e 'employees' no output de corporate-collection.
-- Identifique entidades do tipo 'document' a partir do campo 'public_documents' no output de corporate-collection.
-- Identifique entidades do tipo 'code_repository' a partir do campo 'code_repositories' no output de corporate-collection.
-- Gere APENAS JSON válido compatível com a spec 04
-- Salve o resultado em @cases/{{case_id}}/runs/04-entity-graph-gpt.json
-- Se a pasta @cases/{{case_id}}/runs não existir, crie-a
-- Após salvar, responda apenas com um JSON curto de status neste formato:
+Regras de Saída:
+- Retorne APENAS o JSON de status:
 
+```json
 {
   "status": "ok",
-  "output_file": "cases/{{case_id}}/runs/04-entity-graph-gpt.json"
+  "output_file": "cases/<case-id>/runs/04-entity-graph-gpt.json",
+  "next_command": "/<comando-sugerido>"
 }
-
-Regras obrigatórias:
-- Não gerar texto fora do JSON
-- Todos os campos de lista devem ser arrays JSON válidos
-- Não usar markdown
-- Não adicionar campos extras
-- Se faltar input, retornar erro estruturado em JSON
-
+```
