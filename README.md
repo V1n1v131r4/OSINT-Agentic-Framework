@@ -1,5 +1,5 @@
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
-![Version](https://img.shields.io/badge/Version-1.5.0-informational)
+![Version](https://img.shields.io/badge/Version-1.6.0-informational)
 ![Format](https://img.shields.io/badge/Format-JSON%20%26%20Agent%20Specs-orange)
 ![Framework](https://img.shields.io/badge/Framework-OpenCode-blueviolet)
 
@@ -18,7 +18,18 @@ Este framework operacional foi refatorado para suportar múltiplos propósitos d
 
 ---
 
-## 2. Como Funciona a Pipeline Dinâmica
+## 2. ⚠️ Disclaimer e Uso Ético
+
+Este framework é uma ferramenta de **automação de inteligência de fontes abertas (OSINT)**. O uso deste material deve respeitar as seguintes diretrizes:
+
+- **Legalidade**: Certifique-se de que suas atividades estão em conformidade com as leis locais (como LGPD no Brasil ou GDPR na Europa).
+- **Ética**: Não utilize este framework para assédio, doxing, perseguição ou qualquer atividade ilegal.
+- **Responsabilidade**: O autor não se responsabiliza pelo uso indevido das informações coletadas ou pelas ações tomadas com base nos relatórios gerados.
+- **Transparência**: Este framework foca em dados **públicos e abertos**. Não utilize para tentar acessar sistemas privados ou protegidos.
+
+---
+
+## 3. Como Funciona a Pipeline Dinâmica
 
 Diferente de sistemas automáticos, este framework utiliza **orientação dinâmica**. Ao final de cada comando, o agente sugere o próximo passo baseado no tipo de operação escolhido.
 
@@ -28,7 +39,7 @@ Diferente de sistemas automáticos, este framework utiliza **orientação dinâm
 
 ---
 
-## 3. Estrutura de Pastas
+## 4. Estrutura de Pastas
 
 ```
 specs/ → Definições lógicas (específicas por tipo de operação).
@@ -42,9 +53,9 @@ cases/ → Dados dos casos.
 
 ---
 
-## 4. Passo a Passo: Iniciando uma Operação
+## 5. Passo a Passo: Iniciando uma Operação
 
-### 4.1. Preparar o Intake
+### 5.1. Preparar o Intake
 Crie a pasta do caso e edite o `intake.json`. Abaixo estão exemplos para cada tipo de operação:
 
 #### Instituições
@@ -104,13 +115,13 @@ Crie a pasta do caso e edite o `intake.json`. Abaixo estão exemplos para cada t
 }
 ```
 
-### 4.2. Executar o Intake
+### 5.2. Executar o Intake
 ```bash
 /case-intake
 ```
 O agente validará o tipo de operação e sugerirá o próximo comando (ex: `/framing` para instituições ou `/framing-indiv` para indivíduos).
 
-### 4.3. Seguir a Pipeline
+### 5.3. Seguir a Pipeline
 Execute os comandos sugeridos sequencialmente. O framework guiará você através do campo `next_command`.
 
 #### Exemplo: Pipeline de Instituições
@@ -153,11 +164,17 @@ Execute os comandos sugeridos sequencialmente. O framework guiará você atravé
 
 ---
 
-## 5. Pré-requisitos
+## 6. Pré-requisitos
 - **OpenCode** instalado.
 - **EXA** habilitado (`OPENCODE_ENABLE_EXA=1`).
 
 ---
 
-## 6. Customização
+## 7. Customização
 Para adicionar novas pipelines ou ajustar as existentes, edite os arquivos em `specs/` e os comandos correspondentes em `.opencode/commands/`. O framework é modular e desenhado para evoluir com a necessidade do operador.
+
+---
+
+## 8. Créditos e Licença
+Desenvolvido para uso com a plataforma **OpenCode**.
+Licença: **GPL v3**.
