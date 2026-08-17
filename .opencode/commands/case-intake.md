@@ -14,7 +14,15 @@ Instruções operacionais:
 Objetivo:
 - Normalizar o intake bruto.
 - Atribuir/Validar o `case_id`.
+- **Reinjetar a memória global de playbooks** (loop de aprendizado).
 - **Sugerir o próximo comando** baseado no `operation_type`.
+
+Instruções de reinjeção (loop de aprendizado):
+1. Leia `memory/global/playbooks.json` (se não existir, siga sem playbooks).
+2. Filtre os playbooks pelo `operation_type` deste caso + os de `operation_type: "all"`.
+3. Ordene por `reinforcement_count` (desc), pegue o top-5 e inclua-os em `applicable_playbooks`
+   no arquivo salvo `cases/<case-id>/runs/01-case-intake.json`, conforme a spec
+   @specs/01-case-intake.md.
 
 Regras de Saída:
 - Salve o resultado em `cases/<case-id>/runs/01-case-intake.json`.
@@ -33,6 +41,7 @@ Retorne APENAS o JSON de status:
   "case_id": "<case-id>",
   "operation_type": "<type>",
   "output_file": "cases/<case-id>/runs/01-case-intake.json",
+  "applicable_playbooks_count": 0,
   "next_command": "<sugestão>"
 }
 ```

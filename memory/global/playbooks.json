@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "updated_by_case": "test-01",
+  "playbooks": [
+    {
+      "id": "passive-pivots-checklist",
+      "operation_type": "all",
+      "pivot": "Rodar checklist de pivôs passivos antes de concluir ausência de dado: WHOIS, DNS histórico, Wayback, extração de páginas-chave (About/Contact/Services), busca social direcionada e busca em registros públicos.",
+      "when_to_use": "Sempre que a expansão de superfície tiver apenas um seed (ex.: só o domínio) e nenhum ativo novo tenha sido derivado.",
+      "reinforcement_count": 1,
+      "confidence_tier": "baixa",
+      "first_seen_case": "test-01",
+      "last_seen_case": "test-01",
+      "source_cases": ["test-01"]
+    },
+    {
+      "id": "evidence-discipline-facts-hypotheses-gaps",
+      "operation_type": "all",
+      "pivot": "Separar explicitamente fatos observados, hipóteses e lacunas em todos os módulos, propagando um campo 'confidence' para triagem rápida da força da evidência.",
+      "when_to_use": "Em qualquer módulo de coleta ou análise, para evitar extrapolação e preenchimento de lacunas com suposição.",
+      "reinforcement_count": 1,
+      "confidence_tier": "baixa",
+      "first_seen_case": "test-01",
+      "last_seen_case": "test-01",
+      "source_cases": ["test-01"]
+    },
+    {
+      "id": "declare-performed-and-skipped-pivots",
+      "operation_type": "institutions",
+      "pivot": "Declarar no output quais pivôs passivos foram executados (performed_pivots) e quais foram pulados com motivo (skipped_pivots), em vez de apenas listar pivôs recomendados sem executá-los.",
+      "when_to_use": "Na expansão de superfície e na correlação, para tornar auditável o que foi realmente feito.",
+      "reinforcement_count": 1,
+      "confidence_tier": "baixa",
+      "first_seen_case": "test-01",
+      "last_seen_case": "test-01",
+      "source_cases": ["test-01"]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
-![Version](https://img.shields.io/badge/Version-0.2-informational)
+![Version](https://img.shields.io/badge/Version-0.3-informational)
 ![Format](https://img.shields.io/badge/Format-JSON%20%26%20Agent%20Specs-orange)
 ![Framework](https://img.shields.io/badge/Framework-OpenCode-blueviolet)
 
@@ -44,23 +44,61 @@ Diferente de sistemas automáticos, este framework utiliza **orientação dinâm
 
 ---
 
-## 4. Estrutura de Pastas
+## 4. Loop de Aprendizado Automático (Memória Global)
+
+A partir da **v0.3**, o framework **aprende sozinho**: quanto mais casos você roda, mais
+especialista ele fica. O aprendizado é **automático** e embutido nas etapas que **já existem** —
+**nada muda nos comandos que você digita** e **nenhum comando novo** é adicionado.
+
+O loop se apoia nos dois únicos pontos que as **5 pipelines compartilham**:
+
+- **`/case-intake`** (início de qualquer pipeline) → **reinjeta** os pivôs comprovados.
+- **`/postmortem`** (fim de qualquer pipeline) → **consolida** o que funcionou na memória global.
+
+```
+/case-intake   → lê memory/global/playbooks.json, filtra pelo operation_type do caso
+                 e injeta os top pivôs em `applicable_playbooks`
+   ↓ ...miolo específico da pipeline (intocado)...
+/report → /postmortem
+   ↓
+/postmortem    → além do postmortem do caso, funde os padrões reutilizáveis na memória
+                 global (mesmo operation_type), deduplica e REFORÇA (reinforcement_count++)
+   ↓
+próximo caso do mesmo tipo começa mais especialista
+```
+
+**Como a expertise cresce:** cada pivô confirmado em um novo caso tem seu `reinforcement_count`
+incrementado; pivôs recorrentes sobem para `confidence_tier` `media`/`alta` e passam a ser
+reinjetados no topo. A consolidação é **idempotente** (rodar o mesmo caso duas vezes não infla a
+contagem) e **segmentada por `operation_type`** — aprendizado de um tipo de operação (ex.:
+vazamentos) nunca contamina outro (ex.: narrativas). Pivôs transversais usam o balde `all`.
+
+- Schema: `schemas/playbook-memory.schema.json`
+- Memória: `memory/global/playbooks.json`
+
+---
+
+## 5. Estrutura de Pastas
 
 ```
 specs/ → Definições lógicas (específicas por tipo de operação).
 .opencode/commands/ → Comandos executáveis.
+schemas/ → Contratos JSON (inclui playbook-memory.schema.json).
+memory/
+  └── global/
+      └── playbooks.json → Memória global de pivôs (loop de aprendizado).
 cases/ → Dados dos casos.
   ├── <case-id>/
   │   ├── intake.json → Definição do propósito e alvo.
   │   ├── runs/ → Outputs de cada etapa.
-  │   └── memory/ → Lições aprendidas (postmortem).
+  │   └── memory/ → Lições aprendidas do caso (postmortem).
 ```
 
 ---
 
-## 5. Passo a Passo: Iniciando uma Operação
+## 6. Passo a Passo: Iniciando uma Operação
 
-### 5.1. Preparar o Intake
+### 6.1. Preparar o Intake
 Crie a pasta do caso e edite o `intake.json`. Abaixo estão exemplos para cada tipo de operação:
 
 #### Instituições
@@ -120,13 +158,13 @@ Crie a pasta do caso e edite o `intake.json`. Abaixo estão exemplos para cada t
 }
 ```
 
-### 5.2. Executar o Intake
+### 6.2. Executar o Intake
 ```bash
 /case-intake
 ```
 O agente validará o tipo de operação e sugerirá o próximo comando (ex: `/framing` para instituições ou `/framing-indiv` para indivíduos).
 
-### 5.3. Seguir a Pipeline
+### 6.3. Seguir a Pipeline
 Execute os comandos sugeridos sequencialmente. O framework guiará você através do campo `next_command`.
 
 #### Exemplo: Pipeline de Instituições
@@ -155,31 +193,35 @@ Execute os comandos sugeridos sequencialmente. O framework guiará você atravé
 9. `/unstructured-extraction` -> Sugere `/geo-context`
 10. `/geo-context` -> Sugere `/correlation`
 11. `/correlation` -> Sugere `/report`
+12. `/report` -> Sugere `/postmortem` *(consolida o aprendizado na memória global)*
+
+> Em todas as 5 pipelines o `/report` encaminha para `/postmortem`, que é a etapa final e onde o
+> loop de aprendizado é fechado automaticamente (ver seção 4).
 
 #### Outras Pipelines (Fluxos Especializados)
 
 - **Desinformação**: 
-  `/case-intake` -> `/framing-disinfo` -> `/disinfo-collection` -> `/expansion` -> `/content-analysis` -> `/disinfo-actor-mapping` -> `/correlation` -> `/report`
+  `/case-intake` -> `/framing-disinfo` -> `/disinfo-collection` -> `/expansion` -> `/content-analysis` -> `/disinfo-actor-mapping` -> `/correlation` -> `/report` -> `/postmortem`
 
 - **Narrativas**: 
-  `/case-intake` -> `/framing-narrative` -> `/narrative-collection` -> `/expansion` -> `/content-analysis` -> `/narrative-ecosystem-map` -> `/correlation` -> `/report`
+  `/case-intake` -> `/framing-narrative` -> `/narrative-collection` -> `/expansion` -> `/content-analysis` -> `/narrative-ecosystem-map` -> `/correlation` -> `/report` -> `/postmortem`
 
 - **Vazamentos**: 
-  `/case-intake` -> `/framing-leak` -> `/leak-collection` -> `/expansion` -> `/leak-impact-analysis` -> `/leak-data-audit` -> `/unstructured-extraction` -> `/correlation` -> `/report`
+  `/case-intake` -> `/framing-leak` -> `/leak-collection` -> `/expansion` -> `/leak-impact-analysis` -> `/leak-data-audit` -> `/unstructured-extraction` -> `/correlation` -> `/report` -> `/postmortem`
 
 ---
 
-## 6. Pré-requisitos
+## 7. Pré-requisitos
 - **OpenCode** instalado.
 - **EXA** habilitado (`OPENCODE_ENABLE_EXA=1`).
 
 ---
 
-## 7. Customização
+## 8. Customização
 Para adicionar novas pipelines ou ajustar as existentes, edite os arquivos em `specs/` e os comandos correspondentes em `.opencode/commands/`. O framework é modular e desenhado para evoluir com a necessidade do operador.
 
 ---
 
-## 8. Créditos e Licença
+## 9. Créditos e Licença
 Desenvolvido para uso com a plataforma **OpenCode**.
 Licença: **GPL v3**.

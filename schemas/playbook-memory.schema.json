@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Global Playbook Memory",
+  "description": "Memória global de playbooks/pivôs que funcionam, consolidada automaticamente pelo /postmortem ao final de cada caso e reinjetada pelo /case-intake no início de cada novo caso. Segmentada por operation_type.",
+  "type": "object",
+  "required": ["version", "playbooks"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "description": "Versão do formato da memória global."
+    },
+    "updated_by_case": {
+      "type": "string",
+      "description": "case_id do último caso que consolidou aprendizado nesta memória."
+    },
+    "playbooks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/playbook" }
+    }
+  },
+  "$defs": {
+    "playbook": {
+      "type": "object",
+      "required": [
+        "id",
+        "operation_type",
+        "pivot",
+        "reinforcement_count",
+        "confidence_tier",
+        "source_cases"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Slug estável do playbook (kebab-case), usado como chave de deduplicação junto com operation_type."
+        },
+        "operation_type": {
+          "type": "string",
+          "enum": [
+            "institutions",
+            "individuals",
+            "disinformation_campaign",
+            "narrative_analysis",
+            "data_leak",
+            "all"
+          ],
+          "description": "Balde de segmentação. 'all' = pivô transversal aplicável a qualquer pipeline."
+        },
+        "pivot": {
+          "type": "string",
+          "description": "Descrição curta e acionável da técnica/pivô que funcionou."
+        },
+        "when_to_use": {
+          "type": "string",
+          "description": "Condição em que este pivô é útil."
+        },
+        "reinforcement_count": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Quantos casos distintos já confirmaram este pivô. É o sinal de expertise: quanto maior, mais alto no ranking de reinjeção."
+        },
+        "confidence_tier": {
+          "type": "string",
+          "enum": ["baixa", "media", "alta"],
+          "description": "Derivado de reinforcement_count: 1 = baixa, 2-3 = media, 4+ = alta."
+        },
+        "first_seen_case": {
+          "type": "string",
+          "description": "case_id onde o pivô apareceu pela primeira vez."
+        },
+        "last_seen_case": {
+          "type": "string",
+          "description": "case_id da confirmação mais recente."
+        },
+        "source_cases": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Lista de case_ids que confirmaram o pivô. Usada para garantir idempotência: um caso já presente não incrementa a contagem novamente."
+        }
+      }
+    }
+  }
+}

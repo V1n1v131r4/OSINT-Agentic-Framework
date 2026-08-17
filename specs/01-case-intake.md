@@ -34,6 +34,22 @@ Se entradas obrigatórias estiverem ausentes ou ambíguas, NÃO prossiga.
 - Não iniciar coleta.
 - Não gerar hipóteses.
 - Este módulo é apenas estrutural e de roteamento.
+- **Reinjetar a memória global de playbooks** (ver "Loop de Aprendizado" abaixo).
+
+---
+
+## Loop de Aprendizado (Reinjeção de Playbooks)
+
+Este é o **ponto de entrada de todas as 5 pipelines**. Antes de rotear, ele **reinjeta o
+conhecimento acumulado** pelo framework em casos anteriores — é isto que faz "quanto mais usar,
+mais especialista".
+
+1. Leia `memory/global/playbooks.json` (se não existir, siga sem playbooks).
+2. **Filtre pelo `operation_type` deste caso** — inclua também os de `operation_type: "all"`
+   (transversais). Nunca traga playbooks de outros tipos de operação.
+3. Ordene por `reinforcement_count` (desc) e selecione o **top-5**.
+4. Emita-os no campo `applicable_playbooks` do output, como **contexto de método** para as
+   etapas seguintes. Não são hipóteses nem coleta — são pivôs comprovados a priorizar.
 
 ---
 
@@ -48,6 +64,14 @@ O agente deve retornar o JSON estruturado e, em sua resposta textual (se houver)
   "target_name": "",
   "analysis_goal": "",
   "scope_definition": "",
+  "applicable_playbooks": [
+    {
+      "id": "",
+      "pivot": "",
+      "confidence_tier": "",
+      "reinforcement_count": 0
+    }
+  ],
   "next_step_suggestion": "/framing"
 }
 ```
