@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "updated_by_case": "test-01",
+  "playbooks": [
+    {
+      "id": "passive-pivots-checklist",
+      "operation_type": "all",
+      "pivot": "Run a passive-pivots checklist before concluding data is absent: WHOIS, historical DNS, Wayback, key-page extraction (About/Contact/Services), targeted social search, and public registry search.",
+      "when_to_use": "Whenever surface expansion has only a seed (e.g. just the domain) and no new asset has been derived.",
+      "reinforcement_count": 1,
+      "confidence_tier": "low",
+      "first_seen_case": "test-01",
+      "last_seen_case": "test-01",
+      "source_cases": ["test-01"]
+    },
+    {
+      "id": "evidence-discipline-facts-hypotheses-gaps",
+      "operation_type": "all",
+      "pivot": "Explicitly separate observed facts, hypotheses, and gaps across all modules, propagating a 'confidence' field for fast triage of evidence strength.",
+      "when_to_use": "In any collection or analysis module, to avoid extrapolation and filling gaps with assumption.",
+      "reinforcement_count": 1,
+      "confidence_tier": "low",
+      "first_seen_case": "test-01",
+      "last_seen_case": "test-01",
+      "source_cases": ["test-01"]
+    },
+    {
+      "id": "declare-performed-and-skipped-pivots",
+      "operation_type": "institutions",
+      "pivot": "Declare in the output which passive pivots were performed (performed_pivots) and which were skipped with a reason (skipped_pivots), instead of only listing recommended pivots without executing them.",
+      "when_to_use": "In surface expansion and correlation, to make what was actually done auditable.",
+      "reinforcement_count": 1,
+      "confidence_tier": "low",
+      "first_seen_case": "test-01",
+      "last_seen_case": "test-01",
+      "source_cases": ["test-01"]
+    }
+  ]
+}

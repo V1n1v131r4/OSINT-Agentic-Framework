@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Global Playbook Memory",
+  "description": "Global memory of playbooks/pivots that work, consolidated automatically by /postmortem at the end of each case and reinjected by /case-intake at the start of each new case. Segmented by operation_type.",
+  "type": "object",
+  "required": ["version", "playbooks"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "description": "Global memory format version."
+    },
+    "updated_by_case": {
+      "type": "string",
+      "description": "case_id of the last case that consolidated learning into this memory."
+    },
+    "playbooks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/playbook" }
+    }
+  },
+  "$defs": {
+    "playbook": {
+      "type": "object",
+      "required": [
+        "id",
+        "operation_type",
+        "pivot",
+        "reinforcement_count",
+        "confidence_tier",
+        "source_cases"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Stable slug (kebab-case) used as the dedup key together with operation_type."
+        },
+        "operation_type": {
+          "type": "string",
+          "enum": [
+            "institutions",
+            "individuals",
+            "disinformation_campaign",
+            "narrative_analysis",
+            "data_leak",
+            "all"
+          ],
+          "description": "Segmentation bucket. 'all' = cross-cutting pivot applicable to any pipeline."
+        },
+        "pivot": {
+          "type": "string",
+          "description": "Short, actionable description of the technique/pivot that worked."
+        },
+        "when_to_use": {
+          "type": "string",
+          "description": "Condition under which this pivot is useful."
+        },
+        "reinforcement_count": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "How many distinct cases have confirmed this pivot. This is the expertise signal: the higher it is, the higher it ranks for reinjection."
+        },
+        "confidence_tier": {
+          "type": "string",
+          "enum": ["low", "medium", "high"],
+          "description": "Derived from reinforcement_count: 1 = low, 2-3 = medium, 4+ = high."
+        },
+        "first_seen_case": {
+          "type": "string",
+          "description": "case_id where the pivot first appeared."
+        },
+        "last_seen_case": {
+          "type": "string",
+          "description": "case_id of the most recent confirmation."
+        },
+        "source_cases": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of case_ids that confirmed the pivot. Used to guarantee idempotency: a case already present does not increment the count again."
+        }
+      }
+    }
+  }
+}

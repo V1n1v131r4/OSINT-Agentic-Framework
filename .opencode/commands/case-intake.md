@@ -14,7 +14,14 @@ Operational Instructions:
 Objective:
 - Normalize the raw intake.
 - Assign/Validate the `case_id`.
+- **Reinject the global playbook memory** (learning loop).
 - **Suggest the next command** based on the `operation_type`.
+
+Reinjection instructions (learning loop):
+1. Read `memory/global/playbooks.json` (if it does not exist, proceed without playbooks).
+2. Filter the playbooks by this case's `operation_type` + those with `operation_type: "all"`.
+3. Sort by `reinforcement_count` (desc), take the top 5, and include them in `applicable_playbooks`
+   in the saved file `cases/<case-id>/runs/01-case-intake.json`, as per spec @specs/01-case-intake.md.
 
 Output Rules:
 - Save the result in `cases/<case-id>/runs/01-case-intake.json`.
@@ -33,6 +40,7 @@ Return ONLY the status JSON:
   "case_id": "<case-id>",
   "operation_type": "<type>",
   "output_file": "cases/<case-id>/runs/01-case-intake.json",
+  "applicable_playbooks_count": 0,
   "next_command": "<suggestion>"
 }
 ```
