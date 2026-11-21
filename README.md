@@ -223,6 +223,7 @@ Execute os comandos sugeridos sequencialmente. O framework guiará você atravé
 
 ## 7. Pré-requisitos
 - **OpenCode** instalado.
+- **Python 3** para validar as entradas de `/expansion` e `/expansion-claude`. No OpenCode, autorize a execução do validador quando solicitado. Para executar a checagem diretamente, use `python3 scripts/validate-expansion-inputs.py -- "cases/<case-id>"` na raiz do projeto.
 - **EXA** habilitado (`OPENCODE_ENABLE_EXA=1`).
 
 ---
