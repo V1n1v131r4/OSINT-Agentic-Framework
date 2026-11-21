@@ -1,5 +1,5 @@
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
-![Version](https://img.shields.io/badge/Version-0.3-informational)
+![Version](https://img.shields.io/badge/Version-0.5-informational)
 ![Framework](https://img.shields.io/badge/Framework-OpenCode-blueviolet)
 
 # OSINT Agentic Framework for OpenCode
