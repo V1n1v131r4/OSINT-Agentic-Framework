@@ -12,6 +12,8 @@ Instruções operacionais:
    - `disinformation_campaign` ou `narrative_analysis`: `@specs/10-correlation-narrative.md`
    - `data_leak`: `@specs/10-correlation-leak.md`
 3. Consolide relações, padrões e anomalias conforme a spec selecionada.
+   - Para `narrative_analysis`, aplique também @specs/narrative-evidence.md. Antes de analisar, execute `python3 scripts/validate-narrative-evidence.py --collection-only -- "cases/<case-id>"` com o diretório real. Use `evidence_origins` para contar origens conhecidas distintas por achado.
+   - Se a checagem falhar ou não puder ser executada, retorne um JSON com `status: error` e a mensagem do validador ou a causa da falha. Interrompa a etapa sem gravar o artefato ou sugerir outro comando.
 4. Salve o resultado em `cases/<case-id>/runs/10-correlation-gpt.json`.
 
 Objetivo:
