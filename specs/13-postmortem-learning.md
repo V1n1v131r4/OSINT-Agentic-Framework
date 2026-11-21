@@ -80,4 +80,4 @@ execução** do postmortem, automaticamente.
 - Prefira poucos pivôs de alto valor a muitos genéricos.
 
 ### Próximo passo
-- O loop está fechado. `next_command` do postmortem é vazio (fim do caso).
+- Após salvar o postmortem e a memória global, exporte o relatório conforme as instruções do comando `/postmortem`. O status final informa o nome e o diretório do Markdown. A pipeline termina nessa etapa.

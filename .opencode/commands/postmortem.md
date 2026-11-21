@@ -19,6 +19,7 @@ Instruções operacionais:
      (incrementar `reinforcement_count` apenas se o `case_id` ainda não estiver em
      `source_cases` — idempotência), recalcular `confidence_tier`.
    - Salve de volta em `memory/global/playbooks.json`.
+5. Depois de salvar o postmortem e a memória global, execute `python3 scripts/export-case-report.py -- "cases/<case-id>"` com o diretório real do caso. Use o JSON retornado pelo script para informar o caminho e a mensagem. Se a exportação falhar ou não puder ser executada, retorne `status: error` com a causa e o estágio `report_export`.
 
 Objetivo:
 - Melhoria contínua do framework e do operador.
@@ -32,6 +33,7 @@ Regras de Saída:
   "status": "ok",
   "output_file": "cases/<case-id>/memory/13-postmortem.json",
   "global_memory_file": "memory/global/playbooks.json",
-  "message": "Operação finalizada. Lições aprendidas registradas e consolidadas na memória global."
+  "final_report": "cases/<case-id>/report_<case-id>.md",
+  "message": "Relatório report_<case-id>.md gerado no diretório cases/<case-id>."
 }
 ```

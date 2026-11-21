@@ -1,240 +1,113 @@
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
 ![Version](https://img.shields.io/badge/Version-0.3-informational)
-![Format](https://img.shields.io/badge/Format-JSON%20%26%20Agent%20Specs-orange)
 ![Framework](https://img.shields.io/badge/Framework-OpenCode-blueviolet)
 
 # OSINT Agentic Framework for OpenCode
 
----
-🇬🇧 For english version, please change to the "en" branch
+Este framework guia investigações de fontes abertas no OpenCode. Você define o objetivo e o escopo do caso, revisa o resultado de cada etapa e segue o comando indicado pelo framework. Ao fechar o caso, o OpenCode exporta o relatório final em Markdown.
 
----
+A versão em inglês está na branch `en`.
 
-## 1. Visão Geral
+## Primeiro caso: do clone ao relatório
 
-Este framework operacional foi refatorado para suportar múltiplos propósitos de investigação OSINT. Agora, o operador define o **propósito da operação** no início do processo, e o framework sugere dinamicamente a pipeline mais adequada.
+O exemplo analisa quatro textos fictícios sobre uma proposta de ampliar o horário de uma biblioteca. O material está todo em um arquivo local.
 
-### Propósitos Suportados:
-- **Instituições**: Focado em empresas, domínios e ativos corporativos (Pipeline Padrão).
-- **Indivíduos**: Focado em pegada digital de pessoas físicas, exposição e vínculos.
-- **Campanha de Desinformação**: Análise de narrativas, coordenação e amplificação.
-- **Análise de Narrativas**: Mapeamento de ecossistemas de informação e influência.
-- **Vazamento de Dados**: Avaliação de impacto, sensibilidade e origem de vazamentos.
+### 1. Prepare o ambiente
 
----
+Você precisa de Git, OpenCode, Python 3 e acesso ao provedor do modelo configurado. Para o exemplo local, basta o acesso ao modelo. Para casos que usam busca na web, habilite a integração EXA com `OPENCODE_ENABLE_EXA=1` no ambiente em que vai iniciar o OpenCode.
 
-## 2. ⚠️ Disclaimer e Uso Ético
+No terminal:
 
-Este framework é uma ferramenta de **automação de inteligência de fontes abertas (OSINT)**. O uso deste material deve respeitar as seguintes diretrizes:
-
-- **Legalidade**: Certifique-se de que suas atividades estão em conformidade com as leis locais (como LGPD no Brasil ou GDPR na Europa).
-- **Ética**: Não utilize este framework para assédio, doxing, perseguição ou qualquer atividade ilegal.
-- **Responsabilidade**: O autor não se responsabiliza pelo uso indevido das informações coletadas ou pelas ações tomadas com base nos relatórios gerados.
-- **Transparência**: Este framework foca em dados **públicos e abertos**. Não utilize para tentar acessar sistemas privados ou protegidos.
-
----
-
-## 3. Como Funciona a Pipeline Dinâmica
-
-Diferente de sistemas automáticos, este framework utiliza **orientação dinâmica**. Ao final de cada comando, o agente sugere o próximo passo baseado no tipo de operação escolhido.
-
-1. **Case Intake**: O operador define o `operation_type` no `intake.json`.
-2. **Sugestão de Comando**: O output de cada etapa contém o campo `next_command`.
-3. **Execução Manual**: O operador mantém o controle total, executando o comando sugerido após validar o resultado anterior.
-
----
-
-## 4. Loop de Aprendizado Automático (Memória Global)
-
-A partir da **v0.3**, o framework **aprende sozinho**: quanto mais casos você roda, mais
-especialista ele fica. O aprendizado é **automático** e embutido nas etapas que **já existem** —
-**nada muda nos comandos que você digita** e **nenhum comando novo** é adicionado.
-
-O loop se apoia nos dois únicos pontos que as **5 pipelines compartilham**:
-
-- **`/case-intake`** (início de qualquer pipeline) → **reinjeta** os pivôs comprovados.
-- **`/postmortem`** (fim de qualquer pipeline) → **consolida** o que funcionou na memória global.
-
-```
-/case-intake   → lê memory/global/playbooks.json, filtra pelo operation_type do caso
-                 e injeta os top pivôs em `applicable_playbooks`
-   ↓ ...miolo específico da pipeline (intocado)...
-/report → /postmortem
-   ↓
-/postmortem    → além do postmortem do caso, funde os padrões reutilizáveis na memória
-                 global (mesmo operation_type), deduplica e REFORÇA (reinforcement_count++)
-   ↓
-próximo caso do mesmo tipo começa mais especialista
-```
-
-**Como a expertise cresce:** cada pivô confirmado em um novo caso tem seu `reinforcement_count`
-incrementado; pivôs recorrentes sobem para `confidence_tier` `media`/`alta` e passam a ser
-reinjetados no topo. A consolidação é **idempotente** (rodar o mesmo caso duas vezes não infla a
-contagem) e **segmentada por `operation_type`** — aprendizado de um tipo de operação (ex.:
-vazamentos) nunca contamina outro (ex.: narrativas). Pivôs transversais usam o balde `all`.
-
-- Schema: `schemas/playbook-memory.schema.json`
-- Memória: `memory/global/playbooks.json`
-
----
-
-## 5. Estrutura de Pastas
-
-```
-specs/ → Definições lógicas (específicas por tipo de operação).
-.opencode/commands/ → Comandos executáveis.
-schemas/ → Contratos JSON (inclui playbook-memory.schema.json).
-memory/
-  └── global/
-      └── playbooks.json → Memória global de pivôs (loop de aprendizado).
-cases/ → Dados dos casos.
-  ├── <case-id>/
-  │   ├── intake.json → Definição do propósito e alvo.
-  │   ├── runs/ → Outputs de cada etapa.
-  │   └── memory/ → Lições aprendidas do caso (postmortem).
-```
-
----
-
-## 6. Passo a Passo: Iniciando uma Operação
-
-### 6.1. Preparar o Intake
-Crie a pasta do caso e edite o `intake.json`. Abaixo estão exemplos para cada tipo de operação:
-
-#### Instituições
-```json
-{
-  "case_id": "CORP-001",
-  "operation_type": "institutions",
-  "target_name": "Empresa Alvo S.A.",
-  "target_url": "https://alvo.com.br",
-  "scope_type": "empresa",
-  "analysis_goal": "Mapear QSA e ativos técnicos.",
-  "restrictions": ["Apenas fontes públicas"]
-}
-```
-
-#### Indivíduos
-```json
-{
-  "case_id": "IND-001",
-  "operation_type": "individuals",
-  "target_name": "Nome do Alvo",
-  "analysis_goal": "Mapear pegada digital e exposição social.",
-  "restrictions": ["Respeitar LGPD"]
-}
-```
-
-#### Desinformação
-```json
-{
-  "case_id": "DIS-001",
-  "operation_type": "disinformation_campaign",
-  "target_name": "Narrativa X sobre Assunto Y",
-  "analysis_goal": "Identificar origem e amplificadores.",
-  "restrictions": ["Focar em redes abertas"]
-}
-```
-
-#### Narrativas
-```json
-{
-  "case_id": "NAR-001",
-  "operation_type": "narrative_analysis",
-  "target_name": "Tema de Interesse",
-  "analysis_goal": "Mapear ecossistema de influência.",
-  "restrictions": ["Análise qualitativa"]
-}
-```
-
-#### Vazamentos
-```json
-{
-  "case_id": "LEAK-001",
-  "operation_type": "data_leak",
-  "target_name": "Entidade Afetada",
-  "analysis_goal": "Validar extensão e sensibilidade do vazamento.",
-  "restrictions": ["Não baixar bases completas"]
-}
-```
-
-### 6.2. Executar o Intake
-No terminal, a partir da raiz do projeto, confirme que o modelo configurado no comando aparece na lista desta instalação do OpenCode:
-
-```bash
+```sh
+git clone https://github.com/V1n1v131r4/OSINT-Agentic-Framework.git
+cd OSINT-Agentic-Framework
 sh scripts/check-intake-model.sh
 ```
 
-Se o modelo estiver indisponível, configure o provedor ou escolha um modelo disponível. Ao trocar de modelo, ajuste também os comandos das etapas que o referenciam.
+Se a checagem indicar que o modelo está indisponível, configure o provedor ou ajuste os modelos antes de seguir. Veja [Solução de problemas](#solução-de-problemas).
 
-Na interface interativa do OpenCode, execute:
+### 2. Crie os arquivos do caso
 
-```bash
-/case-intake
+Ainda no terminal, execute o bloco abaixo. Use `NAR-001` tanto no nome da pasta quanto no campo `case_id`.
+
+```sh
+mkdir -p cases/NAR-001
+cat > cases/NAR-001/intake.json <<'JSON'
+{
+  "case_id": "NAR-001",
+  "operation_type": "narrative_analysis",
+  "target_name": "Proposta fictícia de ampliar o horário de uma biblioteca",
+  "analysis_goal": "Comparar os argumentos do corpus e identificar como foram republicados.",
+  "restrictions": ["Use exclusivamente o corpus fictício local. Sem acesso a fontes externas."],
+  "source_seed": ["cases/NAR-001/corpus.md"]
+}
+JSON
+cat > cases/NAR-001/corpus.md <<'CORPUS'
+Corpus fictício.
+A — 2026-01-05 — Comunicado da biblioteca: proposta de ampliar o horário em duas noites.
+B — 2026-01-06 — Associação de leitores: estudantes teriam mais acesso.
+C — 2026-01-07 — Comissão de orçamento: questiona o custo da proposta.
+D — 2026-01-08 — Boletim local reproduz a nota B, sem apuração independente.
+CORPUS
 ```
-O agente validará o tipo de operação e sugerirá o próximo comando (ex: `/framing` para instituições ou `/framing-indiv` para indivíduos).
 
-### 6.3. Seguir a Pipeline
-Execute os comandos sugeridos sequencialmente. O framework guiará você através do campo `next_command`.
+### 3. Abra o OpenCode e siga a trilha
 
-#### Exemplo: Pipeline de Instituições
-1. `/case-intake` -> Sugere `/framing`
-2. `/framing` -> Sugere `/corporate-collection`
-3. `/corporate-collection` -> Sugere `/expansion`
-4. `/expansion` -> Sugere `/entity-graph`
-5. `/entity-graph` -> Sugere `/institutional-validation`
-6. `/institutional-validation` -> Sugere `/technical-surface`
-7. `/technical-surface` -> Sugere `/brand-social-analysis`
-8. `/brand-social-analysis` -> Sugere `/unstructured-extraction`
-9. `/unstructured-extraction` -> Sugere `/geo-context`
-10. `/geo-context` -> Sugere `/correlation`
-11. `/correlation` -> Sugere `/report`
-12. `/report` -> Sugere `/postmortem`
+No terminal, a partir da raiz do projeto, execute `opencode`. Na caixa de entrada da **interface interativa do OpenCode**, digite:
 
-#### Exemplo: Pipeline de Indivíduos
-1. `/case-intake` -> Sugere `/framing-indiv`
-2. `/framing-indiv` -> Sugere `/individual-collection`
-3. `/individual-collection` -> Sugere `/expansion`
-4. `/expansion` -> Sugere `/entity-graph`
-5. `/entity-graph` -> Sugere `/identity-validation`
-6. `/identity-validation` -> Sugere `/individual-footprint`
-7. `/individual-footprint` -> Sugere `/individual-social-analysis`
-8. `/individual-social-analysis` -> Sugere `/unstructured-extraction`
-9. `/unstructured-extraction` -> Sugere `/geo-context`
-10. `/geo-context` -> Sugere `/correlation`
-11. `/correlation` -> Sugere `/report`
-12. `/report` -> Sugere `/postmortem` *(consolida o aprendizado na memória global)*
+```text
+/case-intake cases/NAR-001/intake.json
+```
 
-> Em todas as 5 pipelines o `/report` encaminha para `/postmortem`, que é a etapa final e onde o
-> loop de aprendizado é fechado automaticamente (ver seção 4).
+O status deve incluir `"status": "ok"`, `"output_file": "cases/NAR-001/runs/01-case-intake.json"` e `"next_command": "/framing-narrative"`. Confira o arquivo e execute o próximo comando na mesma sessão. Você pode indicar o caso explicitamente, por exemplo com `/framing-narrative cases/NAR-001`.
 
-#### Outras Pipelines (Fluxos Especializados)
+Para esse exemplo, a sequência é `/framing-narrative` → `/narrative-collection` → `/expansion` → `/content-analysis` → `/narrative-ecosystem-map` → `/correlation` → `/report` → `/postmortem`. A cada etapa, revise o resultado e siga o `next_command` se o status for `ok`. O OpenCode pode solicitar autorização para gravar arquivos ou executar os scripts locais de validação e exportação.
 
-- **Desinformação**: 
-  `/case-intake` -> `/framing-disinfo` -> `/disinfo-collection` -> `/expansion` -> `/content-analysis` -> `/disinfo-actor-mapping` -> `/correlation` -> `/report` -> `/postmortem`
+### 4. Encontre o relatório final
 
-- **Narrativas**: 
-  `/case-intake` -> `/framing-narrative` -> `/narrative-collection` -> `/expansion` -> `/content-analysis` -> `/narrative-ecosystem-map` -> `/correlation` -> `/report` -> `/postmortem`
+O `/report` grava o relatório estruturado em `cases/NAR-001/runs/11-report-gpt.json`. Execute o `/postmortem` sugerido para fechar o caso e gerar o Markdown. O status final contém o caminho e o aviso:
 
-  A coleta registra evidências identificadas. A correlação vincula os achados a essas evidências e contabiliza origens conhecidas. O relatório valida os vínculos antes de ser gerado. Em casos anteriores a esse contrato, reexecute a coleta e a correlação para gerar os campos adicionais. Consulte [Rastreabilidade de evidências](specs/narrative-evidence.md).
+> Relatório report_NAR-001.md gerado no diretório cases/NAR-001.
 
-- **Vazamentos**: 
-  `/case-intake` -> `/framing-leak` -> `/leak-collection` -> `/expansion` -> `/leak-impact-analysis` -> `/leak-data-audit` -> `/unstructured-extraction` -> `/correlation` -> `/report` -> `/postmortem`
+Abra `cases/NAR-001/report_NAR-001.md`. No exemplo, confira se o relatório distingue a republicação da nota B de uma confirmação independente do argumento.
 
----
+## Escolha a trilha do seu caso
 
-## 7. Pré-requisitos
-- **OpenCode** instalado.
-- **Python 3** para validar as entradas de `/expansion` e `/expansion-claude`. No OpenCode, autorize a execução do validador quando solicitado. Para executar a checagem diretamente, use `python3 scripts/validate-expansion-inputs.py -- "cases/<case-id>"` na raiz do projeto.
-- **EXA** habilitado (`OPENCODE_ENABLE_EXA=1`).
+Para iniciar um novo caso, crie `cases/<case-id>/intake.json` a partir de [templates/intake.json](templates/intake.json). Preencha `case_id`, `operation_type`, `target_name`, `analysis_goal` e `restrictions`. Use `source_seed` para indicar documentos ou fontes de partida. O [schema do intake](schemas/intake.schema.json) lista os campos aceitos.
 
----
+| `operation_type` | Finalidade | Primeiro comando após o intake |
+| --- | --- | --- |
+| `institutions` | Analisar uma instituição e seus registros e ativos públicos. | `/framing` |
+| `individuals` | Avaliar presença pública de uma pessoa dentro do escopo definido. | `/framing-indiv` |
+| `disinformation_campaign` | Examinar a disseminação de mensagens e as evidências de coordenação. | `/framing-disinfo` |
+| `narrative_analysis` | Comparar narrativas, atores e circulação de conteúdo. | `/framing-narrative` |
+| `data_leak` | Avaliar escopo, sensibilidade e impacto de uma exposição de dados. | `/framing-leak` |
 
-## 8. Customização
-Para adicionar novas pipelines ou ajustar as existentes, edite os arquivos em `specs/` e os comandos correspondentes em `.opencode/commands/`. O framework é modular e desenhado para evoluir com a necessidade do operador.
+Em todas as trilhas, a correlação alimenta o relatório e o postmortem fecha o caso. Em Narrativas, a coleta registra as evidências. A correlação vincula cada achado às fontes e conta as origens conhecidas. Para usar esse contrato em um caso antigo, reexecute a coleta e a correlação antes de gerar o relatório. [Contrato de evidências](specs/narrative-evidence.md)
 
----
+## Solução de problemas
 
-## 9. Créditos e Licença
-Desenvolvido para uso com a plataforma **OpenCode**.
-Licença: **GPL v3**.
+- **Modelo indisponível.** Execute `opencode models` para listar os modelos disponíveis e `sh scripts/check-intake-model.sh` para conferir o modelo do intake. Ao trocar de modelo, reveja `opencode.json` e os campos `model:` dos comandos da trilha em `.opencode/commands/`. A checagem inicial cobre o intake.
+- **O comando não aparece ou o caso errado foi selecionado.** Abra o OpenCode a partir da raiz do repositório e informe o caminho de `intake.json` no comando interativo. Mantenha um caso por sessão.
+- **A validação aponta um arquivo ou campo ausente.** Revise a saída da etapa que gera esse arquivo em `runs/` e reexecute a etapa antes de avançar.
+- **O Markdown não apareceu.** Confirme que `/postmortem` terminou com `status: ok` e retornou `final_report`. Após salvar o postmortem, é possível repetir apenas a exportação no terminal com `python3 scripts/export-case-report.py -- "cases/NAR-001"`.
+
+## Artefatos e memória
+
+```text
+cases/<case-id>/
+├── intake.json                 # objetivo, alvo e restrições
+├── runs/                       # artefatos JSON, incluindo 11-report-gpt.json
+├── memory/13-postmortem.json    # revisão metodológica do caso
+└── report_<case-id>.md          # relatório final
+```
+
+O postmortem também registra métodos reutilizáveis em `memory/global/playbooks.json`. O intake consulta essa memória e sugere até cinco métodos por recorrência, considerando o tipo do caso e os métodos transversais marcados como `all`. O reforço de cada método conta casos distintos. [Schema da memória](schemas/playbook-memory.schema.json) · [Regras de consolidação](specs/13-postmortem-learning.md)
+
+As instruções analíticas ficam em `specs/`, os comandos interativos em `.opencode/commands/` e os contratos JSON em `schemas/`. A [rubrica de qualidade](rubrics/quality-rubric.md) define os critérios para revisar as saídas.
+
+## Uso responsável e licença
+
+Use fontes públicas e respeite o escopo autorizado e as leis aplicáveis, incluindo as regras de proteção de dados. É vedado usar o framework para assédio, doxing, perseguição, acesso a sistemas privados ou outras atividades ilegais. O operador é responsável pelas informações coletadas e pelas ações tomadas com base nos relatórios.
+
+Licença GPL v3.

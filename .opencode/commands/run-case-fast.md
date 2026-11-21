@@ -14,7 +14,7 @@ Regras obrigatórias:
 1. Comece executando `/case-intake`.
 2. Após cada comando, leia o JSON de status retornado.
 3. Se o status for "ok", execute o comando indicado no campo `next_command`.
-4. Continue até que o comando sugerido seja `/postmortem` ou não haja mais sugestões.
+4. Quando `/report` sugerir `/postmortem`, execute `/postmortem` e use seu status final. A pipeline termina com sucesso após a exportação do Markdown.
 5. Se qualquer etapa falhar, interrompa e reporte o erro.
 
 Ordem de Execução Inicial:
@@ -26,7 +26,7 @@ Ao final, responda com o JSON de conclusão:
 ```json
 {
   "status": "ok",
-  "message": "dynamic_pipeline_complete",
-  "final_report": "cases/<case-id>/runs/11-report-gpt.json"
+  "message": "Relatório report_<case-id>.md gerado no diretório cases/<case-id>.",
+  "final_report": "cases/<case-id>/report_<case-id>.md"
 }
 ```
