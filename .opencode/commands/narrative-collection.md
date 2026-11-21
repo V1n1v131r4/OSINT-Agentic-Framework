@@ -5,6 +5,7 @@ model: openai/gpt-5-mini
 ---
 
 Siga estritamente a spec em @specs/04-narrative-collection.md.
+Inclua o registro `evidence` no mesmo artefato conforme @specs/narrative-evidence.md.
 
 Instruções operacionais:
 1. Leia o `01-case-intake.json` e o `02-framing-gpt.json` do caso atual.

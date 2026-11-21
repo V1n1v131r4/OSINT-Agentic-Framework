@@ -216,6 +216,8 @@ Execute os comandos sugeridos sequencialmente. O framework guiará você atravé
 - **Narrativas**: 
   `/case-intake` -> `/framing-narrative` -> `/narrative-collection` -> `/expansion` -> `/content-analysis` -> `/narrative-ecosystem-map` -> `/correlation` -> `/report` -> `/postmortem`
 
+  A coleta registra evidências identificadas. A correlação vincula os achados a essas evidências e contabiliza origens conhecidas. O relatório valida os vínculos antes de ser gerado. Em casos anteriores a esse contrato, reexecute a coleta e a correlação para gerar os campos adicionais. Consulte [Rastreabilidade de evidências](specs/narrative-evidence.md).
+
 - **Vazamentos**: 
   `/case-intake` -> `/framing-leak` -> `/leak-collection` -> `/expansion` -> `/leak-impact-analysis` -> `/leak-data-audit` -> `/unstructured-extraction` -> `/correlation` -> `/report` -> `/postmortem`
 

@@ -42,6 +42,7 @@ Se o output de correlação não estiver disponível, NÃO prossiga.
 
 - Gerar APENAS JSON válido
 - Não adicionar campos fora da saída obrigatória
+- Em `narrative_analysis`, siga o contrato em `specs/narrative-evidence.md` para os itens de `key_findings` e `hypotheses`.
 - Todos os campos de lista devem ser arrays JSON válidos
 - O resumo executivo deve ser curto, claro e coerente com o objetivo analítico original
 - Não transformar hipótese em fato
