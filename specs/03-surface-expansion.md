@@ -1,16 +1,15 @@
 # 03 — Surface Expansion
 
 ## Objetivo
-Expandir a superfície pública institucional do alvo a partir do seed inicial, mantendo relevância, coerência e utilidade analítica.
+Expandir a superfície pública do alvo a partir dos insumos do caso, respeitando seu propósito e escopo.
 
 ---
 
 ## Entradas obrigatórias
-- target_summary
-- investigation_vectors
-- known_gaps
+- Do intake normalizado (`01-case-intake.json`): `operation_type`, `target_name`, `analysis_goal` e `scope_definition`.
+- Do framing: `investigation_vectors` e `known_gaps`.
 
-Se qualquer entrada estiver ausente ou inválida, NÃO prossiga.
+Use `target_name`, `analysis_goal` e `scope_definition` diretamente como contexto do alvo. Se qualquer entrada obrigatória estiver ausente ou inválida, informe o arquivo e o campo e interrompa a etapa.
 
 ## Entradas opcionais
 - corporate_identity
@@ -24,7 +23,7 @@ Se qualquer entrada estiver ausente ou inválida, NÃO prossiga.
 ## Instruções ao agente
 
 - Quando houver artefato de corporate collection, usá-lo para priorizar ativos e canais confirmados
-- Expandir apenas ativos institucionais e públicos
+- Limitar a expansão a ativos e canais públicos pertinentes ao `operation_type` e ao escopo do intake
 - Não investigar pessoas físicas
 - Não inferir dados não observáveis
 - Não enriquecer com conhecimento externo não suportado
@@ -38,14 +37,14 @@ Se qualquer entrada estiver ausente ou inválida, NÃO prossiga.
 
 ## Tarefas
 
-1. Identificar ativos institucionais diretamente relacionados ao alvo
-2. Identificar canais públicos oficiais (redes sociais, diretórios, etc.)
+1. Identificar ativos diretamente relacionados ao alvo
+2. Identificar canais públicos relevantes para o propósito do caso
 3. Classificar ativos em:
    - primários (centrais à operação)
    - secundários (apoio)
    - residuais/legados (não mantidos ou inconsistentes)
-4. Identificar possíveis inconsistências ou sinais de governança digital fraca
-5. Sugerir pivôs empresariais úteis para aprofundamento
+4. Identificar inconsistências pertinentes ao caso
+5. Sugerir pivôs empresariais quando aplicáveis. Use `business_pivots: []` quando não se aplicarem.
 
 ---
 
