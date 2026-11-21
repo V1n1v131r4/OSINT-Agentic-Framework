@@ -7,7 +7,7 @@ model: openai/gpt-5-mini
 Siga estritamente a spec em @specs/03-surface-expansion.md.
 
 Instruções operacionais:
-1. Localize o arquivo `02-framing-gpt.json` e o arquivo de coleta correspondente (`04-corporate-collection-gpt.json`, `04-individual-collection-gpt.json`, `04-disinfo-collection-gpt.json`, etc.) no diretório `runs` do caso atual.
+1. Localize `01-case-intake.json`, `02-framing-gpt.json` e o arquivo de coleta correspondente no diretório `runs` do caso atual. Valide os campos obrigatórios indicados na spec antes de expandir.
 2. Execute a expansão de superfície baseada nos dados coletados.
 3. Salve o resultado em `cases/<case-id>/runs/03-surface-expansion-gpt.json`.
 

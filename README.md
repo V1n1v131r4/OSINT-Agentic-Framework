@@ -159,6 +159,16 @@ Crie a pasta do caso e edite o `intake.json`. Abaixo estão exemplos para cada t
 ```
 
 ### 6.2. Executar o Intake
+No terminal, a partir da raiz do projeto, confirme que o modelo configurado no comando aparece na lista desta instalação do OpenCode:
+
+```bash
+sh scripts/check-intake-model.sh
+```
+
+Se o modelo estiver indisponível, configure o provedor ou escolha um modelo disponível. Ao trocar de modelo, ajuste também os comandos das etapas que o referenciam.
+
+Na interface interativa do OpenCode, execute:
+
 ```bash
 /case-intake
 ```
