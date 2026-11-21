@@ -8,6 +8,7 @@ Expandir a superfície pública do alvo a partir dos insumos do caso, respeitand
 ## Entradas obrigatórias
 - Do intake normalizado (`01-case-intake.json`): `operation_type`, `target_name`, `analysis_goal` e `scope_definition`.
 - Do framing: `investigation_vectors` e `known_gaps`.
+- Da coleta correspondente ao `operation_type`: o artefato JSON com o campo `confidence` (`low`, `medium` ou `high`).
 
 Use `target_name`, `analysis_goal` e `scope_definition` diretamente como contexto do alvo. Se qualquer entrada obrigatória estiver ausente ou inválida, informe o arquivo e o campo e interrompa a etapa.
 

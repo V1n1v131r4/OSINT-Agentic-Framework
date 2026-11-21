@@ -7,7 +7,7 @@ model: anthropic/claude-sonnet-4-5
 Siga a spec `@specs/03-surface-expansion.md`.
 
 Instruções operacionais:
-1. Localize `01-case-intake.json`, o framing (`02-framing-claude.json` ou `02-framing-gpt.json`) e o arquivo de coleta correspondente no diretório `runs` do caso atual. Valide os campos obrigatórios indicados na spec antes de expandir.
+1. Identifique o diretório do caso atual e execute, a partir da raiz do projeto, `python3 scripts/validate-expansion-inputs.py --claude -- "cases/<case-id>"` com o caminho real do caso. Execute o script antes de analisar os artefatos. Prossiga somente se sair com código zero e `status: ok`. Use os arquivos listados em `inputs`.
 2. Execute a expansão de superfície baseada nos dados coletados.
 3. Salve o resultado em `cases/<case-id>/runs/03-surface-expansion-claude.json`.
 
@@ -17,6 +17,7 @@ Objetivo:
 
 Regras de Saída:
 - Retorne APENAS o JSON de status:
+- Se a validação falhar, devolva o JSON de erro do script. Se não puder executá-lo, devolva `{"status":"error","message":"Não foi possível executar o validador da expansão."}`. Em ambos os casos, interrompa a etapa sem gerar artefato ou sugerir próximo comando.
 
 ```json
 {
